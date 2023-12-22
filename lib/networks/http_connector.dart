@@ -98,4 +98,33 @@ class HTTPConnector {
 
     return response.data;
   }
+
+  static Future<Map<String, dynamic>?> get({
+    required API_ENDPOINT url,
+    Map<String, String> urlArg = const {},
+    Map<String, String> header = const {},
+    Map<String, String> params = const {},
+  }) async {
+    var response = await _dio.get<Map<String, dynamic>>(
+      url.value(urlArg),
+      queryParameters: params,
+      options: _optionMaker(header),
+    );
+
+    if (response.statusCode == 401 || response.statusCode == 403) {
+      //
+    }
+
+    if ((response.statusCode ?? 999) > 299) {
+      throw HttpException(
+        statusCode: response.statusCode ?? 999,
+        method: 'GET',
+        url: url.value(urlArg),
+        message: response.data?['msg'],
+        requestParam: params.toString(),
+        responseRawData: response,
+      );
+    }
+    return response.data;
+  }
 }

@@ -3,7 +3,7 @@ import 'package:path_to_regexp/path_to_regexp.dart';
 const BASE_URL = 'https://localhost:3000';
 
 enum API_ENDPOINT {
-  member('member/:memberId');
+  memberInfo('member/:memberId');
 
   const API_ENDPOINT(this._url);
   final String _url;
