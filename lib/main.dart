@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'networks/http_connector.dart';
+
 void main() async {
   init();
   runApp(const ProviderScope(child: MyApp()));
@@ -11,7 +13,7 @@ void main() async {
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
   //firebase 연동 코드
-  // await HTTPConnector.init();
+  await HTTPConnector.init();
 }
 
 class MyApp extends ConsumerWidget {
