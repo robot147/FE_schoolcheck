@@ -1,6 +1,6 @@
 import 'package:path_to_regexp/path_to_regexp.dart';
 
-const BASE_URL = 'https://localhost:3000';
+const BASE_URL = 'https://localhost:3000/';
 
 enum API_ENDPOINT {
   memberInfo('member/:memberId');

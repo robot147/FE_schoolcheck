@@ -1,16 +1,27 @@
-# flutter_application_1
+## 프로젝트 폴더 구조
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+lib
+┣ model
+┃ ┣ member_data.dart
+┃ ┗ member_data.freezed.dart
+┣ networks
+┃ ┣ api.dart
+┃ ┗ http_connector.dart
+┣ repository
+┃ ┗ member_repository.dart
+┣ router
+┃ ┣ router.dart
+┃ ┗ router_path.dart
+┣ utils
+┃ ┗ logger.dart
+┣ view
+┃ ┣ home
+┃ ┃ ┣ member_page
+┃ ┃ ┃ ┣ member_page.dart
+┃ ┃ ┃ ┣ member_page_view_model.dart
+┃ ┃ ┃ ┗ member_page_view_model.g.dart
+┃ ┃ ┗ home_page.dart
+┃ ┣ login
+┃ ┃ ┗ login_page.dart
+┃ ┗ splash_page.dart
+┗ main.dart
