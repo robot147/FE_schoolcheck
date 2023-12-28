@@ -23,7 +23,7 @@ class MemberPage extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           leading: ElevatedButton(
-            child: const Text('홈으로'),
+            child: const Text('홈 으로'),
             onPressed: () {
               route.pop();
             },
