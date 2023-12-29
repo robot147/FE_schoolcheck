@@ -7,7 +7,7 @@ enum ColorTheme {
   light,
 }
 
-class Colors {
+class SCColors {
   static ColorTheme theme = ColorTheme.light;
 
   static Color _fromHex(String hexString) {
