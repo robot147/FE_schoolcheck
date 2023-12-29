@@ -44,3 +44,7 @@ lib
    - view : prodivder를 watch하고 있음
    - view_model: provider 역할
      (서비스 로직 한번더 분리해도 좋을듯)
+
+### assets 자동생성
+
+fluttergen
