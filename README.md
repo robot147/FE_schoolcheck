@@ -2,30 +2,45 @@
 
 ```
 lib
-┣ model
-┃ ┣ member_data.dart
-┃ ┗ member_data.freezed.dart
-┣ networks
-┃ ┣ api.dart
-┃ ┗ http_connector.dart
-┣ repository
-┃ ┗ member_repository.dart
-┣ router
-┃ ┣ router.dart
-┃ ┗ router_path.dart
-┣ utils
-┃ ┗ logger.dart
-┣ view
-┃ ┣ home
-┃ ┃ ┣ member_page
-┃ ┃ ┃ ┣ member_page.dart
-┃ ┃ ┃ ┣ member_page_view_model.dart
-┃ ┃ ┃ ┗ member_page_view_model.g.dart
-┃ ┃ ┗ home_page.dart
-┃ ┣ login
-┃ ┃ ┗ login_page.dart
-┃ ┗ splash_page.dart
-┗ main.dart
+ ┣ assets
+ ┃ ┗ icons
+ ┣ design_system
+ ┃ ┣ buttons
+ ┃ ┃ ┗ button.dart
+ ┃ ┣ color
+ ┃ ┃ ┗ color.dart
+ ┃ ┗ text
+ ┃ ┃ ┣ fonts
+ ┃ ┃ ┃ ┣ Pretendard-Black.ttf
+ ┃ ┃ ┣ text.dart
+ ┃ ┃ ┗ text_style.dart
+ ┣ gen
+ ┃ ┣ assets.gen.dart
+ ┃ ┗ fonts.gen.dart
+ ┣ model
+ ┃ ┣ member_data.dart
+ ┃ ┗ member_data.freezed.dart
+ ┣ networks
+ ┃ ┣ api.dart
+ ┃ ┗ http_connector.dart
+ ┣ repository
+ ┃ ┗ member_repository.dart
+ ┣ router
+ ┃ ┣ router.dart
+ ┃ ┗ router_path.dart
+ ┣ utils
+ ┃ ┗ logger.dart
+ ┣ view
+ ┃ ┣ home
+ ┃ ┃ ┣ member_page
+ ┃ ┃ ┃ ┣ member_page.dart
+ ┃ ┃ ┃ ┣ member_page_view_model.dart
+ ┃ ┃ ┃ ┗ member_page_view_model.g.dart
+ ┃ ┃ ┗ home_page.dart
+ ┃ ┣ login
+ ┃ ┃ ┗ login_page.dart
+ ┃ ┗ splash_page.dart
+ ┗ main.dart
 ```
 
 ### 부가설명
@@ -44,7 +59,9 @@ lib
    - view : prodivder를 watch하고 있음
    - view_model: provider 역할
      (서비스 로직 한번더 분리해도 좋을듯)
-
-### assets 자동생성
-
-fluttergen
+6. assets
+   - icon 파일
+7. design_system
+   - 디자인 관련 컴포넌트 단위별로 쪼개서 관리
+8. gen
+   - assets 경로 자동생성 (fluttergen 이용 -- pub 참고)

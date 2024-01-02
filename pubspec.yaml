@@ -101,7 +101,8 @@
 #   # For details regarding fonts from package dependencies,
 #   # see https://flutter.dev/custom-fonts/#from-packages
 
-#####위에 주석 살리고 아래는 임시###
+#####위에 주석꺼 버전이 최신
+###임시### (하위 버전)
 
 name: flutter_application_1
 description: A new Flutter project.
