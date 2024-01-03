@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/router/router_path.dart';
+import 'package:flutter_application_1/view/doc/consumer.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import '../view/todo/todo.dart';
 
 //화면전환
 Widget fadeTransition(BuildContext context, Animation<double> animation,
@@ -68,6 +71,28 @@ final goRouterProvider = Provider<GoRouter>(
                 key: state.pageKey,
                 child: MemberPage(
                   memberId: state.pathParameters['memberId'] ?? '',
+                ),
+                transitionsBuilder: slideTransition,
+              ),
+            ),
+             GoRoute(
+              path: RouterPath.todo.path,
+              name: RouterPath.todo.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                transitionDuration: const Duration(milliseconds: 500),
+                key: state.pageKey,
+                child: Todo(
+                ),
+                transitionsBuilder: slideTransition,
+              ),
+            ),
+            GoRoute(
+              path: RouterPath.doc.path,
+              name: RouterPath.doc.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                transitionDuration: const Duration(milliseconds: 500),
+                key: state.pageKey,
+                child: DocHome(
                 ),
                 transitionsBuilder: slideTransition,
               ),

@@ -6,6 +6,10 @@ enum RouterPath {
 
   //home 하위
   memberPage('member_page/:memberId', 'member_page'),
+    todo('todo', 'todo'),
+        doc('dpc', 'doc'),
+
+
   ;
 
   const RouterPath(this.path, this.name);
