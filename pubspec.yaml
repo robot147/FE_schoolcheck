@@ -164,6 +164,7 @@ flutter:
   assets:
     - lib/assets/icons/
     - lib/assets/lottie/
+    - lib/assets/images/
 
   fonts:
     - family: Pretendard

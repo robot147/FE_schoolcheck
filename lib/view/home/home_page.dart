@@ -29,6 +29,10 @@ class HomePage extends ConsumerWidget {
             //TO-USE (assets 사용)
             Assets.lib.assets.icons.iconAdd.svg(width: 50, height: 50),
             Assets.lib.assets.lottie.lot.lottie(width: 200, height: 200),
+
+            Assets.lib.assets.icons.pie.image(width: 70, height: 70),
+            Assets.lib.assets.images.pencil.image(height: 150),
+
             Center(
               child: ElevatedButton(
                   onPressed: () {

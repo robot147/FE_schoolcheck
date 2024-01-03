@@ -22,6 +22,7 @@ class $LibAssetsGen {
   const $LibAssetsGen();
 
   $LibAssetsIconsGen get icons => const $LibAssetsIconsGen();
+  $LibAssetsImagesGen get images => const $LibAssetsImagesGen();
   $LibAssetsLottieGen get lottie => const $LibAssetsLottieGen();
 }
 
@@ -31,8 +32,22 @@ class $LibAssetsIconsGen {
   /// File path: lib/assets/icons/icon_add.svg
   SvgGenImage get iconAdd => const SvgGenImage('lib/assets/icons/icon_add.svg');
 
+  /// File path: lib/assets/icons/pie.png
+  AssetGenImage get pie => const AssetGenImage('lib/assets/icons/pie.png');
+
   /// List of all assets
-  List<SvgGenImage> get values => [iconAdd];
+  List<dynamic> get values => [iconAdd, pie];
+}
+
+class $LibAssetsImagesGen {
+  const $LibAssetsImagesGen();
+
+  /// File path: lib/assets/images/pencil.jpg
+  AssetGenImage get pencil =>
+      const AssetGenImage('lib/assets/images/pencil.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [pencil];
 }
 
 class $LibAssetsLottieGen {
