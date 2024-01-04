@@ -6,13 +6,18 @@ import 'networks/http_connector.dart';
 
 void main() async {
   init();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      // observers: [ProviderLogger()],
+      child: MyApp(),
+    ),
+  );
 }
 
 /// 앱 실행전 초기화
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //firebase 연동 코드
+  //firebase 연동 코드 (필요시)
   await HTTPConnector.init();
 }
 
