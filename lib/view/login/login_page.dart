@@ -36,29 +36,30 @@ class LoginPage extends ConsumerWidget {
                 backgroundColor: MaterialStatePropertyAll(Colors.white),
               ),
               onPressed: () {
-                route.pushNamed(RouterPath.todo.name);
+                route.pushNamed(RouterPath.loginui.name);
               },
               child: Text(
-                'very very simple todo',
+                'LoginUI',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 36,
                 ),
               )),
-              OutlinedButton(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.white),
-              ),
-              onPressed: () {
-                route.pushNamed(RouterPath.doc.name);
-              },
-              child: Text(
-                'very very simple todo',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 36,
-                ),
-              ))
+          // OutlinedButton(
+          //     style: const ButtonStyle(
+          //       backgroundColor: MaterialStatePropertyAll(Colors.white),
+          //     ),
+          //     onPressed: () {
+          //       route.pushNamed(RouterPath.todo.name);
+          //     },
+          //     child: Text(
+          //       'very very simple todo',
+          //       style: TextStyle(
+          //         color: Colors.black,
+          //         fontSize: 36,
+          //       ),
+          //     )),
+              
         ],
       ),
     );
