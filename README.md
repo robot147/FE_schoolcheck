@@ -65,3 +65,13 @@ lib
    - 디자인 관련 컴포넌트 단위별로 쪼개서 관리
 8. gen
    - assets 경로 자동생성 (fluttergen 이용 -- pub 참고)
+
+### assets 사용방법
+
+1. assets 폴더 하위에 각각 파일 추가
+2. 터미널에서 `fluttergen` 명령어로 assets 경로 자동 생성
+3. 사용
+   - jpg : `Assets.lib.assets.images.생성된파일이름.image()`
+   - png : `Assets.lib.assets.icons.생성된파일이름.image()`
+   - SVG : `Assets.lib.assets.icons.생성된파일이름.svg()`
+   - lottie: `Assets.lib.assets.lottie.생성된파일이름.lottie() `
