@@ -8,6 +8,7 @@ enum RouterPath {
   memberPage('member_page/:memberId', 'member_page'),
   todo('todo', 'todo'),
   loginui('loginui', 'loginui'),
+  signup('signup','signup')
   ;
 
   const RouterPath(this.path, this.name);

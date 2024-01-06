@@ -4,6 +4,7 @@ import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
 import 'package:flutter_application_1/view/login/login_ui_jh.dart';
+import 'package:flutter_application_1/view/signup/signup.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -93,6 +94,17 @@ final goRouterProvider = Provider<GoRouter>(
                 transitionDuration: const Duration(milliseconds: 500),
                 key: state.pageKey,
                 child: LoginUi(
+                ),
+                transitionsBuilder: slideTransition,
+              ),
+            ),
+            GoRoute(
+              path: RouterPath.signup.path,
+              name: RouterPath.signup.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                transitionDuration: const Duration(milliseconds: 500),
+                key: state.pageKey,
+                child: SCSignup(
                 ),
                 transitionsBuilder: slideTransition,
               ),

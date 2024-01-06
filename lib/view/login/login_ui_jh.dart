@@ -1,7 +1,14 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/design_system/buttons/button.dart';
+import 'package:flutter_application_1/design_system/text/text.dart';
+import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../gen/assets.gen.dart';
+import '../../router/router.dart';
+import '../../router/router_path.dart';
 
 class LoginUi extends ConsumerWidget {
   LoginUi({super.key});
@@ -40,23 +47,6 @@ class LoginUi extends ConsumerWidget {
     );
   }
 
-  Widget _greyBtn(String title, double width, double height, Function()? onTap) {
-    return SizedBox(
-        height: height,
-        width: width,
-        child: TextButton(
-          onPressed: onTap,
-          
-          style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(
-                  Color.fromARGB(255, 222, 222, 222))),
-                  child: Text(
-            title,
-            style: const TextStyle(color: Colors.black),
-          ),
-        ));
-  }
-
   Widget _infBtn() {
     return Column(
       children: [
@@ -67,13 +57,15 @@ class LoginUi extends ConsumerWidget {
                 onTap: () {
                   // id 찾기 이동
                 },
-                child: const Text("ID 찾기")),
+                child: const SCText("ID 찾기",
+                    textStyle: SCTextStyle.jhtext)),
             const Text(" / "),
             GestureDetector(
                 onTap: () {
                   // pw 찾기 이동
                 },
-                child: const Text("password 찾기"))
+                child: const SCText("password 찾기",
+                    textStyle: SCTextStyle.jhtext)),
           ],
         ),
         Row(
@@ -84,9 +76,51 @@ class LoginUi extends ConsumerWidget {
                 onChanged: (value) {
                   // _isChecked = value!; // 나중 riverpod 결합 후 구현
                 }),
-            const Text("자동로그인"),
+            const SCText("자동로그인", textStyle: SCTextStyle.jhtext),
             const Text(" / "),
-            const Text("ID 저장")
+            const SCText("ID 저장", textStyle: SCTextStyle.jhtext)
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _snslogin(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SCButton.login_signup(
+              title: "구글",
+              onPressed: () {},
+              width: MediaQuery.of(context).size.width * 0.045,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            SCButton.login_signup(
+              title: "카카오",
+              onPressed: () {},
+              width: MediaQuery.of(context).size.width * 0.045,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            SCButton.login_signup(
+              title: "네이버",
+              onPressed: () {},
+              width: MediaQuery.of(context).size.width * 0.045,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            SCButton.login_signup(
+              title: "애플",
+              onPressed: () {},
+              width: MediaQuery.of(context).size.width * 0.045,
+            ),
+            
           ],
         )
       ],
@@ -95,20 +129,18 @@ class LoginUi extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final route = ref.read(goRouterProvider);
+
     return GestureDetector(
-      onTap: () {
-        unfocusKeyboard(); // 화면 빈 곳 터치하면 키보드 내려가기
-      },
+      onTap: unfocusKeyboard,
       child: Scaffold(
           resizeToAvoidBottomInset: false, // 키보드 올라왔을 때 오버플로우 없이 그냥 덮기
           body: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // 임시 이미지
-              Image.network(
-                "https://www.newskr.kr/news/photo/202310/93486_82115_315.jpg",
-                width: MediaQuery.of(context).size.width * 0.45,
-              ),
+              Assets.lib.assets.images.pencil
+                  .image(width: MediaQuery.of(context).size.width * 0.45),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.45,
                 child: Column(
@@ -122,8 +154,12 @@ class LoginUi extends ConsumerWidget {
                     const SizedBox(
                       height: 25,
                     ),
-                    _greyBtn(
-                        "로그인", MediaQuery.of(context).size.width * 0.20, 45,(){}),
+                    SCButton.login_signup(
+                      title: "로그인",
+                      onPressed: () {},
+                      width: MediaQuery.of(context).size.width * 0.20,
+                      
+                    ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -131,33 +167,17 @@ class LoginUi extends ConsumerWidget {
                     const SizedBox(
                       height: 25,
                     ),
-                    _greyBtn(
-                        "회원가입", MediaQuery.of(context).size.width * 0.20, 45,(){}),
+                    SCButton.login_signup(
+                      title: "회원가입",
+                      onPressed: () {
+                        route.pushNamed(RouterPath.signup.path);
+                      },
+                      width: MediaQuery.of(context).size.width * 0.20,
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _greyBtn("구글",
-                            MediaQuery.of(context).size.width * 0.045, 40,(){}),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        _greyBtn("카카오",
-                            MediaQuery.of(context).size.width * 0.045, 40,(){}),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        _greyBtn("네이버",
-                            MediaQuery.of(context).size.width * 0.045, 40,(){}),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        _greyBtn(
-                            "애플", MediaQuery.of(context).size.width * 0.045, 40,(){})
-                      ],
-                    )
+                    _snslogin(context)
                   ],
                 ),
               )
