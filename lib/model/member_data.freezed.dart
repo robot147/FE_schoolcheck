@@ -67,11 +67,11 @@ class _$MemberDataCopyWithImpl<$Res, $Val extends MemberData>
 }
 
 /// @nodoc
-abstract class _$$_MemberDataCopyWith<$Res>
+abstract class _$$MemberDataImplCopyWith<$Res>
     implements $MemberDataCopyWith<$Res> {
-  factory _$$_MemberDataCopyWith(
-          _$_MemberData value, $Res Function(_$_MemberData) then) =
-      __$$_MemberDataCopyWithImpl<$Res>;
+  factory _$$MemberDataImplCopyWith(
+          _$MemberDataImpl value, $Res Function(_$MemberDataImpl) then) =
+      __$$MemberDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Member memberInfo});
@@ -81,11 +81,11 @@ abstract class _$$_MemberDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MemberDataCopyWithImpl<$Res>
-    extends _$MemberDataCopyWithImpl<$Res, _$_MemberData>
-    implements _$$_MemberDataCopyWith<$Res> {
-  __$$_MemberDataCopyWithImpl(
-      _$_MemberData _value, $Res Function(_$_MemberData) _then)
+class __$$MemberDataImplCopyWithImpl<$Res>
+    extends _$MemberDataCopyWithImpl<$Res, _$MemberDataImpl>
+    implements _$$MemberDataImplCopyWith<$Res> {
+  __$$MemberDataImplCopyWithImpl(
+      _$MemberDataImpl _value, $Res Function(_$MemberDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_MemberDataCopyWithImpl<$Res>
   $Res call({
     Object? memberInfo = null,
   }) {
-    return _then(_$_MemberData(
+    return _then(_$MemberDataImpl(
       memberInfo: null == memberInfo
           ? _value.memberInfo
           : memberInfo // ignore: cast_nullable_to_non_nullable
@@ -104,8 +104,8 @@ class __$$_MemberDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MemberData implements _MemberData {
-  const _$_MemberData({required this.memberInfo});
+class _$MemberDataImpl implements _MemberData {
+  const _$MemberDataImpl({required this.memberInfo});
 
   @override
   final Member memberInfo;
@@ -116,10 +116,10 @@ class _$_MemberData implements _MemberData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MemberData &&
+            other is _$MemberDataImpl &&
             (identical(other.memberInfo, memberInfo) ||
                 other.memberInfo == memberInfo));
   }
@@ -130,25 +130,26 @@ class _$_MemberData implements _MemberData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MemberDataCopyWith<_$_MemberData> get copyWith =>
-      __$$_MemberDataCopyWithImpl<_$_MemberData>(this, _$identity);
+  _$$MemberDataImplCopyWith<_$MemberDataImpl> get copyWith =>
+      __$$MemberDataImplCopyWithImpl<_$MemberDataImpl>(this, _$identity);
 }
 
 abstract class _MemberData implements MemberData {
-  const factory _MemberData({required final Member memberInfo}) = _$_MemberData;
+  const factory _MemberData({required final Member memberInfo}) =
+      _$MemberDataImpl;
 
   @override
   Member get memberInfo;
   @override
   @JsonKey(ignore: true)
-  _$$_MemberDataCopyWith<_$_MemberData> get copyWith =>
+  _$$MemberDataImplCopyWith<_$MemberDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$Member {
-  String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get body => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MemberCopyWith<Member> get copyWith => throw _privateConstructorUsedError;
@@ -159,7 +160,7 @@ abstract class $MemberCopyWith<$Res> {
   factory $MemberCopyWith(Member value, $Res Function(Member) then) =
       _$MemberCopyWithImpl<$Res, Member>;
   @useResult
-  $Res call({String name, int age});
+  $Res call({String title, String body});
 }
 
 /// @nodoc
@@ -175,101 +176,103 @@ class _$MemberCopyWithImpl<$Res, $Val extends Member>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? age = null,
+    Object? title = null,
+    Object? body = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_MemberCopyWith<$Res> implements $MemberCopyWith<$Res> {
-  factory _$$_MemberCopyWith(_$_Member value, $Res Function(_$_Member) then) =
-      __$$_MemberCopyWithImpl<$Res>;
+abstract class _$$MemberImplCopyWith<$Res> implements $MemberCopyWith<$Res> {
+  factory _$$MemberImplCopyWith(
+          _$MemberImpl value, $Res Function(_$MemberImpl) then) =
+      __$$MemberImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int age});
+  $Res call({String title, String body});
 }
 
 /// @nodoc
-class __$$_MemberCopyWithImpl<$Res>
-    extends _$MemberCopyWithImpl<$Res, _$_Member>
-    implements _$$_MemberCopyWith<$Res> {
-  __$$_MemberCopyWithImpl(_$_Member _value, $Res Function(_$_Member) _then)
+class __$$MemberImplCopyWithImpl<$Res>
+    extends _$MemberCopyWithImpl<$Res, _$MemberImpl>
+    implements _$$MemberImplCopyWith<$Res> {
+  __$$MemberImplCopyWithImpl(
+      _$MemberImpl _value, $Res Function(_$MemberImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? age = null,
+    Object? title = null,
+    Object? body = null,
   }) {
-    return _then(_$_Member(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+    return _then(_$MemberImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Member implements _Member {
-  const _$_Member({required this.name, required this.age});
+class _$MemberImpl implements _Member {
+  const _$MemberImpl({required this.title, required this.body});
 
   @override
-  final String name;
+  final String title;
   @override
-  final int age;
+  final String body;
 
   @override
   String toString() {
-    return 'Member(name: $name, age: $age)';
+    return 'Member(title: $title, body: $body)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Member &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.age, age) || other.age == age));
+            other is _$MemberImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.body, body) || other.body == body));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, age);
+  int get hashCode => Object.hash(runtimeType, title, body);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MemberCopyWith<_$_Member> get copyWith =>
-      __$$_MemberCopyWithImpl<_$_Member>(this, _$identity);
+  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
+      __$$MemberImplCopyWithImpl<_$MemberImpl>(this, _$identity);
 }
 
 abstract class _Member implements Member {
-  const factory _Member({required final String name, required final int age}) =
-      _$_Member;
+  const factory _Member(
+      {required final String title, required final String body}) = _$MemberImpl;
 
   @override
-  String get name;
+  String get title;
   @override
-  int get age;
+  String get body;
   @override
   @JsonKey(ignore: true)
-  _$$_MemberCopyWith<_$_Member> get copyWith =>
+  _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
