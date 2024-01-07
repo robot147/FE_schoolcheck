@@ -44,7 +44,7 @@ class SCSubDialog<T> {
   /// push(path)는 path에 넣은 경로로 이동
   final Widget Function(
     Function(T? result) popDialog,
-    Function(String path, Map<String, String>? param) push,
+    Function(String path, {Map<String, String>? param}) push,
     Map<String, String>? params,
   ) childBuilder;
 
@@ -133,7 +133,8 @@ class SCDialog {
                   //1) popDialog: SCSubDialog<T> 의 (T result)를 반환하고 모달 닫기.
                   (result) => Navigator.of(modalContext).pop(result),
                   //2) push: SCSubDialog 리스트에서 다음 dialog로 push
-                  (path, param) => Navigator.of(innerContext).pushNamed(
+                  (path, {Map<String, String>? param}) =>
+                      Navigator.of(innerContext).pushNamed(
                     Uri(path: path, queryParameters: param).toString(),
                   ),
                   //3) push받을때 받아온 파라미터
