@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_application_1/design_system/color/color.dart';
 import 'package:flutter_application_1/design_system/text/text.dart';
 import 'package:flutter_application_1/design_system/text/text_style.dart';
@@ -37,7 +38,7 @@ class SCSubDialog<T> {
   final String title;
   final double height;
   final SCDialogSize size;
-  final dynamic callbackResult;
+  // final T? callbackResult;
 
   /// popDialog는 모든 dialog를 닫고 결과 반환(T).
   /// push(path)는 path에 넣은 경로로 이동
@@ -53,7 +54,7 @@ class SCSubDialog<T> {
     required this.height,
     required this.size,
     required this.childBuilder,
-    this.callbackResult,
+    // this.callbackResult,
   });
 }
 
@@ -61,7 +62,7 @@ class SCSubDialog<T> {
 //1. singleDialog (모달 1개만 열고 닫는경우)
 //2. multiDialog (모달 2개이상 열고 닫는경우)
 class SCDialog {
-  //모달 경로가 1개인 경우
+  //1. 모달 경로가 1개인 경우
   static Future<T?> singleDialog<T>({
     required BuildContext context, //부모위젯 context(모달 띄우는 페이지의 context)
     required SCDialogSize size,
@@ -92,8 +93,64 @@ class SCDialog {
     );
   }
 
-  // 모달 경로가 2개이상 필요한 경우
-  ////
+  //2. 모달 경로가 2개이상 필요한 경우
+  static Future<T?> navigatedDialog<T>({
+    required BuildContext context, //부모위젯 context(모달 띄우는 페이지의 context)
+    required List<SCSubDialog<T>> subDialog,
+    String initialRoute = '/',
+    bool dismissible = true,
+  }) {
+    assert(
+      subDialog.firstWhereOrNull((element) => element.path == initialRoute) !=
+          null,
+      '최초 진입 경로(initialRoute)가 subpath 중에 있어야함',
+    );
+    return showDialog<T>(
+      context: context, //부모위젯 context
+      barrierColor: Colors.transparent,
+      barrierDismissible: dismissible,
+      builder: (modalContext) {
+        return Navigator(
+          key: DIALOG_NAVIGATION_KEY,
+          initialRoute: initialRoute,
+          //새로운 경로가 호출될때!
+          onGenerateRoute: (RouteSettings settings) {
+            //1. 호출된 URL 찾기
+            final uri = Uri.parse(settings.name ?? '');
+            //2. dialog리스트에서 해당 URL의 dialog찾기
+            final goToDialog =
+                subDialog.firstWhere((element) => element.path == uri.path);
+            //3. 해당 dialog의 UI 그리기
+            return PageRouteBuilder(
+              //innerContext: 띄워진 모달 각 모달의 context
+              pageBuilder: (innerContext, __, ___) => _baseDialog(
+                modalContext: modalContext, //전체 모달들의 context
+                size: goToDialog.size,
+                height: goToDialog.height,
+                title: goToDialog.title,
+                dismissible: dismissible,
+                children: goToDialog.childBuilder(
+                  //1) popDialog: SCSubDialog<T> 의 (T result)를 반환하고 모달 닫기.
+                  (result) => Navigator.of(modalContext).pop(result),
+                  //2) push: SCSubDialog 리스트에서 다음 dialog로 push
+                  (path, param) => Navigator.of(innerContext).pushNamed(
+                    Uri(path: path, queryParameters: param).toString(),
+                  ),
+                  //3) push받을때 받아온 파라미터
+                  //이전경로에서 현재경로로 push할때 (ex. 현재: '/' -> PUSH '/main/:id')
+                  // :id 부분을 받아와서 사용 가능
+                  uri.queryParameters, //Map형식으로 여러개 파라미터 존재가능
+                ),
+              ),
+              transitionDuration: const Duration(milliseconds: 2),
+              transitionsBuilder: (_, a, __, c) =>
+                  FadeTransition(opacity: a, child: c),
+            );
+          },
+        );
+      },
+    );
+  }
 }
 
 //모달 기본 UI
