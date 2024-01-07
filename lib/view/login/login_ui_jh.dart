@@ -12,7 +12,7 @@ import '../../router/router_path.dart';
 
 class LoginUi extends ConsumerWidget {
   LoginUi({super.key});
-  bool _isChecked = false;
+  // bool _isChecked = false;
 
   TextEditingController idInputController = TextEditingController();
   TextEditingController pwInputController = TextEditingController();
@@ -26,7 +26,7 @@ class LoginUi extends ConsumerWidget {
     BuildContext context,
     String? hint,
   ) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.20,
       height: 45,
       child: TextField(
@@ -57,22 +57,21 @@ class LoginUi extends ConsumerWidget {
                 onTap: () {
                   // id 찾기 이동
                 },
-                child: const SCText("ID 찾기",
-                    textStyle: SCTextStyle.jhtext)),
+                child: const SCText("ID 찾기", textStyle: SCTextStyle.jhtext)),
             const Text(" / "),
             GestureDetector(
                 onTap: () {
                   // pw 찾기 이동
                 },
-                child: const SCText("password 찾기",
-                    textStyle: SCTextStyle.jhtext)),
+                child:
+                    const SCText("password 찾기", textStyle: SCTextStyle.jhtext)),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Checkbox(
-                value: _isChecked,
+                value: false,
                 onChanged: (value) {
                   // _isChecked = value!; // 나중 riverpod 결합 후 구현
                 }),
@@ -85,7 +84,9 @@ class LoginUi extends ConsumerWidget {
     );
   }
 
-  Widget _snslogin(BuildContext context) {
+  Widget _snslogin(BuildContext context, WidgetRef ref) {
+    final route = ref.read(goRouterProvider);
+
     return Column(
       children: [
         Row(
@@ -93,7 +94,11 @@ class LoginUi extends ConsumerWidget {
           children: [
             SCButton.login_signup(
               title: "구글",
-              onPressed: () {},
+              onPressed: () {
+ route.pushNamed(RouterPath.memberPage.name,
+                        pathParameters: {'memberId': '1'});
+                // memberPage
+              },
               width: MediaQuery.of(context).size.width * 0.045,
             ),
             const SizedBox(
@@ -120,7 +125,6 @@ class LoginUi extends ConsumerWidget {
               onPressed: () {},
               width: MediaQuery.of(context).size.width * 0.045,
             ),
-            
           ],
         )
       ],
@@ -158,7 +162,6 @@ class LoginUi extends ConsumerWidget {
                       title: "로그인",
                       onPressed: () {},
                       width: MediaQuery.of(context).size.width * 0.20,
-                      
                     ),
                     const SizedBox(
                       height: 15,
@@ -177,7 +180,7 @@ class LoginUi extends ConsumerWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    _snslogin(context)
+                    _snslogin(context, ref)
                   ],
                 ),
               )

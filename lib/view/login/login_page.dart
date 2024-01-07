@@ -34,7 +34,7 @@ class LoginPage extends ConsumerWidget {
               onPressed: () {
                 route.pushNamed(RouterPath.loginui.name);
               },
-              child: Text(
+              child: const Text(
                 'LoginUI',
                 style: TextStyle(
                   color: Colors.black,

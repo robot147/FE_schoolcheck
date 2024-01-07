@@ -276,3 +276,137 @@ abstract class _Member implements Member {
   _$$MemberImplCopyWith<_$MemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SignupData {
+  String? get email => throw _privateConstructorUsedError;
+  String? get pwd => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SignupDataCopyWith<SignupData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SignupDataCopyWith<$Res> {
+  factory $SignupDataCopyWith(
+          SignupData value, $Res Function(SignupData) then) =
+      _$SignupDataCopyWithImpl<$Res, SignupData>;
+  @useResult
+  $Res call({String? email, String? pwd});
+}
+
+/// @nodoc
+class _$SignupDataCopyWithImpl<$Res, $Val extends SignupData>
+    implements $SignupDataCopyWith<$Res> {
+  _$SignupDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? pwd = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pwd: freezed == pwd
+          ? _value.pwd
+          : pwd // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SignupDataImplCopyWith<$Res>
+    implements $SignupDataCopyWith<$Res> {
+  factory _$$SignupDataImplCopyWith(
+          _$SignupDataImpl value, $Res Function(_$SignupDataImpl) then) =
+      __$$SignupDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? email, String? pwd});
+}
+
+/// @nodoc
+class __$$SignupDataImplCopyWithImpl<$Res>
+    extends _$SignupDataCopyWithImpl<$Res, _$SignupDataImpl>
+    implements _$$SignupDataImplCopyWith<$Res> {
+  __$$SignupDataImplCopyWithImpl(
+      _$SignupDataImpl _value, $Res Function(_$SignupDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? pwd = freezed,
+  }) {
+    return _then(_$SignupDataImpl(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pwd: freezed == pwd
+          ? _value.pwd
+          : pwd // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignupDataImpl implements _SignupData {
+  const _$SignupDataImpl({this.email, this.pwd});
+
+  @override
+  final String? email;
+  @override
+  final String? pwd;
+
+  @override
+  String toString() {
+    return 'SignupData(email: $email, pwd: $pwd)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignupDataImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.pwd, pwd) || other.pwd == pwd));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, pwd);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignupDataImplCopyWith<_$SignupDataImpl> get copyWith =>
+      __$$SignupDataImplCopyWithImpl<_$SignupDataImpl>(this, _$identity);
+}
+
+abstract class _SignupData implements SignupData {
+  const factory _SignupData({final String? email, final String? pwd}) =
+      _$SignupDataImpl;
+
+  @override
+  String? get email;
+  @override
+  String? get pwd;
+  @override
+  @JsonKey(ignore: true)
+  _$$SignupDataImplCopyWith<_$SignupDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

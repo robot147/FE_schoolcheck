@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/design_system/buttons/button.dart';
 import 'package:flutter_application_1/design_system/color/color.dart';
 import 'package:flutter_application_1/design_system/text/text_style.dart';
+import 'package:flutter_application_1/view/signup/signup_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../design_system/text/text.dart';
@@ -97,6 +98,7 @@ class SCSignup extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final route = ref.read(goRouterProvider);
+    final notifier = ref.read(signupProvider.notifier);
 
     return GestureDetector(
       onTap: unfocusKeyboard,
@@ -111,15 +113,14 @@ class SCSignup extends ConsumerWidget {
               SizedBox(
                 height: 20,
               ),
-              _inputArea(emailInputController, context, "패스워드"),
+              _inputArea(pwInputController, context, "패스워드"),
               SizedBox(
                 height: 20,
               ),
-              _inputArea(emailInputController, context, "패스워드 확인"),
+              _inputArea(repwInputController, context, "패스워드 확인"),
               SizedBox(
                 height: 20,
               ),
-              _inputArea(emailInputController, context, "학교정보"),
               SizedBox(
                 height: 20,
               ),
@@ -129,7 +130,10 @@ class SCSignup extends ConsumerWidget {
               ),
               SCButton.login_signup(
                 title: "가입",
-                onPressed: () {},
+                onPressed: () {
+                  notifier.signup(email: emailInputController.text, pwd: pwInputController.text);
+
+                },
                 width: MediaQuery.of(context).size.width * 0.2,
               ),
               SizedBox(

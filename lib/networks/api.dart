@@ -4,7 +4,9 @@ const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 enum API_ENDPOINT {
   testPage('/posts/:page'),
-  memberInfo('member/:memberId');
+  memberInfo('member/:memberId'),
+    exsignup('/posts'),
+;
 
   const API_ENDPOINT(this._url);
   final String _url;
