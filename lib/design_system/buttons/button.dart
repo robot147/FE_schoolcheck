@@ -70,8 +70,8 @@ class SCButton extends StatefulWidget {
   }) {
     //버튼마다 미리 정의해둬야함.
     final style = ButtonStyle(
-      enabledColor: SCColors.background,
-      enabledTextColor: SCColors.background,
+      enabledColor: SCColors.color_positive,
+      enabledTextColor: SCColors.color_positive,
       enabledGradientColor: SCColors.button_gradient,
       radius: BorderRadius.circular(100),
     );
@@ -240,7 +240,7 @@ class _SCButtonState extends State<SCButton> {
       //3. disabled
       case ButtonState.disabled:
         if (widget.style.disabledTextColor == null) {
-          return SCColors.text_primary;
+          return SCColors.color_grey_20;
         } else {
           return widget.style.disabledTextColor!;
         }

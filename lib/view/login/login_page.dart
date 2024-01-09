@@ -49,10 +49,9 @@ class LoginPage extends ConsumerWidget {
             textStyle: SCTextStyle.font_24px_w700_h100,
           ),
           const SizedBox(height: 10),
-          SCText(
+          const SCText(
             '테스트용 텍스트2',
             textStyle: SCTextStyle.font_16px_w400_h100,
-            color: SCColors.text_primary,
           ),
           const SizedBox(height: 10),
           SCText.rich(

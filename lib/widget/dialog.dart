@@ -202,7 +202,7 @@ Widget _baseDialog({
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(16)),
-                          color: SCColors.background,
+                          color: SCColors.color_focused,
                         ),
                         padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
                         child: Column(
@@ -216,7 +216,7 @@ Widget _baseDialog({
                                 border: Border(
                                   bottom: BorderSide(
                                     width: 1.5,
-                                    color: SCColors.text_primary,
+                                    color: SCColors.color_grey_20,
                                   ),
                                 ),
                               ),
@@ -225,7 +225,6 @@ Widget _baseDialog({
                                 child: SCText(
                                   title,
                                   textStyle: SCTextStyle.font_16px_w600_h100,
-                                  color: SCColors.text_primary,
                                 ),
                               ),
                             ),
