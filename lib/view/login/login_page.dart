@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/design_system/buttons/button.dart';
-import 'package:flutter_application_1/design_system/color/color.dart';
 import 'package:flutter_application_1/design_system/text/text.dart';
 import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_application_1/router/router.dart';
@@ -20,7 +19,7 @@ class LoginPage extends ConsumerWidget {
         children: [
           //AFTER
           Center(
-            child: SCButton.capsule_primary(
+            child: SCButton.rectangle_primary(
               title: '로그인',
               onPressed: () {
                 route.go(RouterPath.home.path);

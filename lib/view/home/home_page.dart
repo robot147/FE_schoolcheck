@@ -18,17 +18,18 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.green,
         appBar: AppBar(
           title: const Text('홈'),
-          leading: SCButton.capsule_primary(
-            title: '로그인으로',
-            onPressed: () {
-              route.pushNamed(RouterPath.login.name);
-            },
-          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            SCButton.rectangle_secondary(
+              width: 240,
+              title: '로그인 페이지',
+              onPressed: () {
+                route.pushNamed(RouterPath.login.name);
+              },
+            ),
             //모달 띄우기 예시
             OutlinedButton(
               onPressed: () async {
