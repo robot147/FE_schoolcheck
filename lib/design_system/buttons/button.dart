@@ -150,8 +150,8 @@ class _SCButtonState extends State<SCButton> {
           child: SCText(
             widget.title,
             textStyle: widget.size == ButtonSize.large
-                ? SCTextStyle.font_400_13px_140pc_P
-                : (widget.style.smallFont ?? SCTextStyle.font_400_12px_140pc_P),
+                ? SCTextStyle.font_14px_w400_h100
+                : (widget.style.smallFont ?? SCTextStyle.font_14px_w400_h100),
             color: makeTextColor(),
           ),
         ),

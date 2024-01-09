@@ -46,12 +46,12 @@ class LoginPage extends ConsumerWidget {
           const SizedBox(height: 10),
           const SCText(
             '테스트용 텍스트',
-            textStyle: SCTextStyle.font_600_24px_100pc_P,
+            textStyle: SCTextStyle.font_24px_w700_h100,
           ),
           const SizedBox(height: 10),
           SCText(
             '테스트용 텍스트2',
-            textStyle: SCTextStyle.font_500_16px_100pc_P,
+            textStyle: SCTextStyle.font_16px_w400_h100,
             color: SCColors.text_primary,
           ),
           const SizedBox(height: 10),
@@ -60,14 +60,14 @@ class LoginPage extends ConsumerWidget {
               const TextSpan(text: '첫번째'), //기본 스타일 적용됨
               TextSpan(
                 text: '두번째',
-                style: SCTextStyle.font_600_24px_100pc_P.value,
+                style: SCTextStyle.font_24px_w700_h100.value,
               ),
               TextSpan(
                 text: '세번째',
-                style: SCTextStyle.font_600_32px_100pc_P.value,
+                style: SCTextStyle.font_32px_w500_h100.value,
               )
             ]),
-            textStyle: SCTextStyle.font_400_14px_100pc_P, //기본 스타일
+            textStyle: SCTextStyle.font_14px_w400_h100, //기본 스타일
           ),
         ],
       ),

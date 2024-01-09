@@ -45,7 +45,7 @@ class HomePage extends ConsumerWidget {
                             children: [
                               const SCText(
                                 '1번 입니다.',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_14px_w400_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
                             children: [
                               const SCText(
                                 '2번 입니다.',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_14px_w400_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
@@ -114,7 +114,7 @@ class HomePage extends ConsumerWidget {
                             children: [
                               SCText(
                                 '3번 입니다. 받아온 arg: $id',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_12px_w600_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
@@ -140,8 +140,10 @@ class HomePage extends ConsumerWidget {
                   print('중간에 모달 닫음');
                 }
               },
-              child: const SCText('모달 띄우기',
-                  textStyle: SCTextStyle.font_400_14px_100pc_P),
+              child: const SCText(
+                '모달 띄우기',
+                textStyle: SCTextStyle.font_14px_w400_h100,
+              ),
             ),
 
             //TO-USE (assets 사용)

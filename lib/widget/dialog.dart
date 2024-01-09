@@ -224,7 +224,7 @@ Widget _baseDialog({
                                 alignment: Alignment.topCenter,
                                 child: SCText(
                                   title,
-                                  textStyle: SCTextStyle.font_600_18px_100pc_P,
+                                  textStyle: SCTextStyle.font_16px_w600_h100,
                                   color: SCColors.text_primary,
                                 ),
                               ),
