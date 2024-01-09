@@ -40,25 +40,26 @@ class HomePage extends ConsumerWidget {
                         path: '/',
                         title: '1번 모달',
                         height: 170,
-                        size: SCDialogSize.small,
+                        size: SCDialogSize.large,
                         childBuilder: (popDialog, push, arg) {
                           return Column(
                             children: [
                               const SCText(
                                 '1번 입니다.',
-                                textStyle: SCTextStyle.font_14px_w400_h100,
+                                textStyle: SCTextStyle.font_20px_w700_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SCButton.capsule_primary(
+                                  SCButton.rectangle_secondary(
                                     title: '닫기',
                                     onPressed: () {
                                       popDialog(null);
                                     },
                                   ),
-                                  SCButton.capsule_primary(
+                                  const SizedBox(width: 24),
+                                  SCButton.rectangle_primary(
                                     title: '다음',
                                     onPressed: () {
                                       push('/2');
