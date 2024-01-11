@@ -14,14 +14,27 @@ enum SCTextStyle {
     color: Color(0xff444444),
   )),
 
-  jhtext(
-    TextStyle(
+  jhtext(TextStyle(
     fontFamily: 'Pretendard',
-    fontSize: 15,
+    fontSize: 12,
     height: 1.0,
-    color: Color.fromARGB(255, 59, 59, 59),
-  )
-  ),
+    color: Color.fromARGB(255, 0, 0, 0),
+  )),
+
+  font_800_12px_100pc_P_black(TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 12,
+    height: 1.0,
+    fontWeight: FontWeight.w800,
+    color: Color.fromARGB(255, 0, 0, 0),
+  )),
+  font_600_12px_100pc_P_black(TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 12,
+    height: 1.0,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 0, 0, 0),
+  )),
 
   /// font-600-24px-100pc-P
   font_600_24px_100pc_P(
