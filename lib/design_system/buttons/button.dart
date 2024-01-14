@@ -59,7 +59,7 @@ class SCButton extends StatefulWidget {
   final double? width; //120
   final bool disabled; //false
 
-  //개발시, 직접 사용하는 부분
+  //(예시)  개발시, 직접 사용하는 부분
   factory SCButton.capsule_primary({
     Key? key,
     required String title,
@@ -70,8 +70,8 @@ class SCButton extends StatefulWidget {
   }) {
     //버튼마다 미리 정의해둬야함.
     final style = ButtonStyle(
-      enabledColor: SCColors.background,
-      enabledTextColor: SCColors.background,
+      enabledColor: SCColors.color_positive,
+      enabledTextColor: SCColors.color_positive,
       enabledGradientColor: SCColors.button_gradient,
       radius: BorderRadius.circular(100),
     );
@@ -87,8 +87,10 @@ class SCButton extends StatefulWidget {
     );
   }
 
-// 임시 로그인 회원가입 버튼 
-factory SCButton.login_signup({
+  ////////////////////////////////////////////
+  ///여기에 디자인대로 버튼 하나씩 추가하면 됨////
+  ///////////////////////////////////////////
+  factory SCButton.rectangle_primary({
     Key? key,
     required String title,
     required void Function() onPressed,
@@ -96,12 +98,12 @@ factory SCButton.login_signup({
     ButtonSize size = ButtonSize.large,
     bool disabled = false,
   }) {
-    //버튼마다 미리 정의해둬야함.
     final style = ButtonStyle(
-      // borderColor: Colors.black,
-      enabledColor: SCColors.btnbackground,
-      enabledTextColor: Colors.black,
+      enabledColor: SCColors.color_brand,
+      enabledTextColor: SCColors.color_grey_00,
       radius: BorderRadius.circular(0),
+      disabledColor: SCColors.color_grey_20,
+      disabledTextColor: SCColors.color_grey_50,
     );
 
     return SCButton(
@@ -115,10 +117,33 @@ factory SCButton.login_signup({
     );
   }
 
+  factory SCButton.rectangle_secondary({
+    Key? key,
+    required String title,
+    required void Function() onPressed,
+    double? width,
+    ButtonSize size = ButtonSize.large,
+    bool disabled = false,
+  }) {
+    final style = ButtonStyle(
+      enabledColor: SCColors.color_grey_00,
+      enabledTextColor: SCColors.color_brand,
+      borderColor: SCColors.color_brand,
+      radius: BorderRadius.circular(0),
+      disabledColor: SCColors.color_grey_20,
+      disabledTextColor: SCColors.color_grey_50,
+    );
 
-  ////////////////////////////////////////////
-  ///여기에 디자인대로 버튼 하나씩 추가하면 됨////
-  ///////////////////////////////////////////
+    return SCButton(
+      key: key,
+      style: style,
+      title: title,
+      onPressed: onPressed,
+      width: width,
+      size: size,
+      disabled: disabled,
+    );
+  }
 
   //버튼 틀
   const SCButton({
@@ -147,7 +172,7 @@ class _SCButtonState extends State<SCButton> {
 
     return Container(
       width: widget.width ?? 120,
-      height: widget.size == ButtonSize.large ? 44 : 30,
+      height: widget.size == ButtonSize.large ? 48 : 44,
       decoration: BoxDecoration(
         border: makeBorder(),
         color: makeBgColor(),
@@ -179,8 +204,8 @@ class _SCButtonState extends State<SCButton> {
           child: SCText(
             widget.title,
             textStyle: widget.size == ButtonSize.large
-                ? SCTextStyle.font_400_13px_140pc_P
-                : (widget.style.smallFont ?? SCTextStyle.font_400_12px_140pc_P),
+                ? SCTextStyle.font_14px_w500_h100
+                : (widget.style.smallFont ?? SCTextStyle.font_14px_w400_h100),
             color: makeTextColor(),
           ),
         ),
@@ -269,7 +294,7 @@ class _SCButtonState extends State<SCButton> {
       //3. disabled
       case ButtonState.disabled:
         if (widget.style.disabledTextColor == null) {
-          return SCColors.text_primary;
+          return SCColors.color_grey_20;
         } else {
           return widget.style.disabledTextColor!;
         }

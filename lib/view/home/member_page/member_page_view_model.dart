@@ -7,19 +7,27 @@ part 'member_page_view_model.g.dart';
 @riverpod
 class MemberPage extends _$MemberPage {
   @override
-  Future<MemberData?> build(String memberId) async {
+  Future<MemberData?> build({required int page}) async {
     // GET CALL
-    final result = await MemberRepository().getMemberInfo(memberId: memberId);
 
-    //데이터 변환
-    //...//
+    final result = await MemberRepository().getTestInfo(page: page);
+
+    //데이터 변환 + 비즈니스 로직
 
     //STATE 반환
-    return const MemberData(memberInfo: Member(name: '스쿨체크', age: 10));
+    return MemberData(
+      memberInfo: Member(
+        title: result?.title ?? '',
+        body: result?.body ?? '',
+      ),
+    );
   }
 
-  void updateName({required String name}) {
-    update((state) =>
-        state?.copyWith(memberInfo: state.memberInfo.copyWith(name: name)));
+  void updateTitle({required String title}) {
+    update(
+      (state) => state?.copyWith(
+        memberInfo: state.memberInfo.copyWith(title: title),
+      ),
+    );
   }
 }

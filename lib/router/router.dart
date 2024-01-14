@@ -3,6 +3,7 @@ import 'package:flutter_application_1/router/router_path.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
+import 'package:flutter_application_1/view/register/regisger_page.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -43,6 +44,15 @@ final goRouterProvider = Provider<GoRouter>(
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
             child: const LoginPage(),
+            transitionsBuilder: fadeTransition,
+          ),
+        ),
+        GoRoute(
+          path: RouterPath.register.path,
+          name: RouterPath.register.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const RegisterPage(),
             transitionsBuilder: fadeTransition,
           ),
         ),
