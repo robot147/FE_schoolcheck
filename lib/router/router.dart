@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/router/router_path.dart';
+import 'package:flutter_application_1/view/example/example_page.dart';
+import 'package:flutter_application_1/view/example/radio_button/radio_button.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
@@ -55,6 +57,30 @@ final goRouterProvider = Provider<GoRouter>(
             child: const RegisterPage(),
             transitionsBuilder: fadeTransition,
           ),
+        ),
+
+        // example
+        GoRoute(
+          path: RouterPath.example.path,
+          name: RouterPath.example.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const ExamplePage(),
+            transitionsBuilder: fadeTransition,
+          ),
+          routes: [
+            // example 하위라우팅
+            // example/radio_button
+            GoRoute(
+              path: RouterPath.radioButton.path,
+              name: RouterPath.radioButton.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                key: state.pageKey,
+                child: const RadioButton(),
+                transitionsBuilder: fadeTransition,
+              ),
+            ),
+          ],
         ),
 
         /// home
