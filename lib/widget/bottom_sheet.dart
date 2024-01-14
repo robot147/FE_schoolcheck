@@ -34,7 +34,7 @@ class SCBottomSheet<T> {
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
-                  color: SCColors.background,
+                  color: SCColors.color_brand,
                 ),
                 padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
                 child: Column(
@@ -45,7 +45,7 @@ class SCBottomSheet<T> {
                         border: Border(
                           bottom: BorderSide(
                             width: 1.5,
-                            color: SCColors.text_primary,
+                            color: SCColors.color_grey_99,
                           ),
                         ),
                       ),
@@ -53,7 +53,7 @@ class SCBottomSheet<T> {
                         alignment: Alignment.topCenter,
                         child: SCText(
                           title,
-                          textStyle: SCTextStyle.font_600_18px_100pc_P,
+                          textStyle: SCTextStyle.font_16px_w600_h100,
                         ),
                       ),
                     ),

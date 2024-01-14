@@ -17,10 +17,7 @@ class MemberRepository {
   }) async {
     try {
       final res = await HTTPConnector.get(
-        url: API_ENDPOINT.testPage,
-        urlArg: {
-          'page': page.toString(),
-        },
+        url: API_ENDPOINT.testPing,
       );
 
       //Map to DartClassModel

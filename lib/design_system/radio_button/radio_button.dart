@@ -19,7 +19,7 @@ class SCRadioButton<T> extends StatelessWidget {
 
   final ValueChanged<T?>? onChanged;
 
-  SCRadioButton(
+  const SCRadioButton(
       {super.key,
       this.listTile = false,
       this.title,
@@ -44,8 +44,8 @@ class SCRadioButton<T> extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SCText(topLabel!, textStyle: SCTextStyle.font_400_14px_100pc_P),
-            SizedBox(
+            SCText(topLabel!, textStyle: SCTextStyle.font_14px_w400_h100),
+            const SizedBox(
               height: 4,
             ),
             RadioListTile<T>(
@@ -73,8 +73,7 @@ class SCRadioButton<T> extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SCText(topLabel!,
-                      textStyle: SCTextStyle.font_400_14px_100pc_P),
+                  SCText(topLabel!, textStyle: SCTextStyle.font_14px_w400_h100),
                   const SizedBox(
                     height: 4,
                   ),
@@ -95,7 +94,7 @@ class SCRadioButton<T> extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SCText(topLabel!, textStyle: SCTextStyle.font_400_14px_100pc_P),
+              SCText(topLabel!, textStyle: SCTextStyle.font_14px_w400_h100),
               const SizedBox(
                 height: 4,
               ),

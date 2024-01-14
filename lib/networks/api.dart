@@ -1,9 +1,9 @@
 import 'package:path_to_regexp/path_to_regexp.dart';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com';
+const BASE_URL = 'http://baranewsong.synology.me';
 
 enum API_ENDPOINT {
-  testPage('/posts/:page'),
+  testPing('/ping'),
   memberInfo('member/:memberId');
 
   const API_ENDPOINT(this._url);

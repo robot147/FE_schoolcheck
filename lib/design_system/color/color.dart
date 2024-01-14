@@ -17,23 +17,77 @@ class SCColors {
     return Color(int.parse(buffer.toString(), radix: 16));
   }
 
-  //1. hex
-  static Color get background {
+  static Color get color_brand {
     switch (theme) {
       case ColorTheme.light:
-        return _fromHex('#EFF2F5');
+        return _fromHex('#FF0000');
     }
   }
 
-  ///2. RGBO
-  static Color get text_primary {
+  static Color get color_secondary {
     switch (theme) {
       case ColorTheme.light:
-        return const Color.fromRGBO(34, 29, 48, 0.6);
+        return _fromHex('#FF0000');
     }
   }
 
-  ///3. gradient_color
+  static Color get color_grey_00 {
+    switch (theme) {
+      case ColorTheme.light:
+        return _fromHex('#FFFFFF');
+    }
+  }
+
+  static Color get color_grey_05 {
+    switch (theme) {
+      case ColorTheme.light:
+        return _fromHex('#E6E6E6');
+    }
+  }
+
+  static Color get color_grey_20 {
+    switch (theme) {
+      case ColorTheme.light:
+        return const Color.fromRGBO(0, 0, 0, 0.2);
+    }
+  }
+
+  static Color get color_grey_50 {
+    switch (theme) {
+      case ColorTheme.light:
+        return const Color.fromRGBO(0, 0, 0, 0.5);
+    }
+  }
+
+  static Color get color_grey_99 {
+    switch (theme) {
+      case ColorTheme.light:
+        return const Color.fromRGBO(0, 0, 0, 1);
+    }
+  }
+
+  static Color get color_negative {
+    switch (theme) {
+      case ColorTheme.light:
+        return _fromHex('#DE0909');
+    }
+  }
+
+  static Color get color_positive {
+    switch (theme) {
+      case ColorTheme.light:
+        return _fromHex('#2B7FFF');
+    }
+  }
+
+  static Color get color_focused {
+    switch (theme) {
+      case ColorTheme.light:
+        return _fromHex('#2B7FFF');
+    }
+  }
+
+  ///ex)) gradient_color
   static LinearGradient get button_gradient {
     switch (theme) {
       case ColorTheme.light:

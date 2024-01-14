@@ -11,14 +11,15 @@ class MemberPage extends _$MemberPage {
     // GET CALL
 
     final result = await MemberRepository().getTestInfo(page: page);
+    print('받아온 $result');
 
     //데이터 변환 + 비즈니스 로직
 
     //STATE 반환
-    return MemberData(
+    return const MemberData(
       memberInfo: Member(
-        title: result?.title ?? '',
-        body: result?.body ?? '',
+        title: '제목',
+        body: '본문',
       ),
     );
   }
