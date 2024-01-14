@@ -2,6 +2,7 @@ enum RouterPath {
   //최상위
   splash('/', '/'),
   login('/login', 'login'),
+  register('/register', 'register'),
   home('/home', 'home'),
 
   //home 하위
