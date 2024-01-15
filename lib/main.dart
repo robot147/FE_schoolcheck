@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/networks/http_connector.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'networks/http_connector.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   init();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      // observers: [ProviderLogger()],
+      child: MyApp(),
+    ),
+  );
 }
 
 /// 앱 실행전 초기화
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //firebase 연동 코드
+  //firebase 연동 코드 (필요시)
   await HTTPConnector.init();
 }
 
@@ -21,12 +26,17 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //전체화면 설정
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    //전역 라우팅
     final goRoute = ref.watch(goRouterProvider);
-    return Center(
-      child: MaterialApp.router(
-        routerConfig: goRoute,
-        debugShowCheckedModeBanner: false,
-      ),
+
+    //(필요시) -> 토큰없으면 로그인 페이지로 보내기 추가 가능
+
+    return MaterialApp.router(
+      routerConfig: goRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

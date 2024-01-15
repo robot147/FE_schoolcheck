@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/design_system/text/text.dart';
+import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_application_1/router/router.dart';
-import 'package:flutter_application_1/view/common/default_layout.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,41 +17,48 @@ class MemberPage extends ConsumerWidget {
     final route = ref.read(goRouterProvider);
 
     //데이터
-    final state = ref.watch(memberPageProvider(memberId));
+    final state = ref.watch(memberPageProvider(page: 1));
 
     //notifier
-    final notifier = ref.read(memberPageProvider(memberId).notifier);
+    final notifier = ref.read(memberPageProvider(page: 1).notifier);
 
-    return DefaultLayout(
-      child: DefaultLayout(
-        child: Scaffold(
-            appBar: AppBar(
-              leading: ElevatedButton(
-                child: const Text('홈으로'),
-                onPressed: () {
-                  route.pop();
-                },
-              ),
-            ),
-            backgroundColor: Colors.amber,
-            body: state.when(
-              data: (data) {
-                return Column(
-                  children: [
-                    Text('회원 이름 ${data!.memberInfo.name}'),
-                    ElevatedButton(
-                      onPressed: () {
-                        notifier.updateName(name: '새이름');
-                      },
-                      child: const Text('수정'),
-                    ),
-                  ],
-                );
-              },
-              error: (error, stackTrace) => Text('error $error'),
-              loading: () => const Text('로딩'),
-            )),
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          leading: ElevatedButton(
+            child: const Text('홈 으로'),
+            onPressed: () {
+              route.pop();
+            },
+          ),
+        ),
+        backgroundColor: Colors.amber,
+        body: state.when(
+          data: (data) {
+            return Column(
+              children: [
+                SCText(
+                  '제목: ${data!.memberInfo.title} ',
+                  textStyle: SCTextStyle.font_600_14px_100pc_P,
+                ),
+                SCText(
+                  '내용: ${data.memberInfo.body} ',
+                  textStyle: SCTextStyle.font_600_14px_100pc_P,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (data.memberInfo.title != '새 제목') {
+                      notifier.updateTitle(title: '새 제목');
+                    }
+                  },
+                  child: data.memberInfo.title != '새 제목'
+                      ? const Text('수정')
+                      : const Text('완료'),
+                ),
+              ],
+            );
+          },
+          error: (error, stackTrace) => Text('error $error'),
+          loading: () => const Text('로딩'),
+        ));
   }
 }

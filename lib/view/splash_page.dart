@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_application_1/router/router_path.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SplashPage extends ConsumerWidget {
-  const SplashPage({super.key});
+  SplashPage({super.key});
+
+  final storage = FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
