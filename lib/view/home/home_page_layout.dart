@@ -30,7 +30,6 @@ class HomePageLayout extends ConsumerWidget {
             child: SCSidebar(),
           ),
           Expanded(
-            // flex: 1,
             child: contentsWidget ?? Container(),
           ),
         ],
