@@ -30,6 +30,7 @@ class HomePageLayout extends ConsumerWidget {
             child: SCSidebar(),
           ),
           Expanded(
+            // Container()에 홈 위젯 넣어야할듯?
             child: contentsWidget ?? Container(),
           ),
         ],

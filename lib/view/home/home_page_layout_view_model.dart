@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_page_layout_view_model.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class HomePageLayoutPage extends _$HomePageLayoutPage {
   @override
   Future<HomePageModelData> build() async {
@@ -17,12 +17,11 @@ class HomePageLayoutPage extends _$HomePageLayoutPage {
       ),
     );
 
-    //데이터 변환 + 비즈니스 로직
-
     //STATE 반환
     return result;
   }
 
+  // 사이드바 인덱스 변경
   void setSelectedIndex({required int value}) {
     update(
       (state) => state.copyWith(
@@ -32,6 +31,7 @@ class HomePageLayoutPage extends _$HomePageLayoutPage {
     );
   }
 
+  // 사이드바 잠금 변경
   void toggleIsLocked() {
     update(
       (state) => state.copyWith(
