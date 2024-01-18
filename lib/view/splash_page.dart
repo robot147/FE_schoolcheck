@@ -11,7 +11,9 @@ class SplashPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // FocusManager.instance.primaryFocus?.unfocus();
     final route = ref.read(goRouterProvider);
+
     //TODO 로그인 토큰 여부로 화면 분기처리
 
     Future.delayed(const Duration(seconds: 2)).then((_) {
@@ -20,7 +22,7 @@ class SplashPage extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.pinkAccent[200],
-      body: Stack(children: const [
+      body: const Stack(children: [
         Positioned.fill(
           child: Center(
             child: Text('SPLASH'),

@@ -29,6 +29,9 @@ class $LibAssetsGen {
 class $LibAssetsIconsGen {
   const $LibAssetsIconsGen();
 
+  /// File path: lib/assets/icons/close.svg
+  SvgGenImage get close => const SvgGenImage('lib/assets/icons/close.svg');
+
   /// File path: lib/assets/icons/icon_add.svg
   SvgGenImage get iconAdd => const SvgGenImage('lib/assets/icons/icon_add.svg');
 
@@ -36,7 +39,7 @@ class $LibAssetsIconsGen {
   AssetGenImage get pie => const AssetGenImage('lib/assets/icons/pie.png');
 
   /// List of all assets
-  List<dynamic> get values => [iconAdd, pie];
+  List<dynamic> get values => [close, iconAdd, pie];
 }
 
 class $LibAssetsImagesGen {

@@ -17,6 +17,12 @@ void main() async {
 /// 앱 실행전 초기화
 void init() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //가로화면 고정
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
   //firebase 연동 코드 (필요시)
   await HTTPConnector.init();
 }
@@ -28,7 +34,6 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //전체화면 설정
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-
     //전역 라우팅
     final goRoute = ref.watch(goRouterProvider);
 

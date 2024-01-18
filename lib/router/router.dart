@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/router/router_path.dart';
+import 'package:flutter_application_1/view/example/example_page.dart';
+import 'package:flutter_application_1/view/example/radio_button/radio_button.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/home_page_new.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
-import 'package:flutter_application_1/view/login/sign_up/sign_up_page.dart';
+import 'package:flutter_application_1/view/register/regisger_page.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -40,24 +42,47 @@ final goRouterProvider = Provider<GoRouter>(
 
         /// login
         GoRoute(
-            path: RouterPath.login.path,
-            name: RouterPath.login.name,
-            pageBuilder: (context, state) => CustomTransitionPage<void>(
-                  key: state.pageKey,
-                  child: LoginPage(),
-                  transitionsBuilder: fadeTransition,
-                ),
-            routes: [
-              GoRoute(
-                path: RouterPath.signUpPage.path,
-                name: RouterPath.signUpPage.name,
-                pageBuilder: (context, state) => CustomTransitionPage<void>(
-                  key: state.pageKey,
-                  child: SignUpPage(),
-                  transitionsBuilder: fadeTransition,
-                ),
+          path: RouterPath.login.path,
+          name: RouterPath.login.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: LoginPage(),
+            transitionsBuilder: fadeTransition,
+          ),
+        ),
+        GoRoute(
+          path: RouterPath.register.path,
+          name: RouterPath.register.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const RegisterPage(),
+            transitionsBuilder: fadeTransition,
+          ),
+        ),
+
+        // example
+        GoRoute(
+          path: RouterPath.example.path,
+          name: RouterPath.example.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: const ExamplePage(),
+            transitionsBuilder: fadeTransition,
+          ),
+          routes: [
+            // example 하위라우팅
+            // example/radio_button
+            GoRoute(
+              path: RouterPath.radioButton.path,
+              name: RouterPath.radioButton.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                key: state.pageKey,
+                child: const RadioButton(),
+                transitionsBuilder: fadeTransition,
               ),
-            ]),
+            ),
+          ],
+        ),
 
         /// home
         GoRoute(

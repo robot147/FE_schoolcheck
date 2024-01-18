@@ -18,17 +18,18 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.green,
         appBar: AppBar(
           title: const Text('홈'),
-          leading: SCButton.capsule_primary(
-            title: '로그인으로',
-            onPressed: () {
-              route.pushNamed(RouterPath.login.name);
-            },
-          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            SCButton.rectangle_secondary(
+              width: 240,
+              title: '로그인 페이지',
+              onPressed: () {
+                route.pushNamed(RouterPath.login.name);
+              },
+            ),
             //모달 띄우기 예시
             OutlinedButton(
               onPressed: () async {
@@ -39,25 +40,26 @@ class HomePage extends ConsumerWidget {
                         path: '/',
                         title: '1번 모달',
                         height: 170,
-                        size: SCDialogSize.small,
+                        size: SCDialogSize.large,
                         childBuilder: (popDialog, push, arg) {
                           return Column(
                             children: [
                               const SCText(
                                 '1번 입니다.',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_20px_w700_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SCButton.capsule_primary(
+                                  SCButton.rectangle_secondary(
                                     title: '닫기',
                                     onPressed: () {
                                       popDialog(null);
                                     },
                                   ),
-                                  SCButton.capsule_primary(
+                                  const SizedBox(width: 24),
+                                  SCButton.rectangle_primary(
                                     title: '다음',
                                     onPressed: () {
                                       push('/2');
@@ -79,7 +81,7 @@ class HomePage extends ConsumerWidget {
                             children: [
                               const SCText(
                                 '2번 입니다.',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_14px_w400_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
@@ -114,7 +116,7 @@ class HomePage extends ConsumerWidget {
                             children: [
                               SCText(
                                 '3번 입니다. 받아온 arg: $id',
-                                textStyle: SCTextStyle.font_400_13px_100pc_P,
+                                textStyle: SCTextStyle.font_12px_w600_h100,
                               ),
                               const SizedBox(height: 12),
                               Row(
@@ -140,8 +142,10 @@ class HomePage extends ConsumerWidget {
                   print('중간에 모달 닫음');
                 }
               },
-              child: const SCText('모달 띄우기',
-                  textStyle: SCTextStyle.font_400_14px_100pc_P),
+              child: const SCText(
+                '모달 띄우기',
+                textStyle: SCTextStyle.font_14px_w400_h100,
+              ),
             ),
 
             //TO-USE (assets 사용)

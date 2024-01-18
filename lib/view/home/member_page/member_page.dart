@@ -38,11 +38,11 @@ class MemberPage extends ConsumerWidget {
               children: [
                 SCText(
                   '제목: ${data!.memberInfo.title} ',
-                  textStyle: SCTextStyle.font_600_14px_100pc_P,
+                  textStyle: SCTextStyle.font_14px_w400_h100,
                 ),
                 SCText(
                   '내용: ${data.memberInfo.body} ',
-                  textStyle: SCTextStyle.font_600_14px_100pc_P,
+                  textStyle: SCTextStyle.font_14px_w400_h100,
                 ),
                 ElevatedButton(
                   onPressed: () {

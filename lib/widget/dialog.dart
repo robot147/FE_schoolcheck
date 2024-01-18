@@ -3,20 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_application_1/design_system/color/color.dart';
-import 'package:flutter_application_1/design_system/text/text.dart';
-import 'package:flutter_application_1/design_system/text/text_style.dart';
 
 final DIALOG_NAVIGATION_KEY = GlobalKey();
 
 //모달 사이즈
 enum SCDialogSize {
-  /// 680
+  /// 1635
   large,
 
-  /// 400
+  /// 805
   medium,
 
-  /// 320
+  /// 474
   small,
   ;
 
@@ -24,11 +22,11 @@ enum SCDialogSize {
   double get width {
     switch (this) {
       case SCDialogSize.large:
-        return 680;
+        return 1635;
       case SCDialogSize.medium:
-        return 400;
+        return 805;
       case SCDialogSize.small:
-        return 320;
+        return 474;
     }
   }
 }
@@ -200,35 +198,18 @@ Widget _baseDialog({
                       tag: 'DIALOG',
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
-                          color: SCColors.background,
+                          // borderRadius:
+                          //     const BorderRadius.all(Radius.circular(16)),
+                          color: SCColors.color_grey_00,
                         ),
-                        padding: const EdgeInsets.fromLTRB(20, 32, 20, 32),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 36,
+                          horizontal: 40,
+                        ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            //1. 모달 제목
-                            Container(
-                              height: 28,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    width: 1.5,
-                                    color: SCColors.text_primary,
-                                  ),
-                                ),
-                              ),
-                              child: Align(
-                                alignment: Alignment.topCenter,
-                                child: SCText(
-                                  title,
-                                  textStyle: SCTextStyle.font_600_18px_100pc_P,
-                                  color: SCColors.text_primary,
-                                ),
-                              ),
-                            ),
                             //2. 모달 찐 내용
                             Expanded(child: children),
                           ],

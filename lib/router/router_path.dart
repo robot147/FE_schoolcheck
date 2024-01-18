@@ -2,14 +2,17 @@ enum RouterPath {
   //최상위
   splash('/', '/'),
   login('/login', 'login'),
+  register('/register', 'register'),
   home('/home', 'home'),
   newHome('/newHome', 'newHome'),
+  example('/example', 'example'),
 
   //home 하위
   memberPage('member_page/:memberId', 'member_page'),
 
-  //login 하위
-  signUpPage('sign_up_page', 'sign_up');
+  // example 하위
+  radioButton('radio_button', 'radio_button'),
+  ;
 
   const RouterPath(this.path, this.name);
   final String path;
