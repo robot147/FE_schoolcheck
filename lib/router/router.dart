@@ -5,7 +5,7 @@ import 'package:flutter_application_1/view/example/radio_button/radio_button.dar
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
-import 'package:flutter_application_1/view/register/regisger_page.dart';
+import 'package:flutter_application_1/view/register/register_page.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
