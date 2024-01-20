@@ -145,6 +145,31 @@ class SCButton extends StatefulWidget {
     );
   }
 
+  factory SCButton.linked({
+    Key? key,
+    required String title,
+    required void Function() onPressed,
+    double? width,
+    ButtonSize size = ButtonSize.large,
+    bool disabled = false,
+  }) {
+    final style = ButtonStyle(
+      enabledColor: Colors.transparent,
+      enabledTextColor: SCColors.color_grey_50,
+      radius: BorderRadius.zero,
+    );
+
+    return SCButton(
+      key: key,
+      style: style,
+      title: title,
+      onPressed: onPressed,
+      width: width,
+      size: size,
+      disabled: disabled,
+    );
+  }
+
   //버튼 틀
   const SCButton({
     super.key,
