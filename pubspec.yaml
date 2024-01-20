@@ -37,6 +37,9 @@ dependencies:
   lottie: ^2.3.2
   # flutter_multi_formatter: ^2.12.3
 
+  ## 토스트팝업
+  fluttertoast: ^8.2.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
