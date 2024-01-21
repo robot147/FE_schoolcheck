@@ -79,6 +79,14 @@ class LoginPage extends ConsumerWidget {
                     route.goNamed(RouterPath.register.path);
                   },
                 ),
+                const SizedBox(height: 24),
+                SCButton.rectangle_secondary(
+                  title: '회원가입 - API 임시',
+                  width: 246,
+                  onPressed: () {
+                    route.goNamed(RouterPath.registerTemp.path);
+                  },
+                ),
               ],
             ),
           )

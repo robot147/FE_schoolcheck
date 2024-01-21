@@ -41,13 +41,13 @@ class SCTextFormField extends StatelessWidget {
           hintText: hintText,
           errorText: errorText,
           hintStyle: TextStyle(
-            color: SCColors.text_primary,
+            color: SCColors.color_brand,
             fontSize: 14.0,
           ),
           labelText: lableText,
           // label: Text('test'),
           filled: true,
-          fillColor: SCColors.background,
+          fillColor: SCColors.color_brand,
           border: baseBorder,
           enabledBorder: baseBorder,
           focusedBorder: baseBorder.copyWith(

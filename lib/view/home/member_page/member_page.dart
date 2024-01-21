@@ -23,42 +23,43 @@ class MemberPage extends ConsumerWidget {
     final notifier = ref.read(memberPageProvider(page: 1).notifier);
 
     return Scaffold(
-        appBar: AppBar(
-          leading: ElevatedButton(
-            child: const Text('홈 으로'),
-            onPressed: () {
-              route.pop();
-            },
-          ),
-        ),
-        backgroundColor: Colors.amber,
-        body: state.when(
-          data: (data) {
-            return Column(
-              children: [
-                SCText(
-                  '제목: ${data!.memberInfo.title} ',
-                  textStyle: SCTextStyle.font_14px_w400_h100,
-                ),
-                SCText(
-                  '내용: ${data.memberInfo.body} ',
-                  textStyle: SCTextStyle.font_14px_w400_h100,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (data.memberInfo.title != '새 제목') {
-                      notifier.updateTitle(title: '새 제목');
-                    }
-                  },
-                  child: data.memberInfo.title != '새 제목'
-                      ? const Text('수정')
-                      : const Text('완료'),
-                ),
-              ],
-            );
+      appBar: AppBar(
+        leading: ElevatedButton(
+          child: const Text('홈 으로'),
+          onPressed: () {
+            route.pop();
           },
-          error: (error, stackTrace) => Text('error $error'),
-          loading: () => const Text('로딩'),
-        ));
+        ),
+      ),
+      backgroundColor: Colors.amber,
+      body: state.when(
+        data: (data) {
+          return Column(
+            children: [
+              SCText(
+                '제목: ${data!.memberInfo.title} ',
+                textStyle: SCTextStyle.font_14px_w400_h100,
+              ),
+              SCText(
+                '내용: ${data.memberInfo.body} ',
+                textStyle: SCTextStyle.font_14px_w400_h100,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (data.memberInfo.title != '새 제목') {
+                    notifier.updateTitle(title: '새 제목');
+                  }
+                },
+                child: data.memberInfo.title != '새 제목'
+                    ? const Text('수정')
+                    : const Text('완료'),
+              ),
+            ],
+          );
+        },
+        error: (error, stackTrace) => Text('error $error'),
+        loading: () => const Text('로딩'),
+      ),
+    );
   }
 }
