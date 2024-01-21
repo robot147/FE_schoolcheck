@@ -182,7 +182,7 @@ Widget verticalWidget(BuildContext context, WidgetRef ref) {
                       SCButton.capsule_primary(
                         title: '회원가입',
                         onPressed: () {
-                          route.pushNamed(RouterPath.signUpPage.name);
+                          // route.pushNamed(RouterPath.signUpPage.name);
                         },
                       ),
                     ],
@@ -214,14 +214,14 @@ Widget verticalWidget(BuildContext context, WidgetRef ref) {
                   ),
                   Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: SCText(
-                          'ID찾기/PW찾기',
-                          textStyle: SCTextStyle.$font_14px_w700_h100,
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      //   child: SCText(
+                      //     'ID찾기/PW찾기',
+                      //     textStyle: SCTextStyle.$font_14px_w700_h100,
+                      //     textAlign: TextAlign.left,
+                      //   ),
+                      // ),
                     ],
                   ),
                   Padding(
@@ -234,8 +234,8 @@ Widget verticalWidget(BuildContext context, WidgetRef ref) {
                           value: false,
                           onChanged: (value) {},
                         ),
-                        SCText('자동 로그인 / ID 저장',
-                            textStyle: SCTextStyle.$font_14px_w700_h100),
+                        // SCText('자동 로그인 / ID 저장',
+                        //     textStyle: SCTextStyle.$font_14px_w700_h100),
                       ],
                     ),
                   ),

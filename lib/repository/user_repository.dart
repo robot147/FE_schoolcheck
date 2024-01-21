@@ -51,15 +51,15 @@ class UserRepository {
   // 로그아웃
   Future<void> logout() async {}
 
-  //
-  Future<Response> getUser() async {
-    try {
-      final res =
-          await HTTPConnector.get(url: API_ENDPOINT.userPage) as Response;
+  // 로그인 로직(비활성화)
+  // Future<Response> getUser() async {
+  //   try {
+  //     final res =
+  //         await HTTPConnector.get(url: API_ENDPOINT.userPage) as Response;
 
-      return res;
-    } catch (e) {
-      throw (e);
-    }
-  }
+  //     return res;
+  //   } catch (e) {
+  //     throw (e);
+  //   }
+  // }
 }

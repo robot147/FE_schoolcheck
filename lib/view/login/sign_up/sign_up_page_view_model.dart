@@ -21,15 +21,15 @@ class SignUpPage extends _$SignUpPage {
     );
   }
 
-  Future<Response> signUp({required UserData userData}) async {
-    try {
-      final res = await HTTPConnector.post(
-        url: API_ENDPOINT.signUpPage,
-      ) as Response;
+  // Future<Response> signUp({required UserData userData}) async {
+  //   try {
+  //     final res = await HTTPConnector.post(
+  //       url: API_ENDPOINT.signUpPage,
+  //     ) as Response;
 
-      return res;
-    } catch (e) {
-      throw (e);
-    }
-  }
+  //     return res;
+  //   } catch (e) {
+  //     throw (e);
+  //   }
+  // }
 }
