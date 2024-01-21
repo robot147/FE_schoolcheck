@@ -11,7 +11,7 @@ class MemberData with _$MemberData {
 @freezed
 class Member with _$Member {
   const factory Member({
-    required String title,
-    required String body,
+    required String name,
+    required int age,
   }) = _Member;
 }

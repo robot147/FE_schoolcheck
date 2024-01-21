@@ -6,7 +6,7 @@ part of 'member_page_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$memberPageHash() => r'cce0a272ac8a78e1aec9c65a5c3121dbc7607569';
+String _$memberPageHash() => r'bd5e60f0e6b205245c24868f8bea573762ddfba4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 
 abstract class _$MemberPage
     extends BuildlessAutoDisposeAsyncNotifier<MemberData?> {
-  late final int page;
+  late final String memberId;
 
-  FutureOr<MemberData?> build({
-    required int page,
-  });
+  Future<MemberData?> build(
+    String memberId,
+  );
 }
 
 /// See also [MemberPage].
@@ -48,11 +48,11 @@ class MemberPageFamily extends Family<AsyncValue<MemberData?>> {
   const MemberPageFamily();
 
   /// See also [MemberPage].
-  MemberPageProvider call({
-    required int page,
-  }) {
+  MemberPageProvider call(
+    String memberId,
+  ) {
     return MemberPageProvider(
-      page: page,
+      memberId,
     );
   }
 
@@ -61,7 +61,7 @@ class MemberPageFamily extends Family<AsyncValue<MemberData?>> {
     covariant MemberPageProvider provider,
   ) {
     return call(
-      page: provider.page,
+      provider.memberId,
     );
   }
 
@@ -84,10 +84,10 @@ class MemberPageFamily extends Family<AsyncValue<MemberData?>> {
 class MemberPageProvider
     extends AutoDisposeAsyncNotifierProviderImpl<MemberPage, MemberData?> {
   /// See also [MemberPage].
-  MemberPageProvider({
-    required int page,
-  }) : this._internal(
-          () => MemberPage()..page = page,
+  MemberPageProvider(
+    this.memberId,
+  ) : super.internal(
+          () => MemberPage()..memberId = memberId,
           from: memberPageProvider,
           name: r'memberPageProvider',
           debugGetCreateSourceHash:
@@ -97,78 +97,31 @@ class MemberPageProvider
           dependencies: MemberPageFamily._dependencies,
           allTransitiveDependencies:
               MemberPageFamily._allTransitiveDependencies,
-          page: page,
         );
 
-  MemberPageProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.page,
-  }) : super.internal();
-
-  final int page;
-
-  @override
-  FutureOr<MemberData?> runNotifierBuild(
-    covariant MemberPage notifier,
-  ) {
-    return notifier.build(
-      page: page,
-    );
-  }
-
-  @override
-  Override overrideWith(MemberPage Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: MemberPageProvider._internal(
-        () => create()..page = page,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        page: page,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<MemberPage, MemberData?>
-      createElement() {
-    return _MemberPageProviderElement(this);
-  }
+  final String memberId;
 
   @override
   bool operator ==(Object other) {
-    return other is MemberPageProvider && other.page == page;
+    return other is MemberPageProvider && other.memberId == memberId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, page.hashCode);
+    hash = _SystemHash.combine(hash, memberId.hashCode);
 
     return _SystemHash.finish(hash);
   }
-}
-
-mixin MemberPageRef on AutoDisposeAsyncNotifierProviderRef<MemberData?> {
-  /// The parameter `page` of this provider.
-  int get page;
-}
-
-class _MemberPageProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MemberPage, MemberData?>
-    with MemberPageRef {
-  _MemberPageProviderElement(super.provider);
 
   @override
-  int get page => (origin as MemberPageProvider).page;
+  Future<MemberData?> runNotifierBuild(
+    covariant MemberPage notifier,
+  ) {
+    return notifier.build(
+      memberId,
+    );
+  }
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

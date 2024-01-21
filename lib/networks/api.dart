@@ -1,9 +1,8 @@
 import 'package:path_to_regexp/path_to_regexp.dart';
 
-const BASE_URL = 'http://baranewsong.synology.me';
+const BASE_URL = 'https://localhost:3000/';
 
 enum API_ENDPOINT {
-  testPing('/ping'),
   memberInfo('member/:memberId');
 
   const API_ENDPOINT(this._url);

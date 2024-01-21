@@ -1,4 +1,3 @@
-import 'package:flutter_application_1/swagger_model/test_server_model.dart';
 import 'package:flutter_application_1/networks/api.dart';
 import 'package:flutter_application_1/networks/http_connector.dart';
 import 'package:flutter_application_1/utils/logger.dart';
@@ -9,28 +8,6 @@ class MemberRepository {
       MemberRepository._privateConstructor();
   factory MemberRepository() {
     return _instance;
-  }
-
-  //Test
-  Future<TestServerModel?> getTestInfo({
-    required int page,
-  }) async {
-    try {
-      final res = await HTTPConnector.get(
-        url: API_ENDPOINT.testPing,
-      );
-
-      //Map to DartClassModel
-      final out = TestServerModel.fromJson(
-        res as Map<String, dynamic>,
-      );
-      return out;
-    } on HttpException catch (e) {
-      logger.e(e);
-    } on Exception catch (e) {
-      logger.e(e);
-    }
-    return null;
   }
 
   /// 회원정보 GET
