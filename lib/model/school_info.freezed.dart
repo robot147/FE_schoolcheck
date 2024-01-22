@@ -149,13 +149,17 @@ abstract class _SchoolInfoData implements SchoolInfoData {
 
 /// @nodoc
 mixin _$SchoolInfo {
-  String? get totalCount => throw _privateConstructorUsedError;
-  String? get schoolName => throw _privateConstructorUsedError;
-  String? get schoolGubun => throw _privateConstructorUsedError;
-  String? get schoolType => throw _privateConstructorUsedError;
-  String? get estType => throw _privateConstructorUsedError;
-  String? get region => throw _privateConstructorUsedError;
-  String? get link => throw _privateConstructorUsedError;
+  String? get totalCount => throw _privateConstructorUsedError; // 데이터 총 갯수
+  String? get schoolName => throw _privateConstructorUsedError; // 학교 이름
+  String? get schoolGubun =>
+      throw _privateConstructorUsedError; // 학교 구분 (초,중,고 등)
+  String? get schoolType =>
+      throw _privateConstructorUsedError; // 학교 타입 (4년제, 전문대 등)
+  String? get estType => throw _privateConstructorUsedError; // 설립 유형 (사립,공립 등)
+  String? get region => throw _privateConstructorUsedError; // 지역
+  String? get adres => throw _privateConstructorUsedError;
+  String? get link => throw _privateConstructorUsedError; // 학교 링크
+  bool? get isSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SchoolInfoCopyWith<SchoolInfo> get copyWith =>
@@ -175,7 +179,9 @@ abstract class $SchoolInfoCopyWith<$Res> {
       String? schoolType,
       String? estType,
       String? region,
-      String? link});
+      String? adres,
+      String? link,
+      bool? isSelected});
 }
 
 /// @nodoc
@@ -197,7 +203,9 @@ class _$SchoolInfoCopyWithImpl<$Res, $Val extends SchoolInfo>
     Object? schoolType = freezed,
     Object? estType = freezed,
     Object? region = freezed,
+    Object? adres = freezed,
     Object? link = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
       totalCount: freezed == totalCount
@@ -224,10 +232,18 @@ class _$SchoolInfoCopyWithImpl<$Res, $Val extends SchoolInfo>
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as String?,
+      adres: freezed == adres
+          ? _value.adres
+          : adres // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -247,7 +263,9 @@ abstract class _$$SchoolInfoImplCopyWith<$Res>
       String? schoolType,
       String? estType,
       String? region,
-      String? link});
+      String? adres,
+      String? link,
+      bool? isSelected});
 }
 
 /// @nodoc
@@ -267,7 +285,9 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
     Object? schoolType = freezed,
     Object? estType = freezed,
     Object? region = freezed,
+    Object? adres = freezed,
     Object? link = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_$SchoolInfoImpl(
       totalCount: freezed == totalCount
@@ -294,10 +314,18 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as String?,
+      adres: freezed == adres
+          ? _value.adres
+          : adres // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -312,26 +340,39 @@ class _$SchoolInfoImpl implements _SchoolInfo {
       this.schoolType,
       this.estType,
       this.region,
-      this.link});
+      this.adres,
+      this.link,
+      this.isSelected});
 
   @override
   final String? totalCount;
+// 데이터 총 갯수
   @override
   final String? schoolName;
+// 학교 이름
   @override
   final String? schoolGubun;
+// 학교 구분 (초,중,고 등)
   @override
   final String? schoolType;
+// 학교 타입 (4년제, 전문대 등)
   @override
   final String? estType;
+// 설립 유형 (사립,공립 등)
   @override
   final String? region;
+// 지역
+  @override
+  final String? adres;
   @override
   final String? link;
+// 학교 링크
+  @override
+  final bool? isSelected;
 
   @override
   String toString() {
-    return 'SchoolInfo(totalCount: $totalCount, schoolName: $schoolName, schoolGubun: $schoolGubun, schoolType: $schoolType, estType: $estType, region: $region, link: $link)';
+    return 'SchoolInfo(totalCount: $totalCount, schoolName: $schoolName, schoolGubun: $schoolGubun, schoolType: $schoolType, estType: $estType, region: $region, adres: $adres, link: $link, isSelected: $isSelected)';
   }
 
   @override
@@ -349,12 +390,15 @@ class _$SchoolInfoImpl implements _SchoolInfo {
                 other.schoolType == schoolType) &&
             (identical(other.estType, estType) || other.estType == estType) &&
             (identical(other.region, region) || other.region == region) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.adres, adres) || other.adres == adres) &&
+            (identical(other.link, link) || other.link == link) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, totalCount, schoolName,
-      schoolGubun, schoolType, estType, region, link);
+      schoolGubun, schoolType, estType, region, adres, link, isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -371,22 +415,28 @@ abstract class _SchoolInfo implements SchoolInfo {
       final String? schoolType,
       final String? estType,
       final String? region,
-      final String? link}) = _$SchoolInfoImpl;
+      final String? adres,
+      final String? link,
+      final bool? isSelected}) = _$SchoolInfoImpl;
 
   @override
   String? get totalCount;
-  @override
+  @override // 데이터 총 갯수
   String? get schoolName;
-  @override
+  @override // 학교 이름
   String? get schoolGubun;
-  @override
+  @override // 학교 구분 (초,중,고 등)
   String? get schoolType;
-  @override
+  @override // 학교 타입 (4년제, 전문대 등)
   String? get estType;
-  @override
+  @override // 설립 유형 (사립,공립 등)
   String? get region;
+  @override // 지역
+  String? get adres;
   @override
   String? get link;
+  @override // 학교 링크
+  bool? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$SchoolInfoImplCopyWith<_$SchoolInfoImpl> get copyWith =>

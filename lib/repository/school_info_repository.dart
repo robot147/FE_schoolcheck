@@ -16,15 +16,14 @@ class SchoolInfoRepository {
   final dio = Dio();
 
   // 학교 정보 가져오기
-  Future<List<SchoolInfoModel?>?> getSchoolInfo(
+  Future<List<SchoolInfoModel>> getSchoolInfo(
       {required String searchSchoolNm}) async {
     List<SchoolInfoModel> schoolInfoList = [];
     try {
-      print('API called');
+      print('API called, searchSchoolNm is $searchSchoolNm');
       // final res = await HTTPConnector.get(
       //   url: API_ENDPOINT.testPing,
       // );
-      searchSchoolNm = '거제';
       // HTTPConnector.get의 url이 API_ENDPOINT만을 받아서 일단 하드코딩 했어요
       final response = await dio.get(
         'https://www.career.go.kr/cnet/openapi/getOpenApi',
@@ -66,6 +65,6 @@ class SchoolInfoRepository {
     } on Exception catch (e) {
       logger.e(e);
     }
-    return null;
+    return [];
   }
 }

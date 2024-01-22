@@ -69,7 +69,7 @@ final goRouterProvider = Provider<GoRouter>(
           name: RouterPath.registerTemp.name,
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
-            child: const RegisterTempPage(),
+            child: RegisterTempPage(),
             transitionsBuilder: fadeTransition,
           ),
         ),

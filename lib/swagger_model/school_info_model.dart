@@ -5,6 +5,7 @@ class SchoolInfoModel {
   final String schoolType;
   final String estType;
   final String region;
+  final String adres;
   final String link;
   SchoolInfoModel({
     required this.totalCount,
@@ -13,6 +14,7 @@ class SchoolInfoModel {
     required this.schoolType,
     required this.estType,
     required this.region,
+    required this.adres,
     required this.link,
   });
 
@@ -24,6 +26,7 @@ class SchoolInfoModel {
       schoolType: json['schoolType'] ?? '',
       estType: json['estType'] ?? '',
       region: json['region'] ?? '',
+      adres: json['adres'] ?? '',
       link: json['link'] ?? '',
     );
   }
@@ -35,6 +38,7 @@ class SchoolInfoModel {
       'schoolType': schoolType,
       'estType': estType,
       'region': region,
+      'adres': adres,
       'link': link,
     };
   }

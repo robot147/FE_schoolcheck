@@ -17,6 +17,8 @@ class SchoolInfo with _$SchoolInfo {
     String? schoolType, // 학교 타입 (4년제, 전문대 등)
     String? estType, // 설립 유형 (사립,공립 등)
     String? region, // 지역
+    String? adres,
     String? link, // 학교 링크
+    bool? isSelected,
   }) = _SchoolInfo;
 }
