@@ -59,6 +59,13 @@ class SCColors {
     }
   }
 
+  static Color get color_grey_85 {
+    switch (theme) {
+      case ColorTheme.light:
+        return const Color.fromRGBO(0, 0, 0, 0.85);
+    }
+  }
+
   static Color get color_grey_99 {
     switch (theme) {
       case ColorTheme.light:
