@@ -32,7 +32,7 @@ Widget slideTransition(context, animation, secondaryAnimation, child) =>
 final goRouterProvider = Provider<GoRouter>(
   (ref) {
     return GoRouter(
-      // initialLocation: '/',
+      initialLocation: '/',
       routes: [
         /// splash
         GoRoute(
