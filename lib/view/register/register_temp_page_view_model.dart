@@ -1,5 +1,4 @@
 import 'package:flutter_application_1/model/auth_data1.dart';
-import 'package:flutter_application_1/repository/member_repository.dart';
 import 'package:flutter_application_1/repository/school_info_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -25,6 +24,8 @@ class RegisterTempPage extends _$RegisterTempPage {
     );
   }
 
+  List<String> menuList = [];
+
   // void updateTitle({required String title}) {
   //   update(
   //     (state) => state?.copyWith(
@@ -36,4 +37,14 @@ class RegisterTempPage extends _$RegisterTempPage {
   void getSchoolInfo({required String searchSchoolNm}) async {
     await SchoolInfoRepository().getSchoolInfo(searchSchoolNm: searchSchoolNm);
   }
+
+  // String? validationCheck(){
+  //   if(state.value.id == null || state.value.id ==''){
+  //     return '아이디를 입력해주세요.'
+  //   }else if(state.value.pw == null){
+  //     return '비밀번호를 입력해주세요.'
+  //   }else{
+  //     return null;
+  //   }
+  // }
 }

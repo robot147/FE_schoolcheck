@@ -18,7 +18,7 @@ class RegisterTempPage extends ConsumerWidget {
     final notifier = ref.read(registerTempPageProvider.notifier);
     return Scaffold(
       appBar: AppBar(
-        title: Text('회원가입 임시 페이지'),
+        title: const Text('회원가입 임시 페이지'),
       ),
       body: state.when(
         data: (data) {
@@ -53,21 +53,23 @@ class RegisterTempPage extends ConsumerWidget {
                       // topLabel: '아이디',
                     ),
                   ),
-                  SizedBox(width: 10.0),
+                  const SizedBox(width: 10.0),
                   SCButton.rectangle_secondary(
                     width: 104,
                     title: '학교 찾기',
                     onPressed: () async {
-                      await SCDialog.singleDialog(
+                      final result = await SCDialog.singleDialog<bool>(
                         context: context,
                         size: SCDialogSize.medium,
                         title: '학교 찾기',
+                        // dismissible: false,
                         height: 700,
                         childBuilder: (popDialog) {
                           return Container(
+                            decoration: BoxDecoration(border: Border.all()),
                             child: Column(
                               children: [
-                                Text('학교 찾기'),
+                                const Text('학교 찾기'),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -84,6 +86,18 @@ class RegisterTempPage extends ConsumerWidget {
                                         },
                                       ),
                                     ),
+                                    SCButton.capsule_primary(
+                                      title: 'close',
+                                      onPressed: () {
+                                        popDialog(false);
+                                      },
+                                    ),
+                                    SCButton.capsule_primary(
+                                      title: 'save',
+                                      onPressed: () {
+                                        popDialog(true);
+                                      },
+                                    ),
                                   ],
                                 ),
                                 ElevatedButton(
@@ -91,14 +105,18 @@ class RegisterTempPage extends ConsumerWidget {
                                     notifier.getSchoolInfo(
                                         searchSchoolNm: '초등');
                                   },
-                                  child: Text('학교 찾기'),
+                                  child: const Text('학교 찾기'),
                                 ),
                               ],
                             ),
-                            decoration: BoxDecoration(border: Border.all()),
                           );
                         },
                       );
+                      if (result == true) {
+//
+                      } else {
+                        //
+                      }
                     },
                   ),
                 ],

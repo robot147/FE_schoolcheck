@@ -137,6 +137,7 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
                             SCCheckbox(
                               isChecked: _isCheckAgreeAll,
                               onChanged: (value) {
+                                //notifier.setter() -> provider안에서 state update
                                 setState(() {
                                   checkBoxEvent('All', value);
                                 });
@@ -297,6 +298,14 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
                             title: '다음',
                             width: screenSize.width / 4 - 5,
                             onPressed: () {
+                              //checkbox all checked
+                              // final result = notifier.validationCheck();
+                              // if (result == null) {
+                              //   //통과
+                              // } else {
+                              //   Toast(result);
+                              // }
+
                               setState(() {
                                 if (!_isCheckAgreeTermOfUse) {
                                   FocusScope.of(context)
