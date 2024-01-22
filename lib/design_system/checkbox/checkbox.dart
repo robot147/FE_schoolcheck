@@ -13,6 +13,7 @@ class SCCheckbox extends StatelessWidget {
       this.rightlabel,
       this.checkColor,
       this.fillColor,
+      this.focusNode,
       this.activeColor = Colors.red,
       this.toplabelStyle = SCTextStyle.font_14px_w700_h100,
       this.rightlableStyle = SCTextStyle.font_12px_w600_h100});
@@ -25,6 +26,7 @@ class SCCheckbox extends StatelessWidget {
   Color? activeColor;
   SCTextStyle toplabelStyle;
   SCTextStyle? rightlableStyle;
+  FocusNode? focusNode;
 
   // 체크박스 상태에 - 존재여부
   // true -> - 존재 (value에 null 이 존재함)
@@ -46,18 +48,18 @@ class SCCheckbox extends StatelessWidget {
             ),
             Row(mainAxisSize: MainAxisSize.min, children: [
               Checkbox(
-                tristate: tristate,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                visualDensity: const VisualDensity(
-                  horizontal: VisualDensity.minimumDensity,
-                  vertical: VisualDensity.minimumDensity,
-                ),
-                activeColor: activeColor,
-                value: isChecked,
-                onChanged: onChanged,
-                checkColor: checkColor,
-                fillColor: MaterialStatePropertyAll(fillColor),
-              ),
+                  tristate: tristate,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: const VisualDensity(
+                    horizontal: VisualDensity.minimumDensity,
+                    vertical: VisualDensity.minimumDensity,
+                  ),
+                  activeColor: activeColor,
+                  value: isChecked,
+                  onChanged: onChanged,
+                  checkColor: checkColor,
+                  fillColor: MaterialStatePropertyAll(fillColor),
+                  focusNode: focusNode),
               if (rightlabel != null)
                 const SizedBox(
                   width: 4,
@@ -85,6 +87,7 @@ class SCCheckbox extends StatelessWidget {
       onChanged: onChanged,
       checkColor: checkColor,
       fillColor: MaterialStatePropertyAll(fillColor),
+      focusNode: focusNode,
     );
   }
 }

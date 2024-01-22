@@ -173,6 +173,34 @@ class SCButton extends StatefulWidget {
     );
   }
 
+  factory SCButton.rectangle_tertiary(
+      {Key? key,
+      required String title,
+      required void Function() onPressed,
+      double? width,
+      ButtonSize size = ButtonSize.large,
+      bool disabled = false,
+      FocusNode? focusNode}) {
+    final style = ButtonStyle(
+      enabledColor: SCColors.color_grey_00,
+      enabledTextColor: SCColors.color_grey_99,
+      borderColor: SCColors.color_grey_20,
+      radius: BorderRadius.circular(0),
+      disabledColor: SCColors.color_grey_20,
+      disabledTextColor: SCColors.color_grey_50,
+    );
+
+    return SCButton(
+      key: key,
+      style: style,
+      title: title,
+      onPressed: onPressed,
+      width: width,
+      size: size,
+      disabled: disabled,
+    );
+  }
+
   //버튼 틀
   const SCButton({
     super.key,
