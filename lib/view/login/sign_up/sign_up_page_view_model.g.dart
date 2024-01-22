@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'member_page_view_model.dart';
+part of 'sign_up_page_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$memberPageHash() => r'cce0a272ac8a78e1aec9c65a5c3121dbc7607569';
+String _$signUpPageHash() => r'a45647bedf8aa67ee8d3d8911df5ff2778d3ff7f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,36 +29,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$MemberPage
-    extends BuildlessAutoDisposeAsyncNotifier<MemberData?> {
+abstract class _$SignUpPage
+    extends BuildlessAutoDisposeAsyncNotifier<UserData?> {
   late final int page;
 
-  FutureOr<MemberData?> build({
+  FutureOr<UserData?> build({
     required int page,
   });
 }
 
-/// See also [MemberPage].
-@ProviderFor(MemberPage)
-const memberPageProvider = MemberPageFamily();
+/// See also [SignUpPage].
+@ProviderFor(SignUpPage)
+const signUpPageProvider = SignUpPageFamily();
 
-/// See also [MemberPage].
-class MemberPageFamily extends Family<AsyncValue<MemberData?>> {
-  /// See also [MemberPage].
-  const MemberPageFamily();
+/// See also [SignUpPage].
+class SignUpPageFamily extends Family<AsyncValue<UserData?>> {
+  /// See also [SignUpPage].
+  const SignUpPageFamily();
 
-  /// See also [MemberPage].
-  MemberPageProvider call({
+  /// See also [SignUpPage].
+  SignUpPageProvider call({
     required int page,
   }) {
-    return MemberPageProvider(
+    return SignUpPageProvider(
       page: page,
     );
   }
 
   @override
-  MemberPageProvider getProviderOverride(
-    covariant MemberPageProvider provider,
+  SignUpPageProvider getProviderOverride(
+    covariant SignUpPageProvider provider,
   ) {
     return call(
       page: provider.page,
@@ -77,30 +77,30 @@ class MemberPageFamily extends Family<AsyncValue<MemberData?>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'memberPageProvider';
+  String? get name => r'signUpPageProvider';
 }
 
-/// See also [MemberPage].
-class MemberPageProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<MemberPage, MemberData?> {
-  /// See also [MemberPage].
-  MemberPageProvider({
+/// See also [SignUpPage].
+class SignUpPageProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<SignUpPage, UserData?> {
+  /// See also [SignUpPage].
+  SignUpPageProvider({
     required int page,
   }) : this._internal(
-          () => MemberPage()..page = page,
-          from: memberPageProvider,
-          name: r'memberPageProvider',
+          () => SignUpPage()..page = page,
+          from: signUpPageProvider,
+          name: r'signUpPageProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$memberPageHash,
-          dependencies: MemberPageFamily._dependencies,
+                  : _$signUpPageHash,
+          dependencies: SignUpPageFamily._dependencies,
           allTransitiveDependencies:
-              MemberPageFamily._allTransitiveDependencies,
+              SignUpPageFamily._allTransitiveDependencies,
           page: page,
         );
 
-  MemberPageProvider._internal(
+  SignUpPageProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -113,8 +113,8 @@ class MemberPageProvider
   final int page;
 
   @override
-  FutureOr<MemberData?> runNotifierBuild(
-    covariant MemberPage notifier,
+  FutureOr<UserData?> runNotifierBuild(
+    covariant SignUpPage notifier,
   ) {
     return notifier.build(
       page: page,
@@ -122,10 +122,10 @@ class MemberPageProvider
   }
 
   @override
-  Override overrideWith(MemberPage Function() create) {
+  Override overrideWith(SignUpPage Function() create) {
     return ProviderOverride(
       origin: this,
-      override: MemberPageProvider._internal(
+      override: SignUpPageProvider._internal(
         () => create()..page = page,
         from: from,
         name: null,
@@ -138,14 +138,14 @@ class MemberPageProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<MemberPage, MemberData?>
+  AutoDisposeAsyncNotifierProviderElement<SignUpPage, UserData?>
       createElement() {
-    return _MemberPageProviderElement(this);
+    return _SignUpPageProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MemberPageProvider && other.page == page;
+    return other is SignUpPageProvider && other.page == page;
   }
 
   @override
@@ -157,18 +157,18 @@ class MemberPageProvider
   }
 }
 
-mixin MemberPageRef on AutoDisposeAsyncNotifierProviderRef<MemberData?> {
+mixin SignUpPageRef on AutoDisposeAsyncNotifierProviderRef<UserData?> {
   /// The parameter `page` of this provider.
   int get page;
 }
 
-class _MemberPageProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MemberPage, MemberData?>
-    with MemberPageRef {
-  _MemberPageProviderElement(super.provider);
+class _SignUpPageProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<SignUpPage, UserData?>
+    with SignUpPageRef {
+  _SignUpPageProviderElement(super.provider);
 
   @override
-  int get page => (origin as MemberPageProvider).page;
+  int get page => (origin as SignUpPageProvider).page;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

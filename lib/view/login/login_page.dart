@@ -4,10 +4,17 @@ import 'package:flutter_application_1/design_system/text_input/text_input.dart';
 import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_application_1/router/router_path.dart';
+import 'package:flutter_application_1/view/login/login_page_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../design_system/check_boxs/check_box.dart';
+import '../../design_system/text_field/text_field.dart';
+import '../../gen/assets.gen.dart';
+import '../../model/user_data.dart';
 
 class LoginPage extends ConsumerWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,6 +77,14 @@ class LoginPage extends ConsumerWidget {
                   width: 246,
                   onPressed: () {
                     route.goNamed(RouterPath.register.path);
+                  },
+                ),
+                const SizedBox(height: 24),
+                SCButton.rectangle_secondary(
+                  title: '회원가입 - API 임시',
+                  width: 246,
+                  onPressed: () {
+                    route.goNamed(RouterPath.registerTemp.path);
                   },
                 ),
               ],

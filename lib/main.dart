@@ -33,8 +33,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //전체화면 설정
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     //전역 라우팅
     final goRoute = ref.watch(goRouterProvider);
 

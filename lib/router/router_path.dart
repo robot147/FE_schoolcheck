@@ -4,8 +4,9 @@ enum RouterPath {
   login('/login', 'login'),
   register('/register', 'register'),
   home('/home', 'home'),
+  newHome('/newHome', 'newHome'),
   example('/example', 'example'),
-
+  registerTemp('/registerTemp', 'registerTemp'),
   //home 하위
   memberPage('member_page/:memberId', 'member_page'),
 
