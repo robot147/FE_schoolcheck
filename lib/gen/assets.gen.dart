@@ -45,12 +45,16 @@ class $LibAssetsIconsGen {
 class $LibAssetsImagesGen {
   const $LibAssetsImagesGen();
 
+  /// File path: lib/assets/images/login_bg.png
+  AssetGenImage get loginBg =>
+      const AssetGenImage('lib/assets/images/login_bg.png');
+
   /// File path: lib/assets/images/pencil.jpg
   AssetGenImage get pencil =>
       const AssetGenImage('lib/assets/images/pencil.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [pencil];
+  List<AssetGenImage> get values => [loginBg, pencil];
 }
 
 class $LibAssetsLottieGen {

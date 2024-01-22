@@ -6,7 +6,7 @@ part of 'register_temp_page_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$registerTempPageHash() => r'7d345d7128f299172f27c506eed6f9214b2427f8';
+String _$registerTempPageHash() => r'c24c8306ee756ee8fec9bbba5e181db0fdcbcf4c';
 
 /// See also [RegisterTempPage].
 @ProviderFor(RegisterTempPage)
