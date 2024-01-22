@@ -46,7 +46,7 @@ class SCSidebar extends ConsumerWidget {
                         textStyle: SCTextStyle.$font_20px_w700_h100,
                         color: data.homePageModelInfo.selectedIndex == 0
                             ? SCColors.$color_grey_00
-                            : Color(0xff444444),
+                            : const Color(0xff444444),
                       ),
                     ),
                   ),
@@ -81,7 +81,7 @@ class SCSidebar extends ConsumerWidget {
                                   color: data.homePageModelInfo.selectedIndex ==
                                           index + 1
                                       ? SCColors.$color_grey_00
-                                      : Color(0xff444444),
+                                      : const Color(0xff444444),
                                 ),
                               ),
                             ),
@@ -124,7 +124,7 @@ class SCSidebar extends ConsumerWidget {
                                   color: data.homePageModelInfo.selectedIndex ==
                                           index + 1 + topMenuList.length
                                       ? SCColors.$color_grey_00
-                                      : Color(0xff444444),
+                                      : const Color(0xff444444),
                                 ),
                               ),
                             ),
@@ -150,7 +150,7 @@ class SCSidebar extends ConsumerWidget {
                     textStyle: SCTextStyle.$font_20px_w700_h100,
                     color: data.homePageModelInfo.isLocked == true
                         ? SCColors.$color_grey_00
-                        : Color(0xff444444),
+                        : const Color(0xff444444),
                   ),
                   onTap: () {
                     notifier.toggleIsLocked();

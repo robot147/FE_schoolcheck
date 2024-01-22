@@ -9,8 +9,8 @@ part 'home_page_layout_view_model.g.dart';
 @Riverpod(keepAlive: true)
 class HomePageLayoutPage extends _$HomePageLayoutPage {
   @override
-  HomePageModelData build() {
-    final HomePageModelData result = const HomePageModelData(
+  Future<HomePageModelData> build() async {
+    const HomePageModelData result = HomePageModelData(
       homePageModelInfo: HomePageModel(
         selectedIndex: 0,
         isLocked: false,

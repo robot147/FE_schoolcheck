@@ -5,7 +5,6 @@ import 'package:flutter_application_1/design_system/text/text.dart';
 import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_application_1/design_system/text_input/text_input.dart';
 import 'package:flutter_application_1/router/router.dart';
-import 'package:flutter_application_1/router/router_path.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -284,13 +283,13 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
                       width: screenSize.width / 2,
                       child: Row(
                         children: [
-                          SCButton.rectangle_tertiary(
-                            title: '취소',
-                            width: screenSize.width / 4 - 5,
-                            onPressed: () {
-                              route.go(RouterPath.login.path);
-                            },
-                          ),
+                          // SCButton.rectangle_tertiary(
+                          //   title: '취소',
+                          //   width: screenSize.width / 4 - 5,
+                          //   onPressed: () {
+                          //     route.go(RouterPath.login.path);
+                          //   },
+                          // ),
                           const SizedBox(
                             width: 10,
                           ),
@@ -498,15 +497,15 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
                       width: screenSize.width / 2,
                       child: Row(
                         children: [
-                          SCButton.rectangle_tertiary(
-                            title: '뒤로가기',
-                            width: screenSize.width / 4 - 5,
-                            onPressed: () {
-                              setState(() {
-                                _isPage = true;
-                              });
-                            },
-                          ),
+                          // SCButton.rectangle_tertiary(
+                          //   title: '뒤로가기',
+                          //   width: screenSize.width / 4 - 5,
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       _isPage = true;
+                          //     });
+                          //   },
+                          // ),
                           const SizedBox(
                             width: 10,
                           ),
