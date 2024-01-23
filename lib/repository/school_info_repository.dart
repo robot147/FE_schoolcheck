@@ -28,7 +28,8 @@ class SchoolInfoRepository {
       final response = await dio.get(
         'https://www.career.go.kr/cnet/openapi/getOpenApi',
         queryParameters: {
-          'apiKey': 'e1457f6964155c5246c7108d399feb38',
+          'apiKey':
+              'e1457f6964155c5246c7108d399feb38', // 따로 전역변수로 빼서 관리하는 방법도 가능(env 사용 고려)
           'svcType': 'api',
           'svcCode': 'SCHOOL',
           'contentType': 'json',

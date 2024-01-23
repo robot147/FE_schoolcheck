@@ -76,7 +76,7 @@ class LoginPage extends ConsumerWidget {
                   title: '회원가입',
                   width: 246,
                   onPressed: () {
-                    route.goNamed(RouterPath.register.path);
+                    route.goNamed(RouterPath.register.name);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -84,7 +84,7 @@ class LoginPage extends ConsumerWidget {
                   title: '회원가입 - API 임시',
                   width: 246,
                   onPressed: () {
-                    route.goNamed(RouterPath.registerTemp.path);
+                    route.goNamed(RouterPath.registerTemp.name);
                   },
                 ),
               ],
