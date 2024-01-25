@@ -6,7 +6,7 @@ part of 'login_page_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginPageHash() => r'd17389cce3e524b53a2a0283209cae2c74125104';
+String _$loginPageHash() => r'2d6aa12bbc218e9f4b6ccab89878e6aef1da4700';
 
 /// See also [LoginPage].
 @ProviderFor(LoginPage)
