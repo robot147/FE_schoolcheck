@@ -178,7 +178,11 @@ class _SCTextInputState extends State<SCTextInput> {
                 Expanded(
                   child: widget._state == SCTextInputState.disabled
                       ? SCText(
-                          widget.initValue ?? '',
+                          //widget.initValue ?? '',
+                          // 컨트롤러 설정 안할 경우 initValue 표기, initvalue 설정 안할 경우 '' 표기
+                          _controller != null
+                              ? widget.initValue ?? _controller!.text
+                              : widget.initValue ?? '',
                           textStyle: SCTextStyle.font_14px_w400_h100,
                           color: SCColors.color_grey_50,
                         )

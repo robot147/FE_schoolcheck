@@ -30,20 +30,15 @@ class LoginPage extends _$LoginPage {
 
     //STATE 반환
     return UserData(
-      userInfo: User(
-        id: '',
-        password: '',
-        refreshToken: '',
-        accessToken: '',
-      ),
+      userInfo: User(),
     );
   }
 
   // 유저 데이터 셋
-  Future<void> setUserId({String? id}) async {
+  Future<void> setUserId({String? email}) async {
     update(
       (state) => state?.copyWith(
-        userInfo: state.userInfo.copyWith(id: id ?? id),
+        userInfo: state.userInfo.copyWith(email: email ?? ''),
       ),
     );
   }
@@ -61,9 +56,9 @@ class LoginPage extends _$LoginPage {
   Future<void> login({required User user}) async {
     // print(state.data);
 
-    final rawString = '${user.id}:${user.password}';
+    final rawString = '${user.email}:${user.password}';
 
-    print('userid is ${user.id}');
+    print('userid is ${user.email}');
     print('userpassword is ${user.password}');
     // 아이디, 비밀번호로 토큰 발급
     Codec<String, String> stringToBase64 = utf8.fuse(base64);
