@@ -12,10 +12,16 @@ class ManagementPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return HomePageLayout(
-      appbarWidget: AppBar(title: const Text('관리')),
+      appbarWidget: myAppBar(context, ref),
       contentsWidget: contentsWidget(context, ref),
     );
   }
+}
+
+AppBar myAppBar(BuildContext context, WidgetRef ref) {
+  return AppBar(
+    title: const Text('관리'),
+  );
 }
 
 //

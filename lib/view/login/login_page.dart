@@ -136,6 +136,14 @@ class LoginPage extends ConsumerWidget {
                       route.goNamed(RouterPath.register.name);
                     },
                   ),
+                  const SizedBox(height: 8),
+                  SCButton.rectangle_primary(
+                    title: '로그인 - 레이아웃 테스트',
+                    width: 417,
+                    onPressed: () {
+                      route.go(RouterPath.newHome.path);
+                    },
+                  ),
                 ],
               ),
             )
