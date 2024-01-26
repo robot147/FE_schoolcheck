@@ -1,80 +1,36 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-import 'package:flutter_application_1/swagger_model/user_model.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_application_1/model/login_data.dart';
+import 'package:flutter_application_1/repository/login_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../model/user_data.dart';
-import '../../repository/user_repository.dart';
-import '../../repository/member_repository.dart';
 
 part 'login_page_view_model.g.dart';
 
 @riverpod
 class LoginPage extends _$LoginPage {
-  // 왜 굳이 이렇게 상수 선언하는지 모르겠음
-  static const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';
-
-  static const REFRESH_TOKEN_KEY = 'REFRESH_TOKEN';
-
-  final storage = FlutterSecureStorage();
-
   @override
-  Future<UserData?> build({required int page}) async {
-    // GET CALL
-
-    // final result = await MemberRepository().getTestInfo(page: page);
-
-    //데이터 변환 + 비즈니스 로직
-
-    //STATE 반환
-    return UserData(
-      userInfo: User(),
-    );
+  LoginData build() {
+    return const LoginData(email: null, pw: null);
   }
 
-  // 유저 데이터 셋
-  Future<void> setUserId({String? email}) async {
-    update(
-      (state) => state?.copyWith(
-        userInfo: state.userInfo.copyWith(email: email ?? ''),
-      ),
-    );
+  void setter({
+    String? email,
+    String? pw,
+  }) {
+    state = state.copyWith(email: email ?? state.email, pw: pw ?? state.pw);
   }
 
-  // 유저 데이터 셋
-  Future<void> setUserPassword({String? password}) async {
-    update(
-      (state) => state?.copyWith(
-        userInfo: state.userInfo.copyWith(password: password ?? password),
-      ),
-    );
+  String? validationCheck() {
+    if (state.email == null || state.email == '') {
+      return '이메일을 다시 확인해주세요.';
+    } else if (state.pw == null || state.pw == '') {
+      return '비밀번호를 다시 확인해주세요.';
+    } else {
+      return null;
+    }
   }
 
-  // 로그인 시도 및 storage에 토큰 저장
-  Future<void> login({required User user}) async {
-    // print(state.data);
-
-    final rawString = '${user.email}:${user.password}';
-
-    print('userid is ${user.email}');
-    print('userpassword is ${user.password}');
-    // 아이디, 비밀번호로 토큰 발급
-    Codec<String, String> stringToBase64 = utf8.fuse(base64);
-    String token = stringToBase64.encode(rawString);
-
-    print('test001');
-    print(token);
-    final UserModel userModel = await UserRepository().login(token: token);
-
-    print('res is $userModel');
-
-    // 서버에서 받은 refreshToken과 accessToken을 저장
-    final refreshToken = userModel.refreshToken;
-    final accessToken = userModel.accessToken;
-
-    storage.write(key: REFRESH_TOKEN_KEY, value: refreshToken);
-    storage.write(key: ACCESS_TOKEN_KEY, value: accessToken);
+  Future<bool> postLogin() async {
+    return await LoginRepository().signIn(
+      body: {'email': state.email!, 'pw': state.pw!},
+    );
   }
 }

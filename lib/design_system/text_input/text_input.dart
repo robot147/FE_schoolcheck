@@ -167,7 +167,7 @@ class _SCTextInputState extends State<SCTextInput> {
               color: _state == SCTextInputState.disabled
                   ? SCColors.color_grey_50
                   : SCColors.color_grey_00,
-              border: Border.all(color: SCColors.color_grey_50),
+              border: Border.all(color: SCColors.color_grey_20),
             ),
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             child: Row(

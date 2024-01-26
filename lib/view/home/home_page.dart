@@ -14,6 +14,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final route = ref.read(goRouterProvider);
+
     return Scaffold(
         backgroundColor: Colors.green,
         appBar: AppBar(
