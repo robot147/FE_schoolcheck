@@ -2,11 +2,11 @@ import 'package:flutter_application_1/networks/api.dart';
 import 'package:flutter_application_1/networks/http_connector.dart';
 import 'package:flutter_application_1/utils/logger.dart';
 
-class LoginRepository {
-  LoginRepository._privateConstructor();
-  static final LoginRepository _instance =
-      LoginRepository._privateConstructor();
-  factory LoginRepository() {
+class RegisterRepository {
+  RegisterRepository._privateConstructor();
+  static final RegisterRepository _instance =
+      RegisterRepository._privateConstructor();
+  factory RegisterRepository() {
     return _instance;
   }
 
@@ -21,12 +21,6 @@ class LoginRepository {
         // header: authToken.header,
       );
 
-      final resData = res?['data'] as Map<String, dynamic>;
-
-      print(resData['accessToken']);
-
-      print(resData['refreshToken']);
-
       // final out = MemberActiveMemberActiveObjModel.fromJson(
       //   res?['data'] as Map<String, dynamic>,
       // );
@@ -37,6 +31,12 @@ class LoginRepository {
     } on Exception catch (e) {
       logger.e(e);
     }
+    return false;
+  }
+
+  Future<bool> signUp({
+    required Map<String, String> body,
+  }) async {
     return false;
   }
 }

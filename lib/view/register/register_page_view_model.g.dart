@@ -6,12 +6,12 @@ part of 'register_page_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$registerPageHash() => r'78e9c5cd4139d9d7ad5d0238ed3b0385880d8b00';
+String _$registerPageHash() => r'8d5af9c05a0f83104935b51e9bb51f2e31e778ab';
 
 /// See also [RegisterPage].
 @ProviderFor(RegisterPage)
 final registerPageProvider =
-    AutoDisposeAsyncNotifierProvider<RegisterPage, RegisterUserData>.internal(
+    AutoDisposeNotifierProvider<RegisterPage, RegisterData>.internal(
   RegisterPage.new,
   name: r'registerPageProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final registerPageProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$RegisterPage = AutoDisposeAsyncNotifier<RegisterUserData>;
+typedef _$RegisterPage = AutoDisposeNotifier<RegisterData>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

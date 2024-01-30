@@ -15,15 +15,15 @@ class SchoolInfoRepository {
 
   final dio = Dio();
 
-  // 학교 정보 가져오기
+  // 학교 정보 가져오기 원형
   Future<List<SchoolInfoModel>> getSchoolInfo(
-      {required String searchSchoolNm}) async {
+      {String? searchSchoolNm, required Map<String, String> params}) async {
     List<SchoolInfoModel> schoolInfoList = [];
     try {
       print('API called, searchSchoolNm is $searchSchoolNm');
       // final res = await HTTPConnector.get(
-      //   url: API_ENDPOINT.testPing,
-      // );
+      //     url: API_ENDPOINT.searchSchool, params: params);
+
       // HTTPConnector.get의 url이 API_ENDPOINT만을 받아서 일단 하드코딩 했어요
       final response = await dio.get(
         'https://www.career.go.kr/cnet/openapi/getOpenApi',
@@ -56,10 +56,6 @@ class SchoolInfoRepository {
       //Map to DartClassModel
       final out = schoolInfoList;
 
-      // 해당 데이터 보기
-      for (SchoolInfoModel contents in out) {
-        print(contents.toJson());
-      }
       return out;
     } on HttpException catch (e) {
       logger.e(e);
@@ -69,3 +65,34 @@ class SchoolInfoRepository {
     return [];
   }
 }
+  // Future<List<SchoolInfoModel>> getSchoolInfo(
+  //     {String? searchSchoolNm, required Map<String, String> params}) async {
+  //   List<SchoolInfoModel> schoolInfoList = [];
+  //   try {
+  //     print('API called, searchSchoolNm is $searchSchoolNm');
+  //     // final res = await HTTPConnector.get(
+  //     //     url: API_ENDPOINT.searchSchool, params: params);
+
+  //     // HTTPConnector의 형식은 param을 Map으로 보내는데,
+  //     // 현재 구현된 서버는 String으로 보내서 일단 하드코딩함
+  //     final resp = await dio.get(
+  //       'http://baranewsong.synology.me/v1.0/accounts/sign-up/schools?query=$searchSchoolNm',
+  //     );
+  //     if (resp.statusCode == 200) {
+  //       final List<dynamic> contentList = resp.data['data'];
+  //       schoolInfoList = contentList
+  //           .map((content) => SchoolInfoModel.fromJson(content))
+  //           .toList();
+  //     }
+
+  //     //Map to DartClassModel
+  //     final out = schoolInfoList;
+
+  //     return out;
+  //   } on HttpException catch (e) {
+  //     logger.e(e);
+  //   } on Exception catch (e) {
+  //     logger.e(e);
+  //   }
+  //   return [];
+  // }

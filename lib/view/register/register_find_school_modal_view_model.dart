@@ -8,53 +8,57 @@ part 'register_find_school_modal_view_model.g.dart';
 @riverpod
 class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
   @override
-  Future<List<SchoolInfoData>?> build() async {
+  SchoolInfoData build() {
     //STATE 반환
-    return [];
+    return SchoolInfoData(schoolInfo: [], searchName: null);
   }
 
-  Future<void> getSchoolInfo({required String searchSchoolNm}) async {
-    final results = await SchoolInfoRepository()
-        .getSchoolInfo(searchSchoolNm: searchSchoolNm);
+  //
+  Future<void> searchSchoolInfo() async {
+    final searchSchoolNm = state.searchName;
+    print('searchSchoolName is $searchSchoolNm');
+    final params = {'schoolName': state.searchName ?? ''};
+    final results = await SchoolInfoRepository().getSchoolInfo(
+      searchSchoolNm: searchSchoolNm ?? '',
+      params: params,
+    );
 
-    List<SchoolInfoData> tempList = [];
+    List<SchoolInfo> schoolInfo = [];
 
     for (SchoolInfoModel result in results) {
-      tempList.add(
-        SchoolInfoData(
-          schoolInfo:
-              SchoolInfo(adres: result.adres, schoolName: result.schoolName),
+      // final schoolInfo = result.toJson;
+
+      schoolInfo.add(
+        SchoolInfo(
+          schoolName: result.schoolName,
+          adres: result.adres,
         ),
       );
     }
+    state = state.copyWith(schoolInfo: schoolInfo);
+  }
 
-    update(
-      (state) => tempList,
-    );
+  void setter({String? searchName}) {
+    print('setter has called. searchName is $searchName');
+
+    state = state.copyWith(searchName: searchName ?? searchName);
   }
 
   // 학교 리스트에서 학교 선택
-  Future<void> setSchoolChecked({required SchoolInfoData data}) async {
+  Future<void> setSchoolChecked({required SchoolInfo data}) async {
     print('setSchoolChecked called');
-    update(
-      (state) {
-        for (int i = 0; i < state!.length; i++) {
-          if (data.schoolInfo == state[i].schoolInfo) {
-            state[i] = state[i].copyWith(
-              schoolInfo: state[i].schoolInfo.copyWith(
-                    isSelected: true,
-                  ),
-            );
-          } else {
-            state[i] = state[i].copyWith(
-              schoolInfo: state[i].schoolInfo.copyWith(
-                    isSelected: false,
-                  ),
-            );
-          }
-        }
-        return state;
-      },
-    );
+
+    final infoList = List<SchoolInfo>.from(state.schoolInfo);
+
+    for (int i = 0; i < infoList.length; i++) {
+      if (infoList[i].schoolName == data.schoolName &&
+          infoList[i].adres == data.adres) {
+        infoList[i] = data.copyWith(isSelected: true);
+      } else {
+        infoList[i] = infoList[i].copyWith(isSelected: false);
+      }
+    }
+
+    state = state.copyWith(schoolInfo: infoList);
   }
 }

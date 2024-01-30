@@ -30,7 +30,7 @@ class LoginPage extends _$LoginPage {
 
   Future<bool> postLogin() async {
     return await LoginRepository().signIn(
-      body: {'email': state.email!, 'pw': state.pw!},
+      body: {'email': state.email!, 'password': state.pw!},
     );
   }
 }

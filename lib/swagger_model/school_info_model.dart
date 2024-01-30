@@ -1,4 +1,5 @@
 class SchoolInfoModel {
+  final int id;
   final String totalCount;
   final String schoolName;
   final String schoolGubun;
@@ -8,6 +9,7 @@ class SchoolInfoModel {
   final String adres;
   final String link;
   SchoolInfoModel({
+    required this.id,
     required this.totalCount,
     required this.schoolName,
     required this.schoolGubun,
@@ -20,6 +22,7 @@ class SchoolInfoModel {
 
   factory SchoolInfoModel.fromJson(Map<String, dynamic> json) {
     return SchoolInfoModel(
+      id: json['id'] ?? 0,
       totalCount: json['totalCount'] ?? '',
       schoolName: json['schoolName'] ?? '',
       schoolGubun: json['schoolGubun'] ?? '',
@@ -32,6 +35,7 @@ class SchoolInfoModel {
   }
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'totalCount': totalCount,
       'schoolName': schoolName,
       'schoolGubun': schoolGubun,

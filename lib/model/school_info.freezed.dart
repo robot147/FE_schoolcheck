@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SchoolInfoData {
-  SchoolInfo get schoolInfo => throw _privateConstructorUsedError;
+  List<SchoolInfo> get schoolInfo => throw _privateConstructorUsedError;
+  String? get searchName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SchoolInfoDataCopyWith<SchoolInfoData> get copyWith =>
@@ -29,9 +30,7 @@ abstract class $SchoolInfoDataCopyWith<$Res> {
           SchoolInfoData value, $Res Function(SchoolInfoData) then) =
       _$SchoolInfoDataCopyWithImpl<$Res, SchoolInfoData>;
   @useResult
-  $Res call({SchoolInfo schoolInfo});
-
-  $SchoolInfoCopyWith<$Res> get schoolInfo;
+  $Res call({List<SchoolInfo> schoolInfo, String? searchName});
 }
 
 /// @nodoc
@@ -48,21 +47,18 @@ class _$SchoolInfoDataCopyWithImpl<$Res, $Val extends SchoolInfoData>
   @override
   $Res call({
     Object? schoolInfo = null,
+    Object? searchName = freezed,
   }) {
     return _then(_value.copyWith(
       schoolInfo: null == schoolInfo
           ? _value.schoolInfo
           : schoolInfo // ignore: cast_nullable_to_non_nullable
-              as SchoolInfo,
+              as List<SchoolInfo>,
+      searchName: freezed == searchName
+          ? _value.searchName
+          : searchName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SchoolInfoCopyWith<$Res> get schoolInfo {
-    return $SchoolInfoCopyWith<$Res>(_value.schoolInfo, (value) {
-      return _then(_value.copyWith(schoolInfo: value) as $Val);
-    });
   }
 }
 
@@ -74,10 +70,7 @@ abstract class _$$SchoolInfoDataImplCopyWith<$Res>
       __$$SchoolInfoDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SchoolInfo schoolInfo});
-
-  @override
-  $SchoolInfoCopyWith<$Res> get schoolInfo;
+  $Res call({List<SchoolInfo> schoolInfo, String? searchName});
 }
 
 /// @nodoc
@@ -92,12 +85,17 @@ class __$$SchoolInfoDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? schoolInfo = null,
+    Object? searchName = freezed,
   }) {
     return _then(_$SchoolInfoDataImpl(
       schoolInfo: null == schoolInfo
-          ? _value.schoolInfo
+          ? _value._schoolInfo
           : schoolInfo // ignore: cast_nullable_to_non_nullable
-              as SchoolInfo,
+              as List<SchoolInfo>,
+      searchName: freezed == searchName
+          ? _value.searchName
+          : searchName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -105,14 +103,24 @@ class __$$SchoolInfoDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SchoolInfoDataImpl implements _SchoolInfoData {
-  const _$SchoolInfoDataImpl({required this.schoolInfo});
+  const _$SchoolInfoDataImpl(
+      {required final List<SchoolInfo> schoolInfo, this.searchName})
+      : _schoolInfo = schoolInfo;
+
+  final List<SchoolInfo> _schoolInfo;
+  @override
+  List<SchoolInfo> get schoolInfo {
+    if (_schoolInfo is EqualUnmodifiableListView) return _schoolInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_schoolInfo);
+  }
 
   @override
-  final SchoolInfo schoolInfo;
+  final String? searchName;
 
   @override
   String toString() {
-    return 'SchoolInfoData(schoolInfo: $schoolInfo)';
+    return 'SchoolInfoData(schoolInfo: $schoolInfo, searchName: $searchName)';
   }
 
   @override
@@ -120,12 +128,15 @@ class _$SchoolInfoDataImpl implements _SchoolInfoData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SchoolInfoDataImpl &&
-            (identical(other.schoolInfo, schoolInfo) ||
-                other.schoolInfo == schoolInfo));
+            const DeepCollectionEquality()
+                .equals(other._schoolInfo, _schoolInfo) &&
+            (identical(other.searchName, searchName) ||
+                other.searchName == searchName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, schoolInfo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_schoolInfo), searchName);
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +147,14 @@ class _$SchoolInfoDataImpl implements _SchoolInfoData {
 }
 
 abstract class _SchoolInfoData implements SchoolInfoData {
-  const factory _SchoolInfoData({required final SchoolInfo schoolInfo}) =
-      _$SchoolInfoDataImpl;
+  const factory _SchoolInfoData(
+      {required final List<SchoolInfo> schoolInfo,
+      final String? searchName}) = _$SchoolInfoDataImpl;
 
   @override
-  SchoolInfo get schoolInfo;
+  List<SchoolInfo> get schoolInfo;
+  @override
+  String? get searchName;
   @override
   @JsonKey(ignore: true)
   _$$SchoolInfoDataImplCopyWith<_$SchoolInfoDataImpl> get copyWith =>
