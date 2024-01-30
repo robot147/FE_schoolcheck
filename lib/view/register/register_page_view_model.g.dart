@@ -6,7 +6,7 @@ part of 'register_page_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$registerPageHash() => r'04bd6d105afc5e65ce0642f13fa52b52a345bbda';
+String _$registerPageHash() => r'33020ca87c23008caae0c38c596e3801e9787815';
 
 /// See also [RegisterPage].
 @ProviderFor(RegisterPage)

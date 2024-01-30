@@ -14,7 +14,8 @@ class RegisterPage extends _$RegisterPage {
             email: '',
             password: '',
             passwordCheck: '',
-            schoolName: ''));
+            schoolName: '',
+            schoolId: 0));
   }
 
   void setter({
@@ -23,6 +24,7 @@ class RegisterPage extends _$RegisterPage {
     String? password,
     String? passwordCheck,
     String? schoolName,
+    int? schoolId,
   }) {
     state = state.copyWith(
         registerInfo: Register(
@@ -30,7 +32,8 @@ class RegisterPage extends _$RegisterPage {
             email: email ?? state.registerInfo.email,
             password: password ?? state.registerInfo.password,
             passwordCheck: passwordCheck ?? state.registerInfo.passwordCheck,
-            schoolName: schoolName ?? state.registerInfo.schoolName));
+            schoolName: schoolName ?? state.registerInfo.schoolName,
+            schoolId: schoolId ?? state.registerInfo.schoolId));
   }
 
   String? validationCheck() {
@@ -52,13 +55,13 @@ class RegisterPage extends _$RegisterPage {
     }
   }
 
-  Future<bool> postLogin() async {
+  Future<bool> postSignUp() async {
     return await RegisterRepository().signUp(
       body: {
         'name': state.registerInfo.name,
         'email': state.registerInfo.email,
         'password': state.registerInfo.password,
-        'schoolName': state.registerInfo.schoolName
+        'schoolId': state.registerInfo.schoolId
       },
     );
   }

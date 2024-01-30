@@ -176,13 +176,14 @@ class _SCTextInputState extends State<SCTextInput> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: widget._state == SCTextInputState.disabled
-                      ? SCText(
-                          widget.initValue ?? '',
-                          textStyle: SCTextStyle.font_14px_w400_h100,
-                          color: SCColors.color_grey_50,
-                        )
-                      : _textField,
+                  child: _textField,
+                  // child: _state == SCTextInputState.disabled
+                  //     ? SCText(
+                  //         widget.initValue ?? '',
+                  //         textStyle: SCTextStyle.font_14px_w400_h100,
+                  //         color: SCColors.color_grey_50,
+                  //       )
+                  //     : _textField,
                 ),
                 //텍스트필드 초기화 버튼 필요시,
                 if (_state != SCTextInputState.disabled && widget.showFlush)

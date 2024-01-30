@@ -153,6 +153,7 @@ mixin _$Register {
   String get password => throw _privateConstructorUsedError;
   String get passwordCheck => throw _privateConstructorUsedError;
   String get schoolName => throw _privateConstructorUsedError;
+  int get schoolId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterCopyWith<Register> get copyWith =>
@@ -169,7 +170,8 @@ abstract class $RegisterCopyWith<$Res> {
       String email,
       String password,
       String passwordCheck,
-      String schoolName});
+      String schoolName,
+      int schoolId});
 }
 
 /// @nodoc
@@ -190,6 +192,7 @@ class _$RegisterCopyWithImpl<$Res, $Val extends Register>
     Object? password = null,
     Object? passwordCheck = null,
     Object? schoolName = null,
+    Object? schoolId = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -212,6 +215,10 @@ class _$RegisterCopyWithImpl<$Res, $Val extends Register>
           ? _value.schoolName
           : schoolName // ignore: cast_nullable_to_non_nullable
               as String,
+      schoolId: null == schoolId
+          ? _value.schoolId
+          : schoolId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -229,7 +236,8 @@ abstract class _$$RegisterImplCopyWith<$Res>
       String email,
       String password,
       String passwordCheck,
-      String schoolName});
+      String schoolName,
+      int schoolId});
 }
 
 /// @nodoc
@@ -248,6 +256,7 @@ class __$$RegisterImplCopyWithImpl<$Res>
     Object? password = null,
     Object? passwordCheck = null,
     Object? schoolName = null,
+    Object? schoolId = null,
   }) {
     return _then(_$RegisterImpl(
       name: null == name
@@ -270,6 +279,10 @@ class __$$RegisterImplCopyWithImpl<$Res>
           ? _value.schoolName
           : schoolName // ignore: cast_nullable_to_non_nullable
               as String,
+      schoolId: null == schoolId
+          ? _value.schoolId
+          : schoolId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -282,7 +295,8 @@ class _$RegisterImpl implements _Register {
       required this.email,
       required this.password,
       required this.passwordCheck,
-      required this.schoolName});
+      required this.schoolName,
+      required this.schoolId});
 
   @override
   final String name;
@@ -294,10 +308,12 @@ class _$RegisterImpl implements _Register {
   final String passwordCheck;
   @override
   final String schoolName;
+  @override
+  final int schoolId;
 
   @override
   String toString() {
-    return 'Register(name: $name, email: $email, password: $password, passwordCheck: $passwordCheck, schoolName: $schoolName)';
+    return 'Register(name: $name, email: $email, password: $password, passwordCheck: $passwordCheck, schoolName: $schoolName, schoolId: $schoolId)';
   }
 
   @override
@@ -312,12 +328,14 @@ class _$RegisterImpl implements _Register {
             (identical(other.passwordCheck, passwordCheck) ||
                 other.passwordCheck == passwordCheck) &&
             (identical(other.schoolName, schoolName) ||
-                other.schoolName == schoolName));
+                other.schoolName == schoolName) &&
+            (identical(other.schoolId, schoolId) ||
+                other.schoolId == schoolId));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, email, password, passwordCheck, schoolName);
+      runtimeType, name, email, password, passwordCheck, schoolName, schoolId);
 
   @JsonKey(ignore: true)
   @override
@@ -332,7 +350,8 @@ abstract class _Register implements Register {
       required final String email,
       required final String password,
       required final String passwordCheck,
-      required final String schoolName}) = _$RegisterImpl;
+      required final String schoolName,
+      required final int schoolId}) = _$RegisterImpl;
 
   @override
   String get name;
@@ -344,6 +363,8 @@ abstract class _Register implements Register {
   String get passwordCheck;
   @override
   String get schoolName;
+  @override
+  int get schoolId;
   @override
   @JsonKey(ignore: true)
   _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>

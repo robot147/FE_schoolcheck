@@ -13,7 +13,7 @@ class RegisterRepository {
   /// 회원가입 POST
 
   Future<bool> signUp({
-    required Map<String, String> body, //TODO 타입변경
+    required Map<String, dynamic> body, //TODO 타입변경
   }) async {
     try {
       final res = await HTTPConnector.post(
@@ -25,7 +25,7 @@ class RegisterRepository {
       //   res?['data'] as Map<String, dynamic>,
       // );
       // return out;
-      return true;
+      return res?['success'] as bool;
     } on HttpException catch (e) {
       logger.e(e);
     } on Exception catch (e) {
