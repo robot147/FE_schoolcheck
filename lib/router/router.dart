@@ -4,10 +4,10 @@ import 'package:flutter_application_1/view/example/example_page.dart';
 import 'package:flutter_application_1/view/example/radio_button/radio_button.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
 import 'package:flutter_application_1/view/home/home_page_new.dart';
+import 'package:flutter_application_1/view/home/management_page/management_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
-import 'package:flutter_application_1/view/register/regisger_page.dart';
-import 'package:flutter_application_1/view/register/register_temp_page.dart';
+import 'package:flutter_application_1/view/register/register_page.dart';
 import 'package:flutter_application_1/view/splash_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +32,7 @@ Widget slideTransition(context, animation, secondaryAnimation, child) =>
 final goRouterProvider = Provider<GoRouter>(
   (ref) {
     return GoRouter(
-      // initialLocation: '/',
+      initialLocation: '/',
       routes: [
         /// splash
         GoRoute(
@@ -59,17 +59,6 @@ final goRouterProvider = Provider<GoRouter>(
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
             child: const RegisterPage(),
-            transitionsBuilder: fadeTransition,
-          ),
-        ),
-
-        /// login
-        GoRoute(
-          path: RouterPath.registerTemp.path,
-          name: RouterPath.registerTemp.name,
-          pageBuilder: (context, state) => CustomTransitionPage<void>(
-            key: state.pageKey,
-            child: const RegisterTempPage(),
             transitionsBuilder: fadeTransition,
           ),
         ),
@@ -136,22 +125,32 @@ final goRouterProvider = Provider<GoRouter>(
             child: const HomePageNew(),
             transitionsBuilder: fadeTransition,
           ),
-          // routes: [
-          //   ///HOME 하위라우팅
-          //   /// home/member_page/:memberId
-          //   GoRoute(
-          //     path: RouterPath.memberPage.path,
-          //     name: RouterPath.memberPage.name,
-          //     pageBuilder: (context, state) => CustomTransitionPage<void>(
-          //       transitionDuration: const Duration(milliseconds: 500),
-          //       key: state.pageKey,
-          //       child: MemberPage(
-          //         memberId: state.pathParameters['memberId'] ?? '',
-          //       ),
-          //       transitionsBuilder: slideTransition,
-          //     ),
-          //   ),
-          // ],
+          routes: [
+            ///HOME 하위라우팅
+            /// home/member_page/:memberId
+            // GoRoute(
+            //   path: RouterPath.memberPage.path,
+            //   name: RouterPath.memberPage.name,
+            //   pageBuilder: (context, state) => CustomTransitionPage<void>(
+            //     transitionDuration: const Duration(milliseconds: 500),
+            //     key: state.pageKey,
+            //     child: MemberPage(
+            //       memberId: state.pathParameters['memberId'] ?? '',
+            //     ),
+            //     transitionsBuilder: slideTransition,
+            //   ),
+            // ),
+            GoRoute(
+              path: RouterPath.managementPage.path,
+              name: RouterPath.managementPage.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                transitionDuration: const Duration(milliseconds: 500),
+                key: state.pageKey,
+                child: ManagementPage(),
+                transitionsBuilder: slideTransition,
+              ),
+            ),
+          ],
         ),
       ],
     );

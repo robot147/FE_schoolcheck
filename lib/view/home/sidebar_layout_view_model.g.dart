@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_page_layout_view_model.dart';
+part of 'sidebar_layout_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homePageLayoutPageHash() =>
-    r'fe7c790e34346d03714c5db06d0203255059af5d';
+String _$sidebarLayoutPageHash() => r'715f0f7bebc8273f4a13ae817d8adb814cec8b9e';
 
-/// See also [HomePageLayoutPage].
-@ProviderFor(HomePageLayoutPage)
-final homePageLayoutPageProvider =
-    AsyncNotifierProvider<HomePageLayoutPage, HomePageModelData>.internal(
-  HomePageLayoutPage.new,
-  name: r'homePageLayoutPageProvider',
+/// See also [SidebarLayoutPage].
+@ProviderFor(SidebarLayoutPage)
+final sidebarLayoutPageProvider =
+    AsyncNotifierProvider<SidebarLayoutPage, SidebarModelData>.internal(
+  SidebarLayoutPage.new,
+  name: r'sidebarLayoutPageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$homePageLayoutPageHash,
+      : _$sidebarLayoutPageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HomePageLayoutPage = AsyncNotifier<HomePageModelData>;
+typedef _$SidebarLayoutPage = AsyncNotifier<SidebarModelData>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

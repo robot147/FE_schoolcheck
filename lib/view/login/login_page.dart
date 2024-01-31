@@ -1,303 +1,155 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/design_system/buttons/button.dart';
+import 'package:flutter_application_1/design_system/color/color.dart';
+import 'package:flutter_application_1/design_system/text/text.dart';
+import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_application_1/design_system/text_input/text_input.dart';
 import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_application_1/router/router_path.dart';
 import 'package:flutter_application_1/view/login/login_page_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../design_system/check_boxs/check_box.dart';
-import '../../design_system/text_field/text_field.dart';
-import '../../gen/assets.gen.dart';
-import '../../model/user_data.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginPage extends ConsumerWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final route = ref.read(goRouterProvider);
+    final state = ref.watch(loginPageProvider); //열어둬야함...
+    final notifier = ref.read(loginPageProvider.notifier);
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-          body: Row(
-        children: [
-          //이미지
-          Flexible(child: Assets.lib.assets.images.pencil.image()),
-          //로그인 컨테이너
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //ID_input
-                SizedBox(
-                  width: 246,
-                  child: SCTextInput(
-                    state: SCTextInputState.enabled,
-                    textInputAction: TextInputAction.next,
-                    controller: SCTextInputController(),
-                    focusNode: FocusNode(),
-                    onFocusOffCallback: (value) {
-                      print('받아온 $value');
-                    },
-                    topLabel: '아이디',
-                  ),
-                ),
-                const SizedBox(height: 14),
-                //PW_input
-                SizedBox(
-                  width: 246,
-                  child: SCTextInput(
-                    topLabel: '비밀번호',
-                    controller: SCTextInputController(),
-                    state: SCTextInputState.enabled,
-                    textInputAction: TextInputAction.done,
-                    needSecure: true,
-                    focusNode: FocusNode(),
-                    onFocusOffCallback: (p0) {
-                      print('비번 $p0');
-                    },
-                  ),
-                ),
-                const SizedBox(height: 30),
-                SCButton.rectangle_primary(
-                  title: '로그인',
-                  width: 246,
-                  onPressed: () {
-                    route.go(RouterPath.home.path);
-                  },
-                ),
-                const SizedBox(height: 24),
-                SCButton.rectangle_secondary(
-                  title: '회원가입',
-                  width: 246,
-                  onPressed: () {
-                    route.goNamed(RouterPath.register.path);
-                  },
-                ),
-                const SizedBox(height: 24),
-                SCButton.rectangle_secondary(
-                  title: '회원가입 - API 임시',
-                  width: 246,
-                  onPressed: () {
-                    route.goNamed(RouterPath.registerTemp.path);
-                  },
-                ),
-              ],
-            ),
-          )
-        ],
-      )),
-    );
-  }
-}
+          body: SingleChildScrollView(
+        child: Row(
+          children: [
+            //이미지
+            Assets.lib.assets.images.loginBg.image(),
 
-// 가로모드일 때 위젯 뷰
-Widget verticalWidget(BuildContext context, WidgetRef ref) {
-  final route = ref.read(goRouterProvider);
-
-  final state = ref.watch(loginPageProvider(page: 1));
-
-  final notifier = ref.read(loginPageProvider(page: 1).notifier);
-
-  return state.when(
-    data: (data) {
-      return Row(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              color: Colors.amber,
-              child: Assets.lib.assets.images.pencil.image(fit: BoxFit.fill),
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 60.0),
+            //로그인 컨테이너
+            Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // 로그인 페이지 타이틀
-                  Text(
-                    '스쿨체크에 오신 것을\n환영합니다!',
-                    style: TextStyle(fontSize: 36),
-                    textAlign: TextAlign.center,
+                  //email_input
+                  SizedBox(
+                    width: 417,
+                    child: SCTextInput(
+                      state: SCTextInputState.enabled,
+                      textInputAction: TextInputAction.next,
+                      controller: SCTextInputController(),
+                      focusNode: FocusNode(),
+                      placeHolder: '입력',
+                      onFocusOffCallback: (value) {
+                        notifier.setter(email: value);
+                      },
+                      topLabel: '이메일',
+                    ),
                   ),
-
-                  SizedBox(height: 20.0),
-
-                  // 아이디 입력 텍스트필드
-                  Center(
-                    child: SCTextFormField(
-                      hintText: '아이디를 입력해주세요.',
-                      onChanged: (String value) {
-                        notifier.setUserId(id: value);
+                  const SizedBox(height: 14),
+                  //PW_input
+                  SizedBox(
+                    width: 417,
+                    child: SCTextInput(
+                      topLabel: '비밀번호',
+                      controller: SCTextInputController(),
+                      state: SCTextInputState.enabled,
+                      textInputAction: TextInputAction.done,
+                      placeHolder: '입력',
+                      needSecure: true,
+                      focusNode: FocusNode(),
+                      onFocusOffCallback: (value) {
+                        notifier.setter(pw: value);
                       },
                     ),
                   ),
-
-                  // 비밀번호 입력 텍스트필드
-                  Center(
-                    child: SCTextFormField(
-                      hintText: '비밀번호를 입력해주세요.',
-                      obscureText: true,
-                      onChanged: (String value) {
-                        notifier.setUserPassword(password: value);
-                      },
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: 417,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SCButton.linked(
+                          title: '이메일 찾기',
+                          onPressed: () {},
+                        ),
+                        SCText(
+                          '|',
+                          textStyle: SCTextStyle.font_14px_w500_h100,
+                          color: SCColors.color_grey_20,
+                        ),
+                        SCButton.linked(
+                          title: '비밀번호 찾기',
+                          onPressed: () {},
+                        ),
+                      ],
                     ),
                   ),
 
-                  SizedBox(
-                    height: 16.0,
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // 로그인 버튼
-                      SCButton.capsule_primary(
-                        title: '로그인',
-                        onPressed: () async {
-                          try {
-                            // 로그인 로직 호출
-                            await notifier.login(
-                              user: User(
-                                  id: data!.userInfo.id,
-                                  password: data.userInfo.password),
-                            );
-                            // 로그인 성공시 라우팅
-                            route.go(RouterPath.home.path);
-                          } catch (e) {
-                            // 로그인 실패시 분기
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('로그인에 실패했습니다.'),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      // 회원가입 버튼
-                      SCButton.capsule_primary(
-                        title: '회원가입',
-                        onPressed: () {
-                          // route.pushNamed(RouterPath.signUpPage.name);
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SCButton.capsule_primary(
-                    title: '로그인2',
+                  const SizedBox(height: 64),
+                  SCButton.rectangle_primary(
+                    title: '로그인',
+                    width: 417,
                     onPressed: () async {
-                      try {
-                        // 로그인 로직 호출
-                        await notifier.login(
-                          user: User(
-                              id: data!.userInfo.id,
-                              password: data.userInfo.password),
-                        );
-                        // 로그인 성공시 라우팅
-                        route.go(RouterPath.newHome.path);
-                      } catch (e) {
-                        // 로그인 실패시 분기
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('로그인에 실패했습니다.'),
+                      FocusScope.of(context).unfocus();
+                      final validationResult = notifier.validationCheck();
+                      if (validationResult == null) {
+                        //통과
+                        final isSuccess = await notifier.postLogin();
+                        if (isSuccess) {
+                          route.go(RouterPath.home.path);
+                        } else {
+                          //로그인 실패
+                        }
+                      } else {
+                        //실패
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          SizedBox(
+                            height: 65,
+                            child: CustomSnackBar.info(
+                              message: validationResult,
+                              textStyle: SCTextStyle.font_14px_w400_h100.value
+                                  .copyWith(
+                                color: SCColors.color_grey_00,
+                              ),
+                              borderRadius: BorderRadius.zero,
+                              backgroundColor: SCColors.color_grey_85,
+                            ),
                           ),
+                          displayDuration: const Duration(seconds: 1),
                         );
                       }
                     },
                   ),
-                  Row(
-                    children: [
-                      // Padding(
-                      //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      //   child: SCText(
-                      //     'ID찾기/PW찾기',
-                      //     textStyle: SCTextStyle.$font_14px_w700_h100,
-                      //     textAlign: TextAlign.left,
-                      //   ),
-                      // ),
-                    ],
+                  const SizedBox(height: 8),
+                  SCButton.rectangle_secondary(
+                    title: '회원가입',
+                    width: 417,
+                    onPressed: () {
+                      route.goNamed(RouterPath.register.name);
+                    },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      children: [
-                        // 자동 로그인 / ID 저장 체크박스
-                        // viewModel 데이터 연동해서 value 컨트롤 해야됨
-                        SCCheckBox(
-                          value: false,
-                          onChanged: (value) {},
-                        ),
-                        // SCText('자동 로그인 / ID 저장',
-                        //     textStyle: SCTextStyle.$font_14px_w700_h100),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: SCButton.capsule_login_api(
-                          width: 60,
-                          title: '구글',
-                          onPressed: () {
-                            route.go(RouterPath.home.path);
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: SCButton.capsule_login_api(
-                          width: 60,
-                          title: '카카오',
-                          onPressed: () {
-                            route.go(RouterPath.home.path);
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: SCButton.capsule_login_api(
-                          width: 60,
-                          title: '네이버',
-                          onPressed: () {
-                            route.go(RouterPath.home.path);
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: SCButton.capsule_login_api(
-                          width: 60,
-                          title: '애플',
-                          onPressed: () {
-                            route.go(RouterPath.home.path);
-                          },
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 8),
+                  SCButton.rectangle_primary(
+                    title: '로그인 - 레이아웃 테스트',
+                    width: 417,
+                    onPressed: () {
+                      route.go(RouterPath.newHome.path);
+                    },
                   ),
                 ],
               ),
-            ),
-          ),
-        ],
-      );
-    },
-    error: (error, stackTrace) => Text('error $error'),
-    loading: () => const Text('로딩'),
-  );
+            )
+          ],
+        ),
+      )),
+    );
+  }
 }

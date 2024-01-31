@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_data1.dart';
+part of 'auth_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthData {
-  Auth get authInfo => throw _privateConstructorUsedError;
+  Auth get userInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthDataCopyWith<AuthData> get copyWith =>
@@ -28,9 +28,9 @@ abstract class $AuthDataCopyWith<$Res> {
   factory $AuthDataCopyWith(AuthData value, $Res Function(AuthData) then) =
       _$AuthDataCopyWithImpl<$Res, AuthData>;
   @useResult
-  $Res call({Auth authInfo});
+  $Res call({Auth userInfo});
 
-  $AuthCopyWith<$Res> get authInfo;
+  $AuthCopyWith<$Res> get userInfo;
 }
 
 /// @nodoc
@@ -46,21 +46,21 @@ class _$AuthDataCopyWithImpl<$Res, $Val extends AuthData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? authInfo = null,
+    Object? userInfo = null,
   }) {
     return _then(_value.copyWith(
-      authInfo: null == authInfo
-          ? _value.authInfo
-          : authInfo // ignore: cast_nullable_to_non_nullable
+      userInfo: null == userInfo
+          ? _value.userInfo
+          : userInfo // ignore: cast_nullable_to_non_nullable
               as Auth,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AuthCopyWith<$Res> get authInfo {
-    return $AuthCopyWith<$Res>(_value.authInfo, (value) {
-      return _then(_value.copyWith(authInfo: value) as $Val);
+  $AuthCopyWith<$Res> get userInfo {
+    return $AuthCopyWith<$Res>(_value.userInfo, (value) {
+      return _then(_value.copyWith(userInfo: value) as $Val);
     });
   }
 }
@@ -73,10 +73,10 @@ abstract class _$$AuthDataImplCopyWith<$Res>
       __$$AuthDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Auth authInfo});
+  $Res call({Auth userInfo});
 
   @override
-  $AuthCopyWith<$Res> get authInfo;
+  $AuthCopyWith<$Res> get userInfo;
 }
 
 /// @nodoc
@@ -90,12 +90,12 @@ class __$$AuthDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? authInfo = null,
+    Object? userInfo = null,
   }) {
     return _then(_$AuthDataImpl(
-      authInfo: null == authInfo
-          ? _value.authInfo
-          : authInfo // ignore: cast_nullable_to_non_nullable
+      userInfo: null == userInfo
+          ? _value.userInfo
+          : userInfo // ignore: cast_nullable_to_non_nullable
               as Auth,
     ));
   }
@@ -104,14 +104,14 @@ class __$$AuthDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthDataImpl implements _AuthData {
-  const _$AuthDataImpl({required this.authInfo});
+  const _$AuthDataImpl({required this.userInfo});
 
   @override
-  final Auth authInfo;
+  final Auth userInfo;
 
   @override
   String toString() {
-    return 'AuthData(authInfo: $authInfo)';
+    return 'AuthData(userInfo: $userInfo)';
   }
 
   @override
@@ -119,12 +119,12 @@ class _$AuthDataImpl implements _AuthData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthDataImpl &&
-            (identical(other.authInfo, authInfo) ||
-                other.authInfo == authInfo));
+            (identical(other.userInfo, userInfo) ||
+                other.userInfo == userInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authInfo);
+  int get hashCode => Object.hash(runtimeType, userInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -134,10 +134,10 @@ class _$AuthDataImpl implements _AuthData {
 }
 
 abstract class _AuthData implements AuthData {
-  const factory _AuthData({required final Auth authInfo}) = _$AuthDataImpl;
+  const factory _AuthData({required final Auth userInfo}) = _$AuthDataImpl;
 
   @override
-  Auth get authInfo;
+  Auth get userInfo;
   @override
   @JsonKey(ignore: true)
   _$$AuthDataImplCopyWith<_$AuthDataImpl> get copyWith =>
@@ -146,8 +146,6 @@ abstract class _AuthData implements AuthData {
 
 /// @nodoc
 mixin _$Auth {
-  String? get id => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
 
@@ -160,11 +158,7 @@ abstract class $AuthCopyWith<$Res> {
   factory $AuthCopyWith(Auth value, $Res Function(Auth) then) =
       _$AuthCopyWithImpl<$Res, Auth>;
   @useResult
-  $Res call(
-      {String? id,
-      String? password,
-      String? refreshToken,
-      String? accessToken});
+  $Res call({String? refreshToken, String? accessToken});
 }
 
 /// @nodoc
@@ -180,20 +174,10 @@ class _$AuthCopyWithImpl<$Res, $Val extends Auth>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? password = freezed,
     Object? refreshToken = freezed,
     Object? accessToken = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -213,11 +197,7 @@ abstract class _$$AuthImplCopyWith<$Res> implements $AuthCopyWith<$Res> {
       __$$AuthImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? id,
-      String? password,
-      String? refreshToken,
-      String? accessToken});
+  $Res call({String? refreshToken, String? accessToken});
 }
 
 /// @nodoc
@@ -230,20 +210,10 @@ class __$$AuthImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? password = freezed,
     Object? refreshToken = freezed,
     Object? accessToken = freezed,
   }) {
     return _then(_$AuthImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -259,13 +229,8 @@ class __$$AuthImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthImpl implements _Auth {
-  const _$AuthImpl(
-      {this.id, this.password, this.refreshToken, this.accessToken});
+  const _$AuthImpl({this.refreshToken, this.accessToken});
 
-  @override
-  final String? id;
-  @override
-  final String? password;
   @override
   final String? refreshToken;
   @override
@@ -273,7 +238,7 @@ class _$AuthImpl implements _Auth {
 
   @override
   String toString() {
-    return 'Auth(id: $id, password: $password, refreshToken: $refreshToken, accessToken: $accessToken)';
+    return 'Auth(refreshToken: $refreshToken, accessToken: $accessToken)';
   }
 
   @override
@@ -281,9 +246,6 @@ class _$AuthImpl implements _Auth {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.accessToken, accessToken) ||
@@ -291,8 +253,7 @@ class _$AuthImpl implements _Auth {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, password, refreshToken, accessToken);
+  int get hashCode => Object.hash(runtimeType, refreshToken, accessToken);
 
   @JsonKey(ignore: true)
   @override
@@ -302,16 +263,9 @@ class _$AuthImpl implements _Auth {
 }
 
 abstract class _Auth implements Auth {
-  const factory _Auth(
-      {final String? id,
-      final String? password,
-      final String? refreshToken,
-      final String? accessToken}) = _$AuthImpl;
+  const factory _Auth({final String? refreshToken, final String? accessToken}) =
+      _$AuthImpl;
 
-  @override
-  String? get id;
-  @override
-  String? get password;
   @override
   String? get refreshToken;
   @override
