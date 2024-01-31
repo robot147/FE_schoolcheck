@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/model/register_data.dart';
 import 'package:flutter_application_1/model/school_info.dart';
+import 'package:flutter_application_1/repository/register_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -52,6 +53,8 @@ class RegisterPage extends _$RegisterPage {
     } else if (state.registerInfo.password !=
         state.registerInfo.passwordValidate) {
       return '비밀번호가 일치하지 않습니다.';
+    } else if (state.registerInfo.school == null) {
+      return '학교 정보를 등록해주세요';
     } else {
       return null;
     }
@@ -62,8 +65,20 @@ class RegisterPage extends _$RegisterPage {
     // signUpRepository에서 해당 이메일 체크 로직 실행
   }
 
-  // 회원가입
-  Future<void> signUp() async {
+  // 회원가입 함수
+  Future<bool> signUp() async {
     // signUpRepository에서 회원가입 API 진행
+    final name = state.registerInfo.name!;
+    final email = state.registerInfo.email!;
+    final password = state.registerInfo.password!;
+    final schoolId =
+        state.registerInfo.school != null ? state.registerInfo.school!.id : 0;
+
+    return await RegisterRepository().signUp(body: {
+      'email': email,
+      'name': name,
+      'password': password,
+      'schoolId': schoolId.toString(),
+    });
   }
 }

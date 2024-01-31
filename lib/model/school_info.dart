@@ -12,14 +12,9 @@ class SchoolInfoData with _$SchoolInfoData {
 @freezed
 class SchoolInfo with _$SchoolInfo {
   const factory SchoolInfo({
-    String? totalCount, // 데이터 총 갯수
-    String? schoolName, // 학교 이름
-    String? schoolGubun, // 학교 구분 (초,중,고 등)
-    String? schoolType, // 학교 타입 (4년제, 전문대 등)
-    String? estType, // 설립 유형 (사립,공립 등)
-    String? region, // 지역
-    String? adres, // 주소
-    String? link, // 학교 링크
+    int? id,
+    String? name, // 학교 이름
+    String? address, // 주소
     bool? isSelected,
   }) = _SchoolInfo;
 }

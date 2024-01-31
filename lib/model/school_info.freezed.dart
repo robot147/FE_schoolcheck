@@ -163,16 +163,9 @@ abstract class _SchoolInfoData implements SchoolInfoData {
 
 /// @nodoc
 mixin _$SchoolInfo {
-  String? get totalCount => throw _privateConstructorUsedError; // 데이터 총 갯수
-  String? get schoolName => throw _privateConstructorUsedError; // 학교 이름
-  String? get schoolGubun =>
-      throw _privateConstructorUsedError; // 학교 구분 (초,중,고 등)
-  String? get schoolType =>
-      throw _privateConstructorUsedError; // 학교 타입 (4년제, 전문대 등)
-  String? get estType => throw _privateConstructorUsedError; // 설립 유형 (사립,공립 등)
-  String? get region => throw _privateConstructorUsedError; // 지역
-  String? get adres => throw _privateConstructorUsedError;
-  String? get link => throw _privateConstructorUsedError; // 학교 링크
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError; // 학교 이름
+  String? get address => throw _privateConstructorUsedError; // 주소
   bool? get isSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -186,16 +179,7 @@ abstract class $SchoolInfoCopyWith<$Res> {
           SchoolInfo value, $Res Function(SchoolInfo) then) =
       _$SchoolInfoCopyWithImpl<$Res, SchoolInfo>;
   @useResult
-  $Res call(
-      {String? totalCount,
-      String? schoolName,
-      String? schoolGubun,
-      String? schoolType,
-      String? estType,
-      String? region,
-      String? adres,
-      String? link,
-      bool? isSelected});
+  $Res call({int? id, String? name, String? address, bool? isSelected});
 }
 
 /// @nodoc
@@ -211,48 +195,23 @@ class _$SchoolInfoCopyWithImpl<$Res, $Val extends SchoolInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalCount = freezed,
-    Object? schoolName = freezed,
-    Object? schoolGubun = freezed,
-    Object? schoolType = freezed,
-    Object? estType = freezed,
-    Object? region = freezed,
-    Object? adres = freezed,
-    Object? link = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
     Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
-      totalCount: freezed == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolName: freezed == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolGubun: freezed == schoolGubun
-          ? _value.schoolGubun
-          : schoolGubun // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolType: freezed == schoolType
-          ? _value.schoolType
-          : schoolType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      estType: freezed == estType
-          ? _value.estType
-          : estType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
-      adres: freezed == adres
-          ? _value.adres
-          : adres // ignore: cast_nullable_to_non_nullable
-              as String?,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String?,
       isSelected: freezed == isSelected
           ? _value.isSelected
@@ -270,16 +229,7 @@ abstract class _$$SchoolInfoImplCopyWith<$Res>
       __$$SchoolInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? totalCount,
-      String? schoolName,
-      String? schoolGubun,
-      String? schoolType,
-      String? estType,
-      String? region,
-      String? adres,
-      String? link,
-      bool? isSelected});
+  $Res call({int? id, String? name, String? address, bool? isSelected});
 }
 
 /// @nodoc
@@ -293,48 +243,23 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalCount = freezed,
-    Object? schoolName = freezed,
-    Object? schoolGubun = freezed,
-    Object? schoolType = freezed,
-    Object? estType = freezed,
-    Object? region = freezed,
-    Object? adres = freezed,
-    Object? link = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
     Object? isSelected = freezed,
   }) {
     return _then(_$SchoolInfoImpl(
-      totalCount: freezed == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolName: freezed == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolGubun: freezed == schoolGubun
-          ? _value.schoolGubun
-          : schoolGubun // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolType: freezed == schoolType
-          ? _value.schoolType
-          : schoolType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      estType: freezed == estType
-          ? _value.estType
-          : estType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
-      adres: freezed == adres
-          ? _value.adres
-          : adres // ignore: cast_nullable_to_non_nullable
-              as String?,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String?,
       isSelected: freezed == isSelected
           ? _value.isSelected
@@ -347,46 +272,22 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SchoolInfoImpl implements _SchoolInfo {
-  const _$SchoolInfoImpl(
-      {this.totalCount,
-      this.schoolName,
-      this.schoolGubun,
-      this.schoolType,
-      this.estType,
-      this.region,
-      this.adres,
-      this.link,
-      this.isSelected});
+  const _$SchoolInfoImpl({this.id, this.name, this.address, this.isSelected});
 
   @override
-  final String? totalCount;
-// 데이터 총 갯수
+  final int? id;
   @override
-  final String? schoolName;
+  final String? name;
 // 학교 이름
   @override
-  final String? schoolGubun;
-// 학교 구분 (초,중,고 등)
-  @override
-  final String? schoolType;
-// 학교 타입 (4년제, 전문대 등)
-  @override
-  final String? estType;
-// 설립 유형 (사립,공립 등)
-  @override
-  final String? region;
-// 지역
-  @override
-  final String? adres;
-  @override
-  final String? link;
-// 학교 링크
+  final String? address;
+// 주소
   @override
   final bool? isSelected;
 
   @override
   String toString() {
-    return 'SchoolInfo(totalCount: $totalCount, schoolName: $schoolName, schoolGubun: $schoolGubun, schoolType: $schoolType, estType: $estType, region: $region, adres: $adres, link: $link, isSelected: $isSelected)';
+    return 'SchoolInfo(id: $id, name: $name, address: $address, isSelected: $isSelected)';
   }
 
   @override
@@ -394,25 +295,15 @@ class _$SchoolInfoImpl implements _SchoolInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SchoolInfoImpl &&
-            (identical(other.totalCount, totalCount) ||
-                other.totalCount == totalCount) &&
-            (identical(other.schoolName, schoolName) ||
-                other.schoolName == schoolName) &&
-            (identical(other.schoolGubun, schoolGubun) ||
-                other.schoolGubun == schoolGubun) &&
-            (identical(other.schoolType, schoolType) ||
-                other.schoolType == schoolType) &&
-            (identical(other.estType, estType) || other.estType == estType) &&
-            (identical(other.region, region) || other.region == region) &&
-            (identical(other.adres, adres) || other.adres == adres) &&
-            (identical(other.link, link) || other.link == link) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
             (identical(other.isSelected, isSelected) ||
                 other.isSelected == isSelected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, totalCount, schoolName,
-      schoolGubun, schoolType, estType, region, adres, link, isSelected);
+  int get hashCode => Object.hash(runtimeType, id, name, address, isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -423,33 +314,18 @@ class _$SchoolInfoImpl implements _SchoolInfo {
 
 abstract class _SchoolInfo implements SchoolInfo {
   const factory _SchoolInfo(
-      {final String? totalCount,
-      final String? schoolName,
-      final String? schoolGubun,
-      final String? schoolType,
-      final String? estType,
-      final String? region,
-      final String? adres,
-      final String? link,
+      {final int? id,
+      final String? name,
+      final String? address,
       final bool? isSelected}) = _$SchoolInfoImpl;
 
   @override
-  String? get totalCount;
-  @override // 데이터 총 갯수
-  String? get schoolName;
-  @override // 학교 이름
-  String? get schoolGubun;
-  @override // 학교 구분 (초,중,고 등)
-  String? get schoolType;
-  @override // 학교 타입 (4년제, 전문대 등)
-  String? get estType;
-  @override // 설립 유형 (사립,공립 등)
-  String? get region;
-  @override // 지역
-  String? get adres;
+  int? get id;
   @override
-  String? get link;
-  @override // 학교 링크
+  String? get name;
+  @override // 학교 이름
+  String? get address;
+  @override // 주소
   bool? get isSelected;
   @override
   @JsonKey(ignore: true)

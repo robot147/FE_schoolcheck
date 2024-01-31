@@ -17,7 +17,7 @@ class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
   Future<void> searchSchoolInfo() async {
     final searchSchoolNm = state.searchName;
     print('searchSchoolName is $searchSchoolNm');
-    final params = {'schoolName': state.searchName ?? ''};
+    final params = {'query': state.searchName ?? ''};
     final results = await SchoolInfoRepository().getSchoolInfo(
       searchSchoolNm: searchSchoolNm ?? '',
       params: params,
@@ -30,8 +30,9 @@ class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
 
       schoolInfo.add(
         SchoolInfo(
-          schoolName: result.schoolName,
-          adres: result.adres,
+          name: result.name,
+          address: result.address,
+          id: result.id,
         ),
       );
     }
@@ -51,8 +52,7 @@ class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
     final infoList = List<SchoolInfo>.from(state.schoolInfo);
 
     for (int i = 0; i < infoList.length; i++) {
-      if (infoList[i].schoolName == data.schoolName &&
-          infoList[i].adres == data.adres) {
+      if (infoList[i].id == data.id) {
         infoList[i] = data.copyWith(isSelected: true);
       } else {
         infoList[i] = infoList[i].copyWith(isSelected: false);

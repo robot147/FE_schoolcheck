@@ -7,7 +7,7 @@ part of 'register_find_school_modal_view_model.dart';
 // **************************************************************************
 
 String _$registerFindSchoolModalHash() =>
-    r'a940bf5aa17ebd2bcad9bd70d36ded0ad100b9e5';
+    r'096376c4040b685dfb053e720333b1ddee85bc16';
 
 /// See also [RegisterFindSchoolModal].
 @ProviderFor(RegisterFindSchoolModal)

@@ -89,7 +89,7 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
 
     final notifier = ref.read(registerPageProvider.notifier);
 
-    nowSchoolNm.text = state.registerInfo.school?.schoolName ?? '';
+    nowSchoolNm.text = state.registerInfo.school?.name ?? '';
     if (_isPage) {
       // 1 페이지
       return GestureDetector(
@@ -543,10 +543,12 @@ class _RegisterPage extends ConsumerState<RegisterPage> {
                             title: '가입하기',
                             width: screenSize.width / 4 - 5,
                             onPressed: () {
-                              setState(() {
-                                showToast(false);
-                                // route.go(RouterPath.login.path);
-                              });
+                              // setState(() {
+                              //   showToast(false);
+                              //   // route.go(RouterPath.login.path);
+                              // });
+                              notifier.signUp();
+                              route.goNamed(RouterPath.login.name);
                             },
                           ),
                         ],
@@ -704,7 +706,7 @@ Widget searchedSchoolWidget(SchoolInfo data, WidgetRef ref) {
               height: 48,
               child: Center(
                 child: SCText(
-                  data.schoolName.toString(),
+                  data.name.toString(),
                   textStyle: SCTextStyle.font_14px_w400_h100,
                 ),
               ),
@@ -719,7 +721,7 @@ Widget searchedSchoolWidget(SchoolInfo data, WidgetRef ref) {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: SCText(
-                  data.adres.toString(),
+                  data.address.toString(),
                   textStyle: SCTextStyle.font_14px_w400_h100,
                 ),
               ),

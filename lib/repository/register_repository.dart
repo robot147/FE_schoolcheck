@@ -10,33 +10,25 @@ class RegisterRepository {
     return _instance;
   }
 
-  /// 로그인 POST
+  /// 회원가입 POST
 
-  Future<bool> signIn({
-    required Map<String, String> body, //TODO 타입변경
+  Future<bool> signUp({
+    required Map<String, String> body,
   }) async {
     try {
       final res = await HTTPConnector.post(
-        url: API_ENDPOINT.signIn, body: body,
+        url: API_ENDPOINT.signUp, body: body,
         // header: authToken.header,
       );
 
-      // final out = MemberActiveMemberActiveObjModel.fromJson(
-      //   res?['data'] as Map<String, dynamic>,
-      // );
-      // return out;
+      print('res is $res');
+
       return true;
     } on HttpException catch (e) {
       logger.e(e);
     } on Exception catch (e) {
       logger.e(e);
     }
-    return false;
-  }
-
-  Future<bool> signUp({
-    required Map<String, String> body,
-  }) async {
     return false;
   }
 }
