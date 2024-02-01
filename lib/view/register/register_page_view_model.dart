@@ -1,8 +1,6 @@
 import 'package:flutter_application_1/model/register_data.dart';
 import 'package:flutter_application_1/repository/register_repository.dart';
 import 'package:flutter_application_1/model/school_info.dart';
-import 'package:flutter_application_1/repository/register_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'register_page_view_model.g.dart';
@@ -100,10 +98,6 @@ class RegisterPage extends _$RegisterPage {
       (state) => state?.copyWith(
         isPage: isCheck,
       ),
-  RegisterData build() {
-    //STATE 반환
-    return const RegisterData(
-      registerInfo: RegisterInfo(name: null, email: null, password: null),
     );
   }
 
@@ -112,24 +106,24 @@ class RegisterPage extends _$RegisterPage {
     String? email,
     String? password,
     String? passwordValidate,
-    String? schoolName,
-    int? schoolId,
+    SchoolInfo? school,
   }) {
     update((state) => state?.copyWith(
-        registerInfo: RegisterInfo(
-            name: name ?? state.registerInfo.name,
-            email: email ?? state.registerInfo.email,
-            password: password ?? state.registerInfo.password,
-            passwordValidate: passwordValidate ?? state.registerInfo.passwordValidate,
-            school: SchoolInfo ?? state.registerInfo.school,
-            )));
+            registerInfo: RegisterInfo(
+          name: name ?? state.registerInfo.name,
+          email: email ?? state.registerInfo.email,
+          password: password ?? state.registerInfo.password,
+          passwordValidate:
+              passwordValidate ?? state.registerInfo.passwordValidate,
+          school: school ?? state.registerInfo.school,
+        )));
   }
 
   // 모달에서 학교 선택시 학교 설정하는 함수
   Future<void> setUserSchool({required SchoolInfo data}) async {
-    state = state.copyWith(
-      registerInfo: state.registerInfo.copyWith(school: data),
-    );
+    update((state) => state?.copyWith(
+          registerInfo: state.registerInfo.copyWith(school: data),
+        ));
   }
 
   // 밸리데이션 체크 함수
@@ -140,12 +134,12 @@ class RegisterPage extends _$RegisterPage {
       return '이메일을 입력해주세요.';
     } else if (state.value!.registerInfo.password == '') {
       return '비밀번호를 입력해주세요.';
-    } else if (state.value!.registerInfo.passwordCheck == '') {
+    } else if (state.value!.registerInfo.passwordValidate == '') {
       return '비밀번호 확인을 입력해주세요.';
     } else if (state.value!.registerInfo.school == null) {
       return '학교 정보를 등록해주세요';
     } else if (state.value!.registerInfo.password !=
-        state.value!.registerInfo.passwordCheck) {
+        state.value!.registerInfo.passwordValidate) {
       return '비밀번호가 일치하지 않습니다.';
     } else {
       return null;
@@ -165,6 +159,7 @@ class RegisterPage extends _$RegisterPage {
 
   // 이메일 중복 체크
   Future<String?> emailExistCheck() async {
+    return null;
     // signUpRepository에서 해당 이메일 체크 로직 실행
   }
 
@@ -174,8 +169,9 @@ class RegisterPage extends _$RegisterPage {
     final name = state.value!.registerInfo.name!;
     final email = state.value!.registerInfo.email!;
     final password = state.value!.registerInfo.password!;
-    final schoolId =
-        state.value!.registerInfo.school != null ? state.value!.registerInfo.school!.id : 0;
+    final schoolId = state.value!.registerInfo.school != null
+        ? state.value!.registerInfo.school!.id
+        : 0;
 
     return await RegisterRepository().signUp(body: {
       'email': email,
@@ -184,4 +180,4 @@ class RegisterPage extends _$RegisterPage {
       'schoolId': schoolId,
     });
   }
-}}
+}

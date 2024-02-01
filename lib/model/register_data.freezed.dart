@@ -17,17 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RegisterData {
   RegisterInfo get registerInfo => throw _privateConstructorUsedError;
-  bool? get isCheckAgreeAll =>
-      throw _privateConstructorUsedError; // 동의항목 (추가적으로 동의할 것 발생시 추가)
-  bool? get isCheckAgreeTermOfUse =>
+  bool get isCheckAgreeAll => throw _privateConstructorUsedError; // 전체 동의
+  bool get isCheckAgreeTermOfUse =>
       throw _privateConstructorUsedError; // 이용약관 동의(필수)
-  bool? get isCheckAgreePrivateCollectionAndUse =>
+  bool get isCheckAgreePrivateCollectionAndUse =>
       throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의(필수)
-  bool? get isArrowAgreeTermOfUse =>
+  bool get isArrowAgreeTermOfUse =>
       throw _privateConstructorUsedError; // 이용약관 동의 내용
-  bool? get isArrowAgreePrivateCollectionAndUse =>
+  bool get isArrowAgreePrivateCollectionAndUse =>
       throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의 내용
-  int? get paginate => throw _privateConstructorUsedError;
+  bool get isPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterDataCopyWith<RegisterData> get copyWith =>
@@ -42,12 +41,12 @@ abstract class $RegisterDataCopyWith<$Res> {
   @useResult
   $Res call(
       {RegisterInfo registerInfo,
-      bool? isCheckAgreeAll,
-      bool? isCheckAgreeTermOfUse,
-      bool? isCheckAgreePrivateCollectionAndUse,
-      bool? isArrowAgreeTermOfUse,
-      bool? isArrowAgreePrivateCollectionAndUse,
-      int? paginate});
+      bool isCheckAgreeAll,
+      bool isCheckAgreeTermOfUse,
+      bool isCheckAgreePrivateCollectionAndUse,
+      bool isArrowAgreeTermOfUse,
+      bool isArrowAgreePrivateCollectionAndUse,
+      bool isPage});
 
   $RegisterInfoCopyWith<$Res> get registerInfo;
 }
@@ -66,18 +65,18 @@ class _$RegisterDataCopyWithImpl<$Res, $Val extends RegisterData>
   @override
   $Res call({
     Object? registerInfo = null,
-    Object? isCheckAgreeAll = freezed,
-    Object? isCheckAgreeTermOfUse = freezed,
-    Object? isCheckAgreePrivateCollectionAndUse = freezed,
-    Object? isArrowAgreeTermOfUse = freezed,
-    Object? isArrowAgreePrivateCollectionAndUse = freezed,
-    Object? paginate = freezed,
+    Object? isCheckAgreeAll = null,
+    Object? isCheckAgreeTermOfUse = null,
+    Object? isCheckAgreePrivateCollectionAndUse = null,
+    Object? isArrowAgreeTermOfUse = null,
+    Object? isArrowAgreePrivateCollectionAndUse = null,
+    Object? isPage = null,
   }) {
     return _then(_value.copyWith(
       registerInfo: null == registerInfo
           ? _value.registerInfo
           : registerInfo // ignore: cast_nullable_to_non_nullable
-              as Register,
+              as RegisterInfo,
       isCheckAgreeAll: null == isCheckAgreeAll
           ? _value.isCheckAgreeAll
           : isCheckAgreeAll // ignore: cast_nullable_to_non_nullable
@@ -109,8 +108,8 @@ class _$RegisterDataCopyWithImpl<$Res, $Val extends RegisterData>
 
   @override
   @pragma('vm:prefer-inline')
-  $RegisterCopyWith<$Res> get registerInfo {
-    return $RegisterCopyWith<$Res>(_value.registerInfo, (value) {
+  $RegisterInfoCopyWith<$Res> get registerInfo {
+    return $RegisterInfoCopyWith<$Res>(_value.registerInfo, (value) {
       return _then(_value.copyWith(registerInfo: value) as $Val);
     });
   }
@@ -125,7 +124,7 @@ abstract class _$$RegisterDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Register registerInfo,
+      {RegisterInfo registerInfo,
       bool isCheckAgreeAll,
       bool isCheckAgreeTermOfUse,
       bool isCheckAgreePrivateCollectionAndUse,
@@ -134,7 +133,7 @@ abstract class _$$RegisterDataImplCopyWith<$Res>
       bool isPage});
 
   @override
-  $RegisterCopyWith<$Res> get registerInfo;
+  $RegisterInfoCopyWith<$Res> get registerInfo;
 }
 
 /// @nodoc
@@ -160,7 +159,7 @@ class __$$RegisterDataImplCopyWithImpl<$Res>
       registerInfo: null == registerInfo
           ? _value.registerInfo
           : registerInfo // ignore: cast_nullable_to_non_nullable
-              as Register,
+              as RegisterInfo,
       isCheckAgreeAll: null == isCheckAgreeAll
           ? _value.isCheckAgreeAll
           : isCheckAgreeAll // ignore: cast_nullable_to_non_nullable
@@ -204,7 +203,7 @@ class _$RegisterDataImpl implements _RegisterData {
       required this.isPage});
 
   @override
-  final Register registerInfo;
+  final RegisterInfo registerInfo;
   @override
   final bool isCheckAgreeAll;
 // 전체 동의
@@ -270,9 +269,9 @@ class _$RegisterDataImpl implements _RegisterData {
       __$$RegisterDataImplCopyWithImpl<_$RegisterDataImpl>(this, _$identity);
 }
 
-class _RegisterData implements RegisterData {
+abstract class _RegisterData implements RegisterData {
   const factory _RegisterData(
-      {required final Register registerInfo,
+      {required final RegisterInfo registerInfo,
       required final bool isCheckAgreeAll,
       required final bool isCheckAgreeTermOfUse,
       required final bool isCheckAgreePrivateCollectionAndUse,
@@ -281,7 +280,7 @@ class _RegisterData implements RegisterData {
       required final bool isPage}) = _$RegisterDataImpl;
 
   @override
-  Register get registerInfo;
+  RegisterInfo get registerInfo;
   @override
   bool get isCheckAgreeAll;
   @override // 전체 동의
@@ -301,37 +300,39 @@ class _RegisterData implements RegisterData {
 }
 
 /// @nodoc
-mixin _$Register {
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get passwordCheck => throw _privateConstructorUsedError;
-  String get schoolName => throw _privateConstructorUsedError;
-  int get schoolId => throw _privateConstructorUsedError;
+mixin _$RegisterInfo {
+  String? get name => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
+  String? get passwordValidate =>
+      throw _privateConstructorUsedError; // 비밀번호 확인용 변수
+  SchoolInfo? get school => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterCopyWith<Register> get copyWith =>
+  $RegisterInfoCopyWith<RegisterInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterCopyWith<$Res> {
-  factory $RegisterCopyWith(Register value, $Res Function(Register) then) =
-      _$RegisterCopyWithImpl<$Res, Register>;
+abstract class $RegisterInfoCopyWith<$Res> {
+  factory $RegisterInfoCopyWith(
+          RegisterInfo value, $Res Function(RegisterInfo) then) =
+      _$RegisterInfoCopyWithImpl<$Res, RegisterInfo>;
   @useResult
   $Res call(
-      {String name,
-      String email,
-      String password,
-      String passwordCheck,
-      String schoolName,
-      int schoolId});
+      {String? name,
+      String? email,
+      String? password,
+      String? passwordValidate,
+      SchoolInfo? school});
+
+  $SchoolInfoCopyWith<$Res>? get school;
 }
 
 /// @nodoc
-class _$RegisterCopyWithImpl<$Res, $Val extends Register>
-    implements $RegisterCopyWith<$Res> {
-  _$RegisterCopyWithImpl(this._value, this._then);
+class _$RegisterInfoCopyWithImpl<$Res, $Val extends RegisterInfo>
+    implements $RegisterInfoCopyWith<$Res> {
+  _$RegisterInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -341,186 +342,158 @@ class _$RegisterCopyWithImpl<$Res, $Val extends Register>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
-    Object? passwordCheck = null,
-    Object? schoolName = null,
-    Object? schoolId = null,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? passwordValidate = freezed,
+    Object? school = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordCheck: null == passwordCheck
-          ? _value.passwordCheck
-          : passwordCheck // ignore: cast_nullable_to_non_nullable
-              as String,
-      schoolName: null == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
-              as String,
-      schoolId: null == schoolId
-          ? _value.schoolId
-          : schoolId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      passwordValidate: freezed == passwordValidate
+          ? _value.passwordValidate
+          : passwordValidate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      school: freezed == school
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
+              as SchoolInfo?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SchoolInfoCopyWith<$Res>? get school {
+    if (_value.school == null) {
+      return null;
+    }
+
+    return $SchoolInfoCopyWith<$Res>(_value.school!, (value) {
+      return _then(_value.copyWith(school: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$RegisterImplCopyWith<$Res>
-    implements $RegisterCopyWith<$Res> {
-  factory _$$RegisterImplCopyWith(
-          _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
-      __$$RegisterImplCopyWithImpl<$Res>;
+abstract class _$$RegisterInfoImplCopyWith<$Res>
+    implements $RegisterInfoCopyWith<$Res> {
+  factory _$$RegisterInfoImplCopyWith(
+          _$RegisterInfoImpl value, $Res Function(_$RegisterInfoImpl) then) =
+      __$$RegisterInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String name,
-      String email,
-      String password,
-      String passwordCheck,
-      String schoolName,
-      int schoolId});
+      {String? name,
+      String? email,
+      String? password,
+      String? passwordValidate,
+      SchoolInfo? school});
+
+  @override
+  $SchoolInfoCopyWith<$Res>? get school;
 }
 
 /// @nodoc
-class __$$RegisterImplCopyWithImpl<$Res>
-    extends _$RegisterCopyWithImpl<$Res, _$RegisterImpl>
-    implements _$$RegisterImplCopyWith<$Res> {
-  __$$RegisterImplCopyWithImpl(
-      _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
+class __$$RegisterInfoImplCopyWithImpl<$Res>
+    extends _$RegisterInfoCopyWithImpl<$Res, _$RegisterInfoImpl>
+    implements _$$RegisterInfoImplCopyWith<$Res> {
+  __$$RegisterInfoImplCopyWithImpl(
+      _$RegisterInfoImpl _value, $Res Function(_$RegisterInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
-    Object? passwordCheck = null,
-    Object? schoolName = null,
-    Object? schoolId = null,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? passwordValidate = freezed,
+    Object? school = freezed,
   }) {
-    return _then(_$RegisterImpl(
-      name: null == name
+    return _then(_$RegisterInfoImpl(
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordCheck: null == passwordCheck
-          ? _value.passwordCheck
-          : passwordCheck // ignore: cast_nullable_to_non_nullable
-              as String,
-      schoolName: null == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
-              as String,
-      schoolId: null == schoolId
-          ? _value.schoolId
-          : schoolId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      passwordValidate: freezed == passwordValidate
+          ? _value.passwordValidate
+          : passwordValidate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      school: freezed == school
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
+              as SchoolInfo?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RegisterImpl implements _Register {
-  const _$RegisterImpl(
-      {required this.name,
-      required this.email,
-      required this.password,
-      required this.passwordCheck,
-      required this.schoolName,
-      required this.schoolId});
+class _$RegisterInfoImpl implements _RegisterInfo {
+  const _$RegisterInfoImpl(
+      {this.name,
+      this.email,
+      this.password,
+      this.passwordValidate,
+      this.school});
 
   @override
-  final String name;
+  final String? name;
   @override
-  final String email;
+  final String? email;
   @override
-  final String password;
+  final String? password;
   @override
-  final String passwordCheck;
+  final String? passwordValidate;
+// 비밀번호 확인용 변수
   @override
-  final String schoolName;
-  @override
-  final int schoolId;
+  final SchoolInfo? school;
 
   @override
   String toString() {
-    return 'Register(name: $name, email: $email, password: $password, passwordCheck: $passwordCheck, schoolName: $schoolName, schoolId: $schoolId)';
+    return 'RegisterInfo(name: $name, email: $email, password: $password, passwordValidate: $passwordValidate, school: $school)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterImpl &&
+            other is _$RegisterInfoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.passwordCheck, passwordCheck) ||
-                other.passwordCheck == passwordCheck) &&
-            (identical(other.schoolName, schoolName) ||
-                other.schoolName == schoolName) &&
-            (identical(other.schoolId, schoolId) ||
-                other.schoolId == schoolId));
+            (identical(other.passwordValidate, passwordValidate) ||
+                other.passwordValidate == passwordValidate) &&
+            (identical(other.school, school) || other.school == school));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, email, password, passwordCheck, schoolName, schoolId);
+  int get hashCode =>
+      Object.hash(runtimeType, name, email, password, passwordValidate, school);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      __$$RegisterImplCopyWithImpl<_$RegisterImpl>(this, _$identity);
-}
-
-abstract class _Register implements Register {
-  const factory _Register(
-      {required final String name,
-      required final String email,
-      required final String password,
-      required final String passwordCheck,
-      required final int schoolId}) = _$RegisterImpl;
-
-  @override
-  String get name;
-  @override
-  String get email;
-  @override
-  String get password;
-  @override
-  String get passwordCheck;
-  @override
-  String get schoolName;
-  @override
-  int get schoolId;
-  @override
-  @JsonKey(ignore: true)
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
   _$$RegisterInfoImplCopyWith<_$RegisterInfoImpl> get copyWith =>
       __$$RegisterInfoImplCopyWithImpl<_$RegisterInfoImpl>(this, _$identity);
 }
@@ -531,3 +504,20 @@ abstract class _RegisterInfo implements RegisterInfo {
       final String? email,
       final String? password,
       final String? passwordValidate,
+      final SchoolInfo? school}) = _$RegisterInfoImpl;
+
+  @override
+  String? get name;
+  @override
+  String? get email;
+  @override
+  String? get password;
+  @override
+  String? get passwordValidate;
+  @override // 비밀번호 확인용 변수
+  SchoolInfo? get school;
+  @override
+  @JsonKey(ignore: true)
+  _$$RegisterInfoImplCopyWith<_$RegisterInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
