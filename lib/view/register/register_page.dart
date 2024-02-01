@@ -277,9 +277,9 @@ class RegisterPage extends ConsumerWidget {
     final state = ref.watch(registerPageProvider); //열어둬야함...
     final notifier = ref.read(registerPageProvider.notifier);
 
-    final controllerSchollName = SCTextInputController();
-
     final nowSchoolNm = SCTextInputController();
+
+    nowSchoolNm.text = state.value!.registerInfo.school?.name ?? '';
 
     return GestureDetector(
         onTap: () {
@@ -394,7 +394,7 @@ class RegisterPage extends ConsumerWidget {
                                     print(value);
                                     print(state.value!.registerInfo.password);
                                     print(state
-                                        .value!.registerInfo.passwordCheck);
+                                        .value!.registerInfo.passwordValidate);
                                   },
                                   topLabel: '비밀번호',
                                 ),
@@ -415,7 +415,7 @@ class RegisterPage extends ConsumerWidget {
                                     placeHolder: "비밀번호를 다시 한번 입력해 주세요",
                                     focusNode: FocusNode(),
                                     onFocusOffCallback: (value) {
-                                      notifier.setter(passwordCheck: value);
+                                      notifier.setter(passwordValidate: value);
                                     },
                                     topLabel: '비밀번호 확인',
                                   ),
@@ -500,7 +500,7 @@ class RegisterPage extends ConsumerWidget {
                                         if (validationResult == null) {
                                           //통과
                                           final isSuccess =
-                                              await notifier.postSignUp();
+                                              await notifier.signUp();
                                           if (isSuccess) {
                                             toastPopup(context, '가입이 완료되었습니다.');
                                             route.go(RouterPath.login.path);
@@ -518,8 +518,8 @@ class RegisterPage extends ConsumerWidget {
                           ],
                         )
                       ]),
-                  SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
-                )
+                ),
+                SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
               ],
             ))));
   }
