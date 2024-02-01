@@ -6,7 +6,7 @@ part 'auth_data.freezed.dart';
 @freezed
 class AuthData with _$AuthData {
   const factory AuthData({
-    required Auth userInfo,
+    required Auth auth,
   }) = _AuthData;
 }
 

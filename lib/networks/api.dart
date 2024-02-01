@@ -7,6 +7,7 @@ enum API_ENDPOINT {
   signIn('/v1.0/accounts/sign-in'),
   searchSchool('/v1.0/accounts/sign-up/schools'),
   signUp('/v1.0/accounts/sign-up'),
+  refreshToken('/v1.0/accounts/re-issuance'),
   memberInfo('member/:memberId');
 
   const API_ENDPOINT(this._url);

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthData {
-  Auth get userInfo => throw _privateConstructorUsedError;
+  Auth get auth => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthDataCopyWith<AuthData> get copyWith =>
@@ -28,9 +28,9 @@ abstract class $AuthDataCopyWith<$Res> {
   factory $AuthDataCopyWith(AuthData value, $Res Function(AuthData) then) =
       _$AuthDataCopyWithImpl<$Res, AuthData>;
   @useResult
-  $Res call({Auth userInfo});
+  $Res call({Auth auth});
 
-  $AuthCopyWith<$Res> get userInfo;
+  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -46,21 +46,21 @@ class _$AuthDataCopyWithImpl<$Res, $Val extends AuthData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userInfo = null,
+    Object? auth = null,
   }) {
     return _then(_value.copyWith(
-      userInfo: null == userInfo
-          ? _value.userInfo
-          : userInfo // ignore: cast_nullable_to_non_nullable
+      auth: null == auth
+          ? _value.auth
+          : auth // ignore: cast_nullable_to_non_nullable
               as Auth,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AuthCopyWith<$Res> get userInfo {
-    return $AuthCopyWith<$Res>(_value.userInfo, (value) {
-      return _then(_value.copyWith(userInfo: value) as $Val);
+  $AuthCopyWith<$Res> get auth {
+    return $AuthCopyWith<$Res>(_value.auth, (value) {
+      return _then(_value.copyWith(auth: value) as $Val);
     });
   }
 }
@@ -73,10 +73,10 @@ abstract class _$$AuthDataImplCopyWith<$Res>
       __$$AuthDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Auth userInfo});
+  $Res call({Auth auth});
 
   @override
-  $AuthCopyWith<$Res> get userInfo;
+  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -90,12 +90,12 @@ class __$$AuthDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userInfo = null,
+    Object? auth = null,
   }) {
     return _then(_$AuthDataImpl(
-      userInfo: null == userInfo
-          ? _value.userInfo
-          : userInfo // ignore: cast_nullable_to_non_nullable
+      auth: null == auth
+          ? _value.auth
+          : auth // ignore: cast_nullable_to_non_nullable
               as Auth,
     ));
   }
@@ -104,14 +104,14 @@ class __$$AuthDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthDataImpl implements _AuthData {
-  const _$AuthDataImpl({required this.userInfo});
+  const _$AuthDataImpl({required this.auth});
 
   @override
-  final Auth userInfo;
+  final Auth auth;
 
   @override
   String toString() {
-    return 'AuthData(userInfo: $userInfo)';
+    return 'AuthData(auth: $auth)';
   }
 
   @override
@@ -119,12 +119,11 @@ class _$AuthDataImpl implements _AuthData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthDataImpl &&
-            (identical(other.userInfo, userInfo) ||
-                other.userInfo == userInfo));
+            (identical(other.auth, auth) || other.auth == auth));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userInfo);
+  int get hashCode => Object.hash(runtimeType, auth);
 
   @JsonKey(ignore: true)
   @override
@@ -134,10 +133,10 @@ class _$AuthDataImpl implements _AuthData {
 }
 
 abstract class _AuthData implements AuthData {
-  const factory _AuthData({required final Auth userInfo}) = _$AuthDataImpl;
+  const factory _AuthData({required final Auth auth}) = _$AuthDataImpl;
 
   @override
-  Auth get userInfo;
+  Auth get auth;
   @override
   @JsonKey(ignore: true)
   _$$AuthDataImplCopyWith<_$AuthDataImpl> get copyWith =>

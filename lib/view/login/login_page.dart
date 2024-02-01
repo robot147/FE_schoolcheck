@@ -20,6 +20,7 @@ class LoginPage extends ConsumerWidget {
     final route = ref.read(goRouterProvider);
     final state = ref.watch(loginPageProvider); //열어둬야함...
     final notifier = ref.read(loginPageProvider.notifier);
+    final screenSize = MediaQuery.of(context).size;
 
     return GestureDetector(
       onTap: () {
@@ -102,10 +103,27 @@ class LoginPage extends ConsumerWidget {
                       if (validationResult == null) {
                         //통과
                         final isSuccess = await notifier.postLogin();
-                        if (isSuccess) {
-                          route.go(RouterPath.home.path);
+                        if (isSuccess == '성공') {
+                          // route.go(RouterPath.home.path);
+                          route.go(RouterPath.newHome.path);
                         } else {
                           //로그인 실패
+                          showTopSnackBar(
+                            Overlay.of(context),
+                            SizedBox(
+                              height: 65,
+                              child: CustomSnackBar.info(
+                                message: isSuccess,
+                                textStyle: SCTextStyle.font_14px_w400_h100.value
+                                    .copyWith(
+                                  color: SCColors.color_grey_00,
+                                ),
+                                borderRadius: BorderRadius.zero,
+                                backgroundColor: SCColors.color_grey_85,
+                              ),
+                            ),
+                            displayDuration: const Duration(seconds: 1),
+                          );
                         }
                       } else {
                         //실패

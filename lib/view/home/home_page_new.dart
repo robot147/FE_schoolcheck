@@ -5,6 +5,7 @@ import 'package:flutter_application_1/design_system/text/text_style.dart';
 import 'package:flutter_application_1/gen/assets.gen.dart';
 import 'package:flutter_application_1/router/router.dart';
 import 'package:flutter_application_1/router/router_path.dart';
+import 'package:flutter_application_1/secure_storage/secure_storage.dart';
 import 'package:flutter_application_1/view/home/home_page_layout.dart';
 import 'package:flutter_application_1/widget/dialog.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,6 +30,7 @@ AppBar myAppBar(BuildContext context, WidgetRef ref) {
 
 Widget homeWidget(BuildContext context, WidgetRef ref) {
   final route = ref.read(goRouterProvider);
+  final authNotifier = ref.read(authProvider.notifier);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -171,6 +173,13 @@ Widget homeWidget(BuildContext context, WidgetRef ref) {
                   pathParameters: {'memberId': '1'});
             },
             child: const Text('회원 페이지')),
+      ),
+      SCButton.rectangle_primary(
+        title: '토큰 체크',
+        width: 417,
+        onPressed: () async {
+          await authNotifier.checkToken();
+        },
       ),
     ],
   );

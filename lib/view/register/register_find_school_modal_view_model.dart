@@ -13,7 +13,7 @@ class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
     return SchoolInfoData(schoolInfo: [], searchName: null);
   }
 
-  //
+  // 학교 찾기
   Future<void> searchSchoolInfo() async {
     final searchSchoolNm = state.searchName;
     print('searchSchoolName is $searchSchoolNm');

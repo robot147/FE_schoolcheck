@@ -56,4 +56,17 @@ class AuthRepository {
     }
     return null;
   }
+
+  Future<dynamic> getRefreshToken(Map<String, String> params) async {
+    try {
+      final res = await HTTPConnector.get(
+          url: API_ENDPOINT.refreshToken, params: params);
+
+      return res;
+    } on HttpException catch (e) {
+      logger.e(e);
+    } on Exception catch (e) {
+      logger.e(e);
+    }
+  }
 }
