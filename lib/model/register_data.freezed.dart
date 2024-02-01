@@ -16,17 +16,18 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RegisterData {
-  Register get registerInfo => throw _privateConstructorUsedError;
-  bool get isCheckAgreeAll => throw _privateConstructorUsedError; // 전체 동의
-  bool get isCheckAgreeTermOfUse =>
+  RegisterInfo get registerInfo => throw _privateConstructorUsedError;
+  bool? get isCheckAgreeAll =>
+      throw _privateConstructorUsedError; // 동의항목 (추가적으로 동의할 것 발생시 추가)
+  bool? get isCheckAgreeTermOfUse =>
       throw _privateConstructorUsedError; // 이용약관 동의(필수)
-  bool get isCheckAgreePrivateCollectionAndUse =>
+  bool? get isCheckAgreePrivateCollectionAndUse =>
       throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의(필수)
-  bool get isArrowAgreeTermOfUse =>
+  bool? get isArrowAgreeTermOfUse =>
       throw _privateConstructorUsedError; // 이용약관 동의 내용
-  bool get isArrowAgreePrivateCollectionAndUse =>
+  bool? get isArrowAgreePrivateCollectionAndUse =>
       throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의 내용
-  bool get isPage => throw _privateConstructorUsedError;
+  int? get paginate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterDataCopyWith<RegisterData> get copyWith =>
@@ -40,15 +41,15 @@ abstract class $RegisterDataCopyWith<$Res> {
       _$RegisterDataCopyWithImpl<$Res, RegisterData>;
   @useResult
   $Res call(
-      {Register registerInfo,
-      bool isCheckAgreeAll,
-      bool isCheckAgreeTermOfUse,
-      bool isCheckAgreePrivateCollectionAndUse,
-      bool isArrowAgreeTermOfUse,
-      bool isArrowAgreePrivateCollectionAndUse,
-      bool isPage});
+      {RegisterInfo registerInfo,
+      bool? isCheckAgreeAll,
+      bool? isCheckAgreeTermOfUse,
+      bool? isCheckAgreePrivateCollectionAndUse,
+      bool? isArrowAgreeTermOfUse,
+      bool? isArrowAgreePrivateCollectionAndUse,
+      int? paginate});
 
-  $RegisterCopyWith<$Res> get registerInfo;
+  $RegisterInfoCopyWith<$Res> get registerInfo;
 }
 
 /// @nodoc
@@ -65,12 +66,12 @@ class _$RegisterDataCopyWithImpl<$Res, $Val extends RegisterData>
   @override
   $Res call({
     Object? registerInfo = null,
-    Object? isCheckAgreeAll = null,
-    Object? isCheckAgreeTermOfUse = null,
-    Object? isCheckAgreePrivateCollectionAndUse = null,
-    Object? isArrowAgreeTermOfUse = null,
-    Object? isArrowAgreePrivateCollectionAndUse = null,
-    Object? isPage = null,
+    Object? isCheckAgreeAll = freezed,
+    Object? isCheckAgreeTermOfUse = freezed,
+    Object? isCheckAgreePrivateCollectionAndUse = freezed,
+    Object? isArrowAgreeTermOfUse = freezed,
+    Object? isArrowAgreePrivateCollectionAndUse = freezed,
+    Object? paginate = freezed,
   }) {
     return _then(_value.copyWith(
       registerInfo: null == registerInfo
@@ -269,7 +270,7 @@ class _$RegisterDataImpl implements _RegisterData {
       __$$RegisterDataImplCopyWithImpl<_$RegisterDataImpl>(this, _$identity);
 }
 
-abstract class _RegisterData implements RegisterData {
+class _RegisterData implements RegisterData {
   const factory _RegisterData(
       {required final Register registerInfo,
       required final bool isCheckAgreeAll,
@@ -503,7 +504,6 @@ abstract class _Register implements Register {
       required final String email,
       required final String password,
       required final String passwordCheck,
-      required final String schoolName,
       required final int schoolId}) = _$RegisterImpl;
 
   @override
@@ -521,5 +521,13 @@ abstract class _Register implements Register {
   @override
   @JsonKey(ignore: true)
   _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RegisterInfoImplCopyWith<_$RegisterInfoImpl> get copyWith =>
+      __$$RegisterInfoImplCopyWithImpl<_$RegisterInfoImpl>(this, _$identity);
 }
+
+abstract class _RegisterInfo implements RegisterInfo {
+  const factory _RegisterInfo(
+      {final String? name,
+      final String? email,
+      final String? password,
+      final String? passwordValidate,

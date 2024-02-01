@@ -21,6 +21,12 @@ class LoginRepository {
         // header: authToken.header,
       );
 
+      final resData = res?['data'] as Map<String, dynamic>;
+
+      print(resData['accessToken']);
+
+      print(resData['refreshToken']);
+
       // final out = MemberActiveMemberActiveObjModel.fromJson(
       //   res?['data'] as Map<String, dynamic>,
       // );

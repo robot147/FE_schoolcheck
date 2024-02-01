@@ -59,8 +59,39 @@ class SCButton extends StatefulWidget {
   final double? width; //120
   final bool disabled; //false
 
-  //(예시)  개발시, 직접 사용하는 부분
+  //개발시, 직접 사용하는 부분
   factory SCButton.capsule_primary({
+    Key? key,
+    required String title,
+    required void Function() onPressed,
+    double? width,
+    ButtonSize size = ButtonSize.large,
+    bool disabled = false,
+  }) {
+    //버튼마다 미리 정의해둬야함.
+    final style = ButtonStyle(
+      enabledColor: SCColors.color_brand,
+      enabledTextColor: SCColors.color_grey_00,
+      enabledGradientColor: SCColors.button_gradient,
+      radius: BorderRadius.circular(100),
+    );
+
+    return SCButton(
+      key: key,
+      style: style,
+      title: title,
+      onPressed: onPressed,
+      width: width,
+      size: size,
+      disabled: disabled,
+    );
+  }
+
+  ////////////////////////////////////////////
+  ///여기에 디자인대로 버튼 하나씩 추가하면 됨////
+  ///////////////////////////////////////////
+
+  factory SCButton.capsule_login_api({
     Key? key,
     required String title,
     required void Function() onPressed,
@@ -87,9 +118,6 @@ class SCButton extends StatefulWidget {
     );
   }
 
-  ////////////////////////////////////////////
-  ///여기에 디자인대로 버튼 하나씩 추가하면 됨////
-  ///////////////////////////////////////////
   factory SCButton.rectangle_primary({
     Key? key,
     required String title,
@@ -154,14 +182,12 @@ class SCButton extends StatefulWidget {
       bool disabled = false,
       FocusNode? focusNode}) {
     final style = ButtonStyle(
-      enabledColor: SCColors.color_grey_00,
-      enabledTextColor: SCColors.color_grey_99,
-      borderColor: SCColors.color_grey_20,
-      radius: BorderRadius.circular(0),
-      disabledColor: SCColors.color_grey_20,
-      disabledTextColor: SCColors.color_grey_50,
-    );
-
+        enabledColor: SCColors.color_grey_00,
+        enabledTextColor: SCColors.color_grey_99,
+        borderColor: SCColors.color_grey_20,
+        radius: BorderRadius.circular(0),
+        disabledColor: SCColors.color_grey_20,
+        disabledTextColor: SCColors.color_grey_50);
     return SCButton(
       key: key,
       style: style,
@@ -225,7 +251,7 @@ class _SCButtonState extends State<SCButton> {
 
     return Container(
       width: widget.width ?? 120,
-      height: widget.size == ButtonSize.large ? 48 : 44,
+      height: widget.size == ButtonSize.large ? 44 : 30,
       decoration: BoxDecoration(
         border: makeBorder(),
         color: makeBgColor(),
@@ -257,8 +283,8 @@ class _SCButtonState extends State<SCButton> {
           child: SCText(
             widget.title,
             textStyle: widget.size == ButtonSize.large
-                ? SCTextStyle.font_14px_w500_h100
-                : (widget.style.smallFont ?? SCTextStyle.font_14px_w400_h100),
+                ? SCTextStyle.font_400_13px_140pc_P
+                : (widget.style.smallFont ?? SCTextStyle.font_400_12px_140pc_P),
             color: makeTextColor(),
           ),
         ),

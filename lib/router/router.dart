@@ -3,6 +3,8 @@ import 'package:flutter_application_1/router/router_path.dart';
 import 'package:flutter_application_1/view/example/example_page.dart';
 import 'package:flutter_application_1/view/example/radio_button/radio_button.dart';
 import 'package:flutter_application_1/view/home/home_page.dart';
+import 'package:flutter_application_1/view/home/home_page_new.dart';
+import 'package:flutter_application_1/view/home/management_page/management_page.dart';
 import 'package:flutter_application_1/view/home/member_page/member_page.dart';
 import 'package:flutter_application_1/view/login/login_page.dart';
 import 'package:flutter_application_1/view/register/register_page.dart';
@@ -36,7 +38,7 @@ final goRouterProvider = Provider<GoRouter>(
         GoRoute(
           path: RouterPath.splash.path,
           name: RouterPath.splash.name,
-          builder: (context, state) => const SplashPage(),
+          builder: (context, state) => SplashPage(),
         ),
 
         /// login
@@ -45,10 +47,12 @@ final goRouterProvider = Provider<GoRouter>(
           name: RouterPath.login.name,
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
-            child: const LoginPage(),
+            child: LoginPage(),
             transitionsBuilder: fadeTransition,
           ),
         ),
+
+        // register
         GoRoute(
           path: RouterPath.register.path,
           name: RouterPath.register.name,
@@ -105,6 +109,44 @@ final goRouterProvider = Provider<GoRouter>(
                 child: MemberPage(
                   memberId: state.pathParameters['memberId'] ?? '',
                 ),
+                transitionsBuilder: slideTransition,
+              ),
+            ),
+          ],
+        ),
+
+        // new Home
+        GoRoute(
+          path: RouterPath.newHome.path,
+          name: RouterPath.newHome.name,
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            transitionDuration: const Duration(seconds: 1),
+            key: state.pageKey,
+            child: const HomePageNew(),
+            transitionsBuilder: fadeTransition,
+          ),
+          routes: [
+            ///HOME 하위라우팅
+            /// home/member_page/:memberId
+            // GoRoute(
+            //   path: RouterPath.memberPage.path,
+            //   name: RouterPath.memberPage.name,
+            //   pageBuilder: (context, state) => CustomTransitionPage<void>(
+            //     transitionDuration: const Duration(milliseconds: 500),
+            //     key: state.pageKey,
+            //     child: MemberPage(
+            //       memberId: state.pathParameters['memberId'] ?? '',
+            //     ),
+            //     transitionsBuilder: slideTransition,
+            //   ),
+            // ),
+            GoRoute(
+              path: RouterPath.managementPage.path,
+              name: RouterPath.managementPage.name,
+              pageBuilder: (context, state) => CustomTransitionPage<void>(
+                transitionDuration: const Duration(milliseconds: 500),
+                key: state.pageKey,
+                child: ManagementPage(),
                 transitionsBuilder: slideTransition,
               ),
             ),
