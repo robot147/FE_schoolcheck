@@ -7,8 +7,14 @@ part 'register_page_view_model.g.dart';
 @riverpod
 class RegisterPage extends _$RegisterPage {
   @override
-  RegisterData build() {
+  Future<RegisterData?> build() async {
     return const RegisterData(
+        isCheckAgreeAll: false,
+        isCheckAgreeTermOfUse: false,
+        isCheckAgreePrivateCollectionAndUse: false,
+        isArrowAgreeTermOfUse: true,
+        isArrowAgreePrivateCollectionAndUse: false,
+        isPage: true,
         registerInfo: Register(
             name: '',
             email: '',
@@ -16,6 +22,83 @@ class RegisterPage extends _$RegisterPage {
             passwordCheck: '',
             schoolName: '',
             schoolId: 0));
+  }
+
+  // 전체 동의
+  void updateIsCheckAgreeAll({required bool isCheck}) {
+    update(
+      (state) => state?.copyWith(
+          isCheckAgreeAll: isCheck,
+          isCheckAgreeTermOfUse: isCheck,
+          isCheckAgreePrivateCollectionAndUse: isCheck),
+    );
+  }
+
+  // 이용약관 동의(필수)
+  void updateIsCheckAgreeTermOfUse({required bool isCheck}) {
+    if (state.value!.isCheckAgreePrivateCollectionAndUse && isCheck) {
+      updateIsCheckAgreeAll(isCheck: true);
+    } else if (isCheck) {
+      update(
+        (state) => state?.copyWith(
+          isCheckAgreeTermOfUse: isCheck,
+        ),
+      );
+    } else {
+      update(
+        (state) => state?.copyWith(
+          isCheckAgreeAll: isCheck,
+          isCheckAgreeTermOfUse: isCheck,
+        ),
+      );
+    }
+  }
+
+  // 개인정보 수집 및 이용 동의(필수)
+  void updateIsCheckAgreePrivateCollectionAndUse({required bool isCheck}) {
+    if (state.value!.isCheckAgreeTermOfUse && isCheck) {
+      updateIsCheckAgreeAll(isCheck: true);
+    } else if (isCheck) {
+      update(
+        (state) => state?.copyWith(
+          isCheckAgreePrivateCollectionAndUse: isCheck,
+        ),
+      );
+    } else {
+      update(
+        (state) => state?.copyWith(
+          isCheckAgreeAll: isCheck,
+          isCheckAgreePrivateCollectionAndUse: isCheck,
+        ),
+      );
+    }
+  }
+
+  // 이용약관 동의 내용
+  void updateIsArrowAgreeTermOfUse({required bool isCheck}) {
+    update(
+      (state) => state?.copyWith(
+        isArrowAgreeTermOfUse: isCheck,
+      ),
+    );
+  }
+
+  // 개인정보 수집 및 이용 동의 내용
+  void updateIsArrowAgreePrivateCollectionAndUse({required bool isCheck}) {
+    update(
+      (state) => state?.copyWith(
+        isArrowAgreePrivateCollectionAndUse: isCheck,
+      ),
+    );
+  }
+
+  // 페이지 전환
+  void updateIsPage({required bool isCheck}) {
+    update(
+      (state) => state?.copyWith(
+        isPage: isCheck,
+      ),
+    );
   }
 
   void setter({
@@ -26,42 +109,53 @@ class RegisterPage extends _$RegisterPage {
     String? schoolName,
     int? schoolId,
   }) {
-    state = state.copyWith(
+    update((state) => state?.copyWith(
         registerInfo: Register(
             name: name ?? state.registerInfo.name,
             email: email ?? state.registerInfo.email,
             password: password ?? state.registerInfo.password,
             passwordCheck: passwordCheck ?? state.registerInfo.passwordCheck,
             schoolName: schoolName ?? state.registerInfo.schoolName,
-            schoolId: schoolId ?? state.registerInfo.schoolId));
+            schoolId: schoolId ?? state.registerInfo.schoolId)));
   }
 
   String? validationCheck() {
-    if (state.registerInfo.name == '') {
+    if (state.value!.registerInfo.name == '') {
       return '이름을 입력해주세요.';
-    } else if (state.registerInfo.email == '') {
+    } else if (state.value!.registerInfo.email == '') {
       return '이메일을 입력해주세요.';
-    } else if (state.registerInfo.password == '') {
+    } else if (state.value!.registerInfo.password == '') {
       return '비밀번호를 입력해주세요.';
-    } else if (state.registerInfo.passwordCheck == '') {
+    } else if (state.value!.registerInfo.passwordCheck == '') {
       return '비밀번호 확인을 입력해주세요.';
-    } else if (state.registerInfo.schoolName == '') {
+    } else if (state.value!.registerInfo.schoolName == '') {
       return '학교이름을 입력해주세요.';
-    } else if (state.registerInfo.password !=
-        state.registerInfo.passwordCheck) {
+    } else if (state.value!.registerInfo.password !=
+        state.value!.registerInfo.passwordCheck) {
       return '비밀번호가 일치하지 않습니다.';
     } else {
       return null;
     }
   }
 
+  // 체크 여부 확인
+  String? isCheckAgree() {
+    if (state.value!.isCheckAgreeTermOfUse &&
+        state.value!.isCheckAgreePrivateCollectionAndUse) {
+      updateIsPage(isCheck: false);
+      return null;
+    } else {
+      return '필수 이용약관에 모두 동의해야 가입할 수 있어요.';
+    }
+  }
+
   Future<bool> postSignUp() async {
     return await RegisterRepository().signUp(
       body: {
-        'name': state.registerInfo.name,
-        'email': state.registerInfo.email,
-        'password': state.registerInfo.password,
-        'schoolId': state.registerInfo.schoolId
+        'name': state.value!.registerInfo.name,
+        'email': state.value!.registerInfo.email,
+        'password': state.value!.registerInfo.password,
+        'schoolId': state.value!.registerInfo.schoolId
       },
     );
   }

@@ -150,7 +150,11 @@ class HTTPConnector {
       );
     }
 
-    return res.data;
+    if (res.statusCode == 201 || res.statusCode == 204) {
+      return {"success": true};
+    } else {
+      return res.data;
+    }
   }
 
   //PATCH

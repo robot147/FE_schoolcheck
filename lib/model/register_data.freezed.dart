@@ -17,6 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RegisterData {
   Register get registerInfo => throw _privateConstructorUsedError;
+  bool get isCheckAgreeAll => throw _privateConstructorUsedError; // 전체 동의
+  bool get isCheckAgreeTermOfUse =>
+      throw _privateConstructorUsedError; // 이용약관 동의(필수)
+  bool get isCheckAgreePrivateCollectionAndUse =>
+      throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의(필수)
+  bool get isArrowAgreeTermOfUse =>
+      throw _privateConstructorUsedError; // 이용약관 동의 내용
+  bool get isArrowAgreePrivateCollectionAndUse =>
+      throw _privateConstructorUsedError; // 개인정보 수집 및 이용 동의 내용
+  bool get isPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterDataCopyWith<RegisterData> get copyWith =>
@@ -29,7 +39,14 @@ abstract class $RegisterDataCopyWith<$Res> {
           RegisterData value, $Res Function(RegisterData) then) =
       _$RegisterDataCopyWithImpl<$Res, RegisterData>;
   @useResult
-  $Res call({Register registerInfo});
+  $Res call(
+      {Register registerInfo,
+      bool isCheckAgreeAll,
+      bool isCheckAgreeTermOfUse,
+      bool isCheckAgreePrivateCollectionAndUse,
+      bool isArrowAgreeTermOfUse,
+      bool isArrowAgreePrivateCollectionAndUse,
+      bool isPage});
 
   $RegisterCopyWith<$Res> get registerInfo;
 }
@@ -48,12 +65,44 @@ class _$RegisterDataCopyWithImpl<$Res, $Val extends RegisterData>
   @override
   $Res call({
     Object? registerInfo = null,
+    Object? isCheckAgreeAll = null,
+    Object? isCheckAgreeTermOfUse = null,
+    Object? isCheckAgreePrivateCollectionAndUse = null,
+    Object? isArrowAgreeTermOfUse = null,
+    Object? isArrowAgreePrivateCollectionAndUse = null,
+    Object? isPage = null,
   }) {
     return _then(_value.copyWith(
       registerInfo: null == registerInfo
           ? _value.registerInfo
           : registerInfo // ignore: cast_nullable_to_non_nullable
               as Register,
+      isCheckAgreeAll: null == isCheckAgreeAll
+          ? _value.isCheckAgreeAll
+          : isCheckAgreeAll // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckAgreeTermOfUse: null == isCheckAgreeTermOfUse
+          ? _value.isCheckAgreeTermOfUse
+          : isCheckAgreeTermOfUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckAgreePrivateCollectionAndUse: null ==
+              isCheckAgreePrivateCollectionAndUse
+          ? _value.isCheckAgreePrivateCollectionAndUse
+          : isCheckAgreePrivateCollectionAndUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArrowAgreeTermOfUse: null == isArrowAgreeTermOfUse
+          ? _value.isArrowAgreeTermOfUse
+          : isArrowAgreeTermOfUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArrowAgreePrivateCollectionAndUse: null ==
+              isArrowAgreePrivateCollectionAndUse
+          ? _value.isArrowAgreePrivateCollectionAndUse
+          : isArrowAgreePrivateCollectionAndUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPage: null == isPage
+          ? _value.isPage
+          : isPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -74,7 +123,14 @@ abstract class _$$RegisterDataImplCopyWith<$Res>
       __$$RegisterDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Register registerInfo});
+  $Res call(
+      {Register registerInfo,
+      bool isCheckAgreeAll,
+      bool isCheckAgreeTermOfUse,
+      bool isCheckAgreePrivateCollectionAndUse,
+      bool isArrowAgreeTermOfUse,
+      bool isArrowAgreePrivateCollectionAndUse,
+      bool isPage});
 
   @override
   $RegisterCopyWith<$Res> get registerInfo;
@@ -92,12 +148,44 @@ class __$$RegisterDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? registerInfo = null,
+    Object? isCheckAgreeAll = null,
+    Object? isCheckAgreeTermOfUse = null,
+    Object? isCheckAgreePrivateCollectionAndUse = null,
+    Object? isArrowAgreeTermOfUse = null,
+    Object? isArrowAgreePrivateCollectionAndUse = null,
+    Object? isPage = null,
   }) {
     return _then(_$RegisterDataImpl(
       registerInfo: null == registerInfo
           ? _value.registerInfo
           : registerInfo // ignore: cast_nullable_to_non_nullable
               as Register,
+      isCheckAgreeAll: null == isCheckAgreeAll
+          ? _value.isCheckAgreeAll
+          : isCheckAgreeAll // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckAgreeTermOfUse: null == isCheckAgreeTermOfUse
+          ? _value.isCheckAgreeTermOfUse
+          : isCheckAgreeTermOfUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckAgreePrivateCollectionAndUse: null ==
+              isCheckAgreePrivateCollectionAndUse
+          ? _value.isCheckAgreePrivateCollectionAndUse
+          : isCheckAgreePrivateCollectionAndUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArrowAgreeTermOfUse: null == isArrowAgreeTermOfUse
+          ? _value.isArrowAgreeTermOfUse
+          : isArrowAgreeTermOfUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isArrowAgreePrivateCollectionAndUse: null ==
+              isArrowAgreePrivateCollectionAndUse
+          ? _value.isArrowAgreePrivateCollectionAndUse
+          : isArrowAgreePrivateCollectionAndUse // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPage: null == isPage
+          ? _value.isPage
+          : isPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -105,14 +193,38 @@ class __$$RegisterDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RegisterDataImpl implements _RegisterData {
-  const _$RegisterDataImpl({required this.registerInfo});
+  const _$RegisterDataImpl(
+      {required this.registerInfo,
+      required this.isCheckAgreeAll,
+      required this.isCheckAgreeTermOfUse,
+      required this.isCheckAgreePrivateCollectionAndUse,
+      required this.isArrowAgreeTermOfUse,
+      required this.isArrowAgreePrivateCollectionAndUse,
+      required this.isPage});
 
   @override
   final Register registerInfo;
+  @override
+  final bool isCheckAgreeAll;
+// 전체 동의
+  @override
+  final bool isCheckAgreeTermOfUse;
+// 이용약관 동의(필수)
+  @override
+  final bool isCheckAgreePrivateCollectionAndUse;
+// 개인정보 수집 및 이용 동의(필수)
+  @override
+  final bool isArrowAgreeTermOfUse;
+// 이용약관 동의 내용
+  @override
+  final bool isArrowAgreePrivateCollectionAndUse;
+// 개인정보 수집 및 이용 동의 내용
+  @override
+  final bool isPage;
 
   @override
   String toString() {
-    return 'RegisterData(registerInfo: $registerInfo)';
+    return 'RegisterData(registerInfo: $registerInfo, isCheckAgreeAll: $isCheckAgreeAll, isCheckAgreeTermOfUse: $isCheckAgreeTermOfUse, isCheckAgreePrivateCollectionAndUse: $isCheckAgreePrivateCollectionAndUse, isArrowAgreeTermOfUse: $isArrowAgreeTermOfUse, isArrowAgreePrivateCollectionAndUse: $isArrowAgreePrivateCollectionAndUse, isPage: $isPage)';
   }
 
   @override
@@ -121,11 +233,34 @@ class _$RegisterDataImpl implements _RegisterData {
         (other.runtimeType == runtimeType &&
             other is _$RegisterDataImpl &&
             (identical(other.registerInfo, registerInfo) ||
-                other.registerInfo == registerInfo));
+                other.registerInfo == registerInfo) &&
+            (identical(other.isCheckAgreeAll, isCheckAgreeAll) ||
+                other.isCheckAgreeAll == isCheckAgreeAll) &&
+            (identical(other.isCheckAgreeTermOfUse, isCheckAgreeTermOfUse) ||
+                other.isCheckAgreeTermOfUse == isCheckAgreeTermOfUse) &&
+            (identical(other.isCheckAgreePrivateCollectionAndUse,
+                    isCheckAgreePrivateCollectionAndUse) ||
+                other.isCheckAgreePrivateCollectionAndUse ==
+                    isCheckAgreePrivateCollectionAndUse) &&
+            (identical(other.isArrowAgreeTermOfUse, isArrowAgreeTermOfUse) ||
+                other.isArrowAgreeTermOfUse == isArrowAgreeTermOfUse) &&
+            (identical(other.isArrowAgreePrivateCollectionAndUse,
+                    isArrowAgreePrivateCollectionAndUse) ||
+                other.isArrowAgreePrivateCollectionAndUse ==
+                    isArrowAgreePrivateCollectionAndUse) &&
+            (identical(other.isPage, isPage) || other.isPage == isPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, registerInfo);
+  int get hashCode => Object.hash(
+      runtimeType,
+      registerInfo,
+      isCheckAgreeAll,
+      isCheckAgreeTermOfUse,
+      isCheckAgreePrivateCollectionAndUse,
+      isArrowAgreeTermOfUse,
+      isArrowAgreePrivateCollectionAndUse,
+      isPage);
 
   @JsonKey(ignore: true)
   @override
@@ -135,11 +270,29 @@ class _$RegisterDataImpl implements _RegisterData {
 }
 
 abstract class _RegisterData implements RegisterData {
-  const factory _RegisterData({required final Register registerInfo}) =
-      _$RegisterDataImpl;
+  const factory _RegisterData(
+      {required final Register registerInfo,
+      required final bool isCheckAgreeAll,
+      required final bool isCheckAgreeTermOfUse,
+      required final bool isCheckAgreePrivateCollectionAndUse,
+      required final bool isArrowAgreeTermOfUse,
+      required final bool isArrowAgreePrivateCollectionAndUse,
+      required final bool isPage}) = _$RegisterDataImpl;
 
   @override
   Register get registerInfo;
+  @override
+  bool get isCheckAgreeAll;
+  @override // 전체 동의
+  bool get isCheckAgreeTermOfUse;
+  @override // 이용약관 동의(필수)
+  bool get isCheckAgreePrivateCollectionAndUse;
+  @override // 개인정보 수집 및 이용 동의(필수)
+  bool get isArrowAgreeTermOfUse;
+  @override // 이용약관 동의 내용
+  bool get isArrowAgreePrivateCollectionAndUse;
+  @override // 개인정보 수집 및 이용 동의 내용
+  bool get isPage;
   @override
   @JsonKey(ignore: true)
   _$$RegisterDataImplCopyWith<_$RegisterDataImpl> get copyWith =>

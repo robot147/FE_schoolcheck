@@ -17,15 +17,11 @@ class RegisterRepository {
   }) async {
     try {
       final res = await HTTPConnector.post(
-        url: API_ENDPOINT.signUp, body: body,
-        // header: authToken.header,
+        url: API_ENDPOINT.signUp,
+        body: body,
       );
 
-      // final out = MemberActiveMemberActiveObjModel.fromJson(
-      //   res?['data'] as Map<String, dynamic>,
-      // );
-      // return out;
-      return res?['success'] as bool;
+      return res?["success"] as bool;
     } on HttpException catch (e) {
       logger.e(e);
     } on Exception catch (e) {
