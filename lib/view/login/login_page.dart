@@ -133,7 +133,7 @@ class LoginPage extends ConsumerWidget {
                     title: '회원가입',
                     width: 417,
                     onPressed: () {
-                      route.goNamed(RouterPath.register.name);
+                      route.go(RouterPath.register.path);
                     },
                   ),
                   const SizedBox(height: 8),

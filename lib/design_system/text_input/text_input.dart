@@ -13,22 +13,24 @@ enum SCTextInputState {
 class SCTextInputController extends TextEditingController {}
 
 class SCTextInput extends StatefulWidget {
-  SCTextInput({
-    super.key,
-    required this.controller,
-    required SCTextInputState state,
-    this.topLabel,
-    this.showFlush = false,
-    this.needSecure = false,
-    this.placeHolder,
-    this.initValue,
-    this.keyboardType = TextInputType.text,
-    TextInputAction? textInputAction,
-    FocusNode? focusNode,
-    this.onFocusOffCallback,
+  SCTextInput(
+      {super.key,
+      required this.controller,
+      required SCTextInputState state,
+      this.topLabel,
+      this.showFlush = false,
+      this.needSecure = false,
+      this.placeHolder,
+      this.initValue,
+      this.keyboardType = TextInputType.text,
+      TextInputAction? textInputAction,
+      FocusNode? focusNode,
+      this.onFocusOffCallback,
+      this.onChanged
 
-    // List<TextInputFormatter>? customInputFormatters, //필요시 추가(formatter)
-  })  : assert(
+      // List<TextInputFormatter>? customInputFormatters, //필요시 추가(formatter)
+      })
+      : assert(
           onFocusOffCallback != null ? focusNode != null : true,
           'onFocusOffCallback을 사용할시, focusNode가 반드시 있어야함.',
         ),
@@ -45,6 +47,7 @@ class SCTextInput extends StatefulWidget {
             ),
             border: InputBorder.none,
           ),
+          onChanged: onChanged,
           enabled: state != SCTextInputState.disabled,
           obscureText: needSecure,
           textAlignVertical: TextAlignVertical.center,
@@ -84,6 +87,9 @@ class SCTextInput extends StatefulWidget {
 
   /// focusNode
   final FocusNode focusNode;
+
+  /// 타이핑 이벤트
+  final ValueChanged<String>? onChanged;
 
   /// textfield에서 focus가 빠졌을때 실행될 콜백
   final void Function(String)? onFocusOffCallback;

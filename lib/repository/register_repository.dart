@@ -13,17 +13,15 @@ class RegisterRepository {
   /// 회원가입 POST
 
   Future<bool> signUp({
-    required Map<String, String> body,
+    required Map<String, dynamic> body, //TODO 타입변경
   }) async {
     try {
       final res = await HTTPConnector.post(
-        url: API_ENDPOINT.signUp, body: body,
-        // header: authToken.header,
+        url: API_ENDPOINT.signUp,
+        body: body,
       );
 
-      print('res is $res');
-
-      return true;
+      return res?["success"] as bool;
     } on HttpException catch (e) {
       logger.e(e);
     } on Exception catch (e) {

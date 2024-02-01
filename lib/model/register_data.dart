@@ -6,12 +6,12 @@ part 'register_data.freezed.dart';
 class RegisterData with _$RegisterData {
   const factory RegisterData({
     required RegisterInfo registerInfo,
-    bool? isCheckAgreeAll, // 동의항목 (추가적으로 동의할 것 발생시 추가)
-    bool? isCheckAgreeTermOfUse, // 이용약관 동의(필수)
-    bool? isCheckAgreePrivateCollectionAndUse, // 개인정보 수집 및 이용 동의(필수)
-    bool? isArrowAgreeTermOfUse, // 이용약관 동의 내용
-    bool? isArrowAgreePrivateCollectionAndUse, // 개인정보 수집 및 이용 동의 내용
-    int? paginate,
+    required bool isCheckAgreeAll, // 전체 동의
+    required bool isCheckAgreeTermOfUse, // 이용약관 동의(필수)
+    required bool isCheckAgreePrivateCollectionAndUse, // 개인정보 수집 및 이용 동의(필수)
+    required bool isArrowAgreeTermOfUse, // 이용약관 동의 내용
+    required bool isArrowAgreePrivateCollectionAndUse, // 개인정보 수집 및 이용 동의 내용
+    required bool isPage, // true : 1페이지 / false : 2페이지
   }) = _RegisterData;
 }
 
