@@ -4,19 +4,17 @@ part 'school_info.freezed.dart';
 @freezed
 class SchoolInfoData with _$SchoolInfoData {
   const factory SchoolInfoData({
-    required SchoolInfo schoolInfo,
+    required List<SchoolInfo> schoolInfo,
+    String? searchName,
   }) = _SchoolInfoData;
 }
 
 @freezed
 class SchoolInfo with _$SchoolInfo {
   const factory SchoolInfo({
-    String? totalCount,
-    String? schoolName,
-    String? schoolGubun,
-    String? schoolType,
-    String? estType,
-    String? region,
-    String? link,
+    int? id,
+    String? name, // 학교 이름
+    String? address, // 주소
+    bool? isSelected,
   }) = _SchoolInfo;
 }

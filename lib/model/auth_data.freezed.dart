@@ -146,8 +146,6 @@ abstract class _AuthData implements AuthData {
 
 /// @nodoc
 mixin _$Auth {
-  String? get id => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
 
@@ -160,11 +158,7 @@ abstract class $AuthCopyWith<$Res> {
   factory $AuthCopyWith(Auth value, $Res Function(Auth) then) =
       _$AuthCopyWithImpl<$Res, Auth>;
   @useResult
-  $Res call(
-      {String? id,
-      String? password,
-      String? refreshToken,
-      String? accessToken});
+  $Res call({String? refreshToken, String? accessToken});
 }
 
 /// @nodoc
@@ -180,20 +174,10 @@ class _$AuthCopyWithImpl<$Res, $Val extends Auth>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? password = freezed,
     Object? refreshToken = freezed,
     Object? accessToken = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -213,11 +197,7 @@ abstract class _$$AuthImplCopyWith<$Res> implements $AuthCopyWith<$Res> {
       __$$AuthImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? id,
-      String? password,
-      String? refreshToken,
-      String? accessToken});
+  $Res call({String? refreshToken, String? accessToken});
 }
 
 /// @nodoc
@@ -230,20 +210,10 @@ class __$$AuthImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? password = freezed,
     Object? refreshToken = freezed,
     Object? accessToken = freezed,
   }) {
     return _then(_$AuthImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
       refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -259,13 +229,8 @@ class __$$AuthImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthImpl implements _Auth {
-  const _$AuthImpl(
-      {this.id, this.password, this.refreshToken, this.accessToken});
+  const _$AuthImpl({this.refreshToken, this.accessToken});
 
-  @override
-  final String? id;
-  @override
-  final String? password;
   @override
   final String? refreshToken;
   @override
@@ -273,7 +238,7 @@ class _$AuthImpl implements _Auth {
 
   @override
   String toString() {
-    return 'Auth(id: $id, password: $password, refreshToken: $refreshToken, accessToken: $accessToken)';
+    return 'Auth(refreshToken: $refreshToken, accessToken: $accessToken)';
   }
 
   @override
@@ -281,9 +246,6 @@ class _$AuthImpl implements _Auth {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.accessToken, accessToken) ||
@@ -291,8 +253,7 @@ class _$AuthImpl implements _Auth {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, password, refreshToken, accessToken);
+  int get hashCode => Object.hash(runtimeType, refreshToken, accessToken);
 
   @JsonKey(ignore: true)
   @override
@@ -302,16 +263,9 @@ class _$AuthImpl implements _Auth {
 }
 
 abstract class _Auth implements Auth {
-  const factory _Auth(
-      {final String? id,
-      final String? password,
-      final String? refreshToken,
-      final String? accessToken}) = _$AuthImpl;
+  const factory _Auth({final String? refreshToken, final String? accessToken}) =
+      _$AuthImpl;
 
-  @override
-  String? get id;
-  @override
-  String? get password;
   @override
   String? get refreshToken;
   @override

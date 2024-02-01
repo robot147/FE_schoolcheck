@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SchoolInfoData {
-  SchoolInfo get schoolInfo => throw _privateConstructorUsedError;
+  List<SchoolInfo> get schoolInfo => throw _privateConstructorUsedError;
+  String? get searchName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SchoolInfoDataCopyWith<SchoolInfoData> get copyWith =>
@@ -29,9 +30,7 @@ abstract class $SchoolInfoDataCopyWith<$Res> {
           SchoolInfoData value, $Res Function(SchoolInfoData) then) =
       _$SchoolInfoDataCopyWithImpl<$Res, SchoolInfoData>;
   @useResult
-  $Res call({SchoolInfo schoolInfo});
-
-  $SchoolInfoCopyWith<$Res> get schoolInfo;
+  $Res call({List<SchoolInfo> schoolInfo, String? searchName});
 }
 
 /// @nodoc
@@ -48,21 +47,18 @@ class _$SchoolInfoDataCopyWithImpl<$Res, $Val extends SchoolInfoData>
   @override
   $Res call({
     Object? schoolInfo = null,
+    Object? searchName = freezed,
   }) {
     return _then(_value.copyWith(
       schoolInfo: null == schoolInfo
           ? _value.schoolInfo
           : schoolInfo // ignore: cast_nullable_to_non_nullable
-              as SchoolInfo,
+              as List<SchoolInfo>,
+      searchName: freezed == searchName
+          ? _value.searchName
+          : searchName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SchoolInfoCopyWith<$Res> get schoolInfo {
-    return $SchoolInfoCopyWith<$Res>(_value.schoolInfo, (value) {
-      return _then(_value.copyWith(schoolInfo: value) as $Val);
-    });
   }
 }
 
@@ -74,10 +70,7 @@ abstract class _$$SchoolInfoDataImplCopyWith<$Res>
       __$$SchoolInfoDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SchoolInfo schoolInfo});
-
-  @override
-  $SchoolInfoCopyWith<$Res> get schoolInfo;
+  $Res call({List<SchoolInfo> schoolInfo, String? searchName});
 }
 
 /// @nodoc
@@ -92,12 +85,17 @@ class __$$SchoolInfoDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? schoolInfo = null,
+    Object? searchName = freezed,
   }) {
     return _then(_$SchoolInfoDataImpl(
       schoolInfo: null == schoolInfo
-          ? _value.schoolInfo
+          ? _value._schoolInfo
           : schoolInfo // ignore: cast_nullable_to_non_nullable
-              as SchoolInfo,
+              as List<SchoolInfo>,
+      searchName: freezed == searchName
+          ? _value.searchName
+          : searchName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -105,14 +103,24 @@ class __$$SchoolInfoDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SchoolInfoDataImpl implements _SchoolInfoData {
-  const _$SchoolInfoDataImpl({required this.schoolInfo});
+  const _$SchoolInfoDataImpl(
+      {required final List<SchoolInfo> schoolInfo, this.searchName})
+      : _schoolInfo = schoolInfo;
+
+  final List<SchoolInfo> _schoolInfo;
+  @override
+  List<SchoolInfo> get schoolInfo {
+    if (_schoolInfo is EqualUnmodifiableListView) return _schoolInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_schoolInfo);
+  }
 
   @override
-  final SchoolInfo schoolInfo;
+  final String? searchName;
 
   @override
   String toString() {
-    return 'SchoolInfoData(schoolInfo: $schoolInfo)';
+    return 'SchoolInfoData(schoolInfo: $schoolInfo, searchName: $searchName)';
   }
 
   @override
@@ -120,12 +128,15 @@ class _$SchoolInfoDataImpl implements _SchoolInfoData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SchoolInfoDataImpl &&
-            (identical(other.schoolInfo, schoolInfo) ||
-                other.schoolInfo == schoolInfo));
+            const DeepCollectionEquality()
+                .equals(other._schoolInfo, _schoolInfo) &&
+            (identical(other.searchName, searchName) ||
+                other.searchName == searchName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, schoolInfo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_schoolInfo), searchName);
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +147,14 @@ class _$SchoolInfoDataImpl implements _SchoolInfoData {
 }
 
 abstract class _SchoolInfoData implements SchoolInfoData {
-  const factory _SchoolInfoData({required final SchoolInfo schoolInfo}) =
-      _$SchoolInfoDataImpl;
+  const factory _SchoolInfoData(
+      {required final List<SchoolInfo> schoolInfo,
+      final String? searchName}) = _$SchoolInfoDataImpl;
 
   @override
-  SchoolInfo get schoolInfo;
+  List<SchoolInfo> get schoolInfo;
+  @override
+  String? get searchName;
   @override
   @JsonKey(ignore: true)
   _$$SchoolInfoDataImplCopyWith<_$SchoolInfoDataImpl> get copyWith =>
@@ -149,13 +163,10 @@ abstract class _SchoolInfoData implements SchoolInfoData {
 
 /// @nodoc
 mixin _$SchoolInfo {
-  String? get totalCount => throw _privateConstructorUsedError;
-  String? get schoolName => throw _privateConstructorUsedError;
-  String? get schoolGubun => throw _privateConstructorUsedError;
-  String? get schoolType => throw _privateConstructorUsedError;
-  String? get estType => throw _privateConstructorUsedError;
-  String? get region => throw _privateConstructorUsedError;
-  String? get link => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError; // 학교 이름
+  String? get address => throw _privateConstructorUsedError; // 주소
+  bool? get isSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SchoolInfoCopyWith<SchoolInfo> get copyWith =>
@@ -168,14 +179,7 @@ abstract class $SchoolInfoCopyWith<$Res> {
           SchoolInfo value, $Res Function(SchoolInfo) then) =
       _$SchoolInfoCopyWithImpl<$Res, SchoolInfo>;
   @useResult
-  $Res call(
-      {String? totalCount,
-      String? schoolName,
-      String? schoolGubun,
-      String? schoolType,
-      String? estType,
-      String? region,
-      String? link});
+  $Res call({int? id, String? name, String? address, bool? isSelected});
 }
 
 /// @nodoc
@@ -191,43 +195,28 @@ class _$SchoolInfoCopyWithImpl<$Res, $Val extends SchoolInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalCount = freezed,
-    Object? schoolName = freezed,
-    Object? schoolGubun = freezed,
-    Object? schoolType = freezed,
-    Object? estType = freezed,
-    Object? region = freezed,
-    Object? link = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
-      totalCount: freezed == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolName: freezed == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolGubun: freezed == schoolGubun
-          ? _value.schoolGubun
-          : schoolGubun // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolType: freezed == schoolType
-          ? _value.schoolType
-          : schoolType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      estType: freezed == estType
-          ? _value.estType
-          : estType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -240,14 +229,7 @@ abstract class _$$SchoolInfoImplCopyWith<$Res>
       __$$SchoolInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? totalCount,
-      String? schoolName,
-      String? schoolGubun,
-      String? schoolType,
-      String? estType,
-      String? region,
-      String? link});
+  $Res call({int? id, String? name, String? address, bool? isSelected});
 }
 
 /// @nodoc
@@ -261,43 +243,28 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalCount = freezed,
-    Object? schoolName = freezed,
-    Object? schoolGubun = freezed,
-    Object? schoolType = freezed,
-    Object? estType = freezed,
-    Object? region = freezed,
-    Object? link = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_$SchoolInfoImpl(
-      totalCount: freezed == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolName: freezed == schoolName
-          ? _value.schoolName
-          : schoolName // ignore: cast_nullable_to_non_nullable
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      schoolGubun: freezed == schoolGubun
-          ? _value.schoolGubun
-          : schoolGubun // ignore: cast_nullable_to_non_nullable
-              as String?,
-      schoolType: freezed == schoolType
-          ? _value.schoolType
-          : schoolType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      estType: freezed == estType
-          ? _value.estType
-          : estType // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
-      link: freezed == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -305,33 +272,22 @@ class __$$SchoolInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SchoolInfoImpl implements _SchoolInfo {
-  const _$SchoolInfoImpl(
-      {this.totalCount,
-      this.schoolName,
-      this.schoolGubun,
-      this.schoolType,
-      this.estType,
-      this.region,
-      this.link});
+  const _$SchoolInfoImpl({this.id, this.name, this.address, this.isSelected});
 
   @override
-  final String? totalCount;
+  final int? id;
   @override
-  final String? schoolName;
+  final String? name;
+// 학교 이름
   @override
-  final String? schoolGubun;
+  final String? address;
+// 주소
   @override
-  final String? schoolType;
-  @override
-  final String? estType;
-  @override
-  final String? region;
-  @override
-  final String? link;
+  final bool? isSelected;
 
   @override
   String toString() {
-    return 'SchoolInfo(totalCount: $totalCount, schoolName: $schoolName, schoolGubun: $schoolGubun, schoolType: $schoolType, estType: $estType, region: $region, link: $link)';
+    return 'SchoolInfo(id: $id, name: $name, address: $address, isSelected: $isSelected)';
   }
 
   @override
@@ -339,22 +295,15 @@ class _$SchoolInfoImpl implements _SchoolInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SchoolInfoImpl &&
-            (identical(other.totalCount, totalCount) ||
-                other.totalCount == totalCount) &&
-            (identical(other.schoolName, schoolName) ||
-                other.schoolName == schoolName) &&
-            (identical(other.schoolGubun, schoolGubun) ||
-                other.schoolGubun == schoolGubun) &&
-            (identical(other.schoolType, schoolType) ||
-                other.schoolType == schoolType) &&
-            (identical(other.estType, estType) || other.estType == estType) &&
-            (identical(other.region, region) || other.region == region) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, totalCount, schoolName,
-      schoolGubun, schoolType, estType, region, link);
+  int get hashCode => Object.hash(runtimeType, id, name, address, isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -365,28 +314,19 @@ class _$SchoolInfoImpl implements _SchoolInfo {
 
 abstract class _SchoolInfo implements SchoolInfo {
   const factory _SchoolInfo(
-      {final String? totalCount,
-      final String? schoolName,
-      final String? schoolGubun,
-      final String? schoolType,
-      final String? estType,
-      final String? region,
-      final String? link}) = _$SchoolInfoImpl;
+      {final int? id,
+      final String? name,
+      final String? address,
+      final bool? isSelected}) = _$SchoolInfoImpl;
 
   @override
-  String? get totalCount;
+  int? get id;
   @override
-  String? get schoolName;
-  @override
-  String? get schoolGubun;
-  @override
-  String? get schoolType;
-  @override
-  String? get estType;
-  @override
-  String? get region;
-  @override
-  String? get link;
+  String? get name;
+  @override // 학교 이름
+  String? get address;
+  @override // 주소
+  bool? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$SchoolInfoImplCopyWith<_$SchoolInfoImpl> get copyWith =>

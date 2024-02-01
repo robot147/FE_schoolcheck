@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_page_layout_view_model.dart';
+part of 'management_page_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homePageLayoutPageHash() =>
-    r'd8b9dbe20f0eaa6c04e5bedbc347a6e38f17289b';
+String _$managementPageHash() => r'b64656a1b129564183581e68de203a6f5488467c';
 
-/// See also [HomePageLayoutPage].
-@ProviderFor(HomePageLayoutPage)
-final homePageLayoutPageProvider =
-    AsyncNotifierProvider<HomePageLayoutPage, HomePageModelData>.internal(
-  HomePageLayoutPage.new,
-  name: r'homePageLayoutPageProvider',
+/// See also [ManagementPage].
+@ProviderFor(ManagementPage)
+final managementPageProvider =
+    AutoDisposeAsyncNotifierProvider<ManagementPage, ManagementData>.internal(
+  ManagementPage.new,
+  name: r'managementPageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$homePageLayoutPageHash,
+      : _$managementPageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HomePageLayoutPage = AsyncNotifier<HomePageModelData>;
+typedef _$ManagementPage = AutoDisposeAsyncNotifier<ManagementData>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

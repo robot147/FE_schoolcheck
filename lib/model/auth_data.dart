@@ -13,8 +13,6 @@ class AuthData with _$AuthData {
 @freezed
 class Auth with _$Auth {
   const factory Auth({
-    String? id,
-    String? password,
     String? refreshToken,
     String? accessToken,
   }) = _Auth;

@@ -4,7 +4,10 @@ const BASE_URL = 'http://baranewsong.synology.me';
 
 enum API_ENDPOINT {
   testPing('/ping'),
-  signIn('/v1.0/users/sign-in'),
+  signUp('/v1.0/accounts/sign-up'),
+  signIn('/v1.0/accounts/sign-in'),
+  searchSchool('/v1.0/accounts/sign-up/schools'),
+  emailCheck('/v1.0/accounts/sign-up/check/email'),
   memberInfo('member/:memberId');
 
   const API_ENDPOINT(this._url);

@@ -1,17 +1,17 @@
-import 'package:flutter_application_1/model/home_page_model.dart';
+import 'package:flutter_application_1/model/sidebar_model.dart';
 import 'package:flutter_application_1/model/member_data.dart';
 import 'package:flutter_application_1/repository/member_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_page_layout_view_model.g.dart';
+part 'sidebar_layout_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
-class HomePageLayoutPage extends _$HomePageLayoutPage {
+class SidebarLayoutPage extends _$SidebarLayoutPage {
   @override
-  Future<HomePageModelData> build() async {
-    const HomePageModelData result = HomePageModelData(
-      homePageModelInfo: HomePageModel(
+  Future<SidebarModelData> build() async {
+    final SidebarModelData result = SidebarModelData(
+      sidebarModel: SidebarModel(
         selectedIndex: 0,
         isLocked: false,
       ),
@@ -25,8 +25,7 @@ class HomePageLayoutPage extends _$HomePageLayoutPage {
   void setSelectedIndex({required int value}) {
     update(
       (state) => state.copyWith(
-        homePageModelInfo:
-            state.homePageModelInfo.copyWith(selectedIndex: value),
+        sidebarModel: state.sidebarModel.copyWith(selectedIndex: value),
       ),
     );
   }
@@ -35,8 +34,8 @@ class HomePageLayoutPage extends _$HomePageLayoutPage {
   void toggleIsLocked() {
     update(
       (state) => state.copyWith(
-        homePageModelInfo: state.homePageModelInfo.copyWith(
-          isLocked: !state.homePageModelInfo.isLocked,
+        sidebarModel: state.sidebarModel.copyWith(
+          isLocked: !state.sidebarModel.isLocked,
         ),
       ),
     );
