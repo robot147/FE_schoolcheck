@@ -108,22 +108,27 @@ class RegisterPage extends _$RegisterPage {
     String? passwordValidate,
     SchoolInfo? school,
   }) {
-    update((state) => state?.copyWith(
-            registerInfo: RegisterInfo(
+    update(
+      (state) => state?.copyWith(
+        registerInfo: RegisterInfo(
           name: name ?? state.registerInfo.name,
           email: email ?? state.registerInfo.email,
           password: password ?? state.registerInfo.password,
           passwordValidate:
               passwordValidate ?? state.registerInfo.passwordValidate,
           school: school ?? state.registerInfo.school,
-        )));
+        ),
+      ),
+    );
   }
 
   // 모달에서 학교 선택시 학교 설정하는 함수
   Future<void> setUserSchool({required SchoolInfo data}) async {
-    update((state) => state?.copyWith(
-          registerInfo: state.registerInfo.copyWith(school: data),
-        ));
+    update(
+      (state) => state?.copyWith(
+        registerInfo: state.registerInfo.copyWith(school: data),
+      ),
+    );
   }
 
   // 밸리데이션 체크 함수

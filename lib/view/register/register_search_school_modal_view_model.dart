@@ -3,10 +3,10 @@ import 'package:flutter_application_1/repository/school_info_repository.dart';
 import 'package:flutter_application_1/swagger_model/school_info_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'register_find_school_modal_view_model.g.dart';
+part 'register_search_school_modal_view_model.g.dart';
 
 @riverpod
-class RegisterFindSchoolModal extends _$RegisterFindSchoolModal {
+class RegisterSearchSchoolModal extends _$RegisterSearchSchoolModal {
   @override
   SchoolInfoData build() {
     //STATE 반환
