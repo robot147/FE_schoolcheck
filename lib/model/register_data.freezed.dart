@@ -303,6 +303,7 @@ abstract class _RegisterData implements RegisterData {
 mixin _$RegisterInfo {
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  String? get emailAddr => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   String? get passwordValidate =>
       throw _privateConstructorUsedError; // 비밀번호 확인용 변수
@@ -322,6 +323,7 @@ abstract class $RegisterInfoCopyWith<$Res> {
   $Res call(
       {String? name,
       String? email,
+      String? emailAddr,
       String? password,
       String? passwordValidate,
       SchoolInfo? school});
@@ -344,6 +346,7 @@ class _$RegisterInfoCopyWithImpl<$Res, $Val extends RegisterInfo>
   $Res call({
     Object? name = freezed,
     Object? email = freezed,
+    Object? emailAddr = freezed,
     Object? password = freezed,
     Object? passwordValidate = freezed,
     Object? school = freezed,
@@ -356,6 +359,10 @@ class _$RegisterInfoCopyWithImpl<$Res, $Val extends RegisterInfo>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailAddr: freezed == emailAddr
+          ? _value.emailAddr
+          : emailAddr // ignore: cast_nullable_to_non_nullable
               as String?,
       password: freezed == password
           ? _value.password
@@ -396,6 +403,7 @@ abstract class _$$RegisterInfoImplCopyWith<$Res>
   $Res call(
       {String? name,
       String? email,
+      String? emailAddr,
       String? password,
       String? passwordValidate,
       SchoolInfo? school});
@@ -417,6 +425,7 @@ class __$$RegisterInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? email = freezed,
+    Object? emailAddr = freezed,
     Object? password = freezed,
     Object? passwordValidate = freezed,
     Object? school = freezed,
@@ -429,6 +438,10 @@ class __$$RegisterInfoImplCopyWithImpl<$Res>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailAddr: freezed == emailAddr
+          ? _value.emailAddr
+          : emailAddr // ignore: cast_nullable_to_non_nullable
               as String?,
       password: freezed == password
           ? _value.password
@@ -452,6 +465,7 @@ class _$RegisterInfoImpl implements _RegisterInfo {
   const _$RegisterInfoImpl(
       {this.name,
       this.email,
+      this.emailAddr,
       this.password,
       this.passwordValidate,
       this.school});
@@ -460,6 +474,8 @@ class _$RegisterInfoImpl implements _RegisterInfo {
   final String? name;
   @override
   final String? email;
+  @override
+  final String? emailAddr;
   @override
   final String? password;
   @override
@@ -470,7 +486,7 @@ class _$RegisterInfoImpl implements _RegisterInfo {
 
   @override
   String toString() {
-    return 'RegisterInfo(name: $name, email: $email, password: $password, passwordValidate: $passwordValidate, school: $school)';
+    return 'RegisterInfo(name: $name, email: $email, emailAddr: $emailAddr, password: $password, passwordValidate: $passwordValidate, school: $school)';
   }
 
   @override
@@ -480,6 +496,8 @@ class _$RegisterInfoImpl implements _RegisterInfo {
             other is _$RegisterInfoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.emailAddr, emailAddr) ||
+                other.emailAddr == emailAddr) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.passwordValidate, passwordValidate) ||
@@ -488,8 +506,8 @@ class _$RegisterInfoImpl implements _RegisterInfo {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, email, password, passwordValidate, school);
+  int get hashCode => Object.hash(
+      runtimeType, name, email, emailAddr, password, passwordValidate, school);
 
   @JsonKey(ignore: true)
   @override
@@ -502,6 +520,7 @@ abstract class _RegisterInfo implements RegisterInfo {
   const factory _RegisterInfo(
       {final String? name,
       final String? email,
+      final String? emailAddr,
       final String? password,
       final String? passwordValidate,
       final SchoolInfo? school}) = _$RegisterInfoImpl;
@@ -510,6 +529,8 @@ abstract class _RegisterInfo implements RegisterInfo {
   String? get name;
   @override
   String? get email;
+  @override
+  String? get emailAddr;
   @override
   String? get password;
   @override

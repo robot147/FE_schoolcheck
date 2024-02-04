@@ -19,6 +19,7 @@ class RegisterPage extends _$RegisterPage {
         registerInfo: RegisterInfo(
             name: '',
             email: '',
+            emailAddr: 'naver.com',
             password: '',
             passwordValidate: '',
             school: SchoolInfo()));
@@ -104,6 +105,7 @@ class RegisterPage extends _$RegisterPage {
   void setter({
     String? name,
     String? email,
+    String? emailAddr,
     String? password,
     String? passwordValidate,
     SchoolInfo? school,
@@ -113,6 +115,7 @@ class RegisterPage extends _$RegisterPage {
         registerInfo: RegisterInfo(
           name: name ?? state.registerInfo.name,
           email: email ?? state.registerInfo.email,
+          emailAddr: emailAddr ?? state.registerInfo.emailAddr,
           password: password ?? state.registerInfo.password,
           passwordValidate:
               passwordValidate ?? state.registerInfo.passwordValidate,
@@ -163,16 +166,24 @@ class RegisterPage extends _$RegisterPage {
   }
 
   // 이메일 중복 체크
-  Future<String?> emailExistCheck() async {
-    return null;
-    // signUpRepository에서 해당 이메일 체크 로직 실행
+  Future<bool> emailExistCheck() async {
+    // final email =
+    //     '${state.value!.registerInfo.email!}@${state.value!.registerInfo.emailAddr!}';
+    final email = state.value!.registerInfo.email;
+    final params = {'email': email!};
+
+    return await RegisterRepository().emailCheck(body: {
+      'email': email,
+    }, params: params);
   }
 
   // 회원가입 함수
   Future<bool> signUp() async {
     // signUpRepository에서 회원가입 API 진행
     final name = state.value!.registerInfo.name!;
-    final email = state.value!.registerInfo.email!;
+    final email = state.value!.registerInfo.email;
+    // final email =
+    //     '${state.value!.registerInfo.email!}@${state.value!.registerInfo.emailAddr!}';
     final password = state.value!.registerInfo.password!;
     final schoolId = state.value!.registerInfo.school != null
         ? state.value!.registerInfo.school!.id

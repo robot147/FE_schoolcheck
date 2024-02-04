@@ -267,6 +267,14 @@ class RegisterPage extends ConsumerWidget {
     final state = ref.watch(registerPageProvider); //열어둬야함...
     final notifier = ref.read(registerPageProvider.notifier);
 
+    // final valueList = [
+    //   'naver.com',
+    //   'gmail.com',
+    //   'nate.com',
+    //   'nate.com',
+    //   'daum.net'
+    // ];
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -328,6 +336,7 @@ class RegisterPage extends ConsumerWidget {
                               state: SCTextInputState.enabled,
                               textInputAction: TextInputAction.next,
                               controller: SCTextInputController(),
+                              placeHolder: "이름을 입력해주세요",
                               focusNode: FocusNode(),
                               onFocusOffCallback: (value) {
                                 notifier.setter(name: value);
@@ -339,6 +348,49 @@ class RegisterPage extends ConsumerWidget {
                         const SizedBox(
                           height: 20,
                         ),
+                        // SizedBox(
+                        //   width: screenSize.width / 2,
+                        //   child: Row(
+                        //     children: [
+                        //       SizedBox(
+                        //         width: screenSize.width / 4 - 10,
+                        //         child: SizedBox(
+                        //           width: 246,
+                        //           child: SCTextInput(
+                        //             state: SCTextInputState.enabled,
+                        //             textInputAction: TextInputAction.next,
+                        //             controller: SCTextInputController(),
+                        //             placeHolder: "이메일을 입력해주세요",
+                        //             focusNode: FocusNode(),
+                        //             onFocusOffCallback: (value) {
+                        //               notifier.setter(email: value);
+                        //             },
+                        //             topLabel: '이메일',
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       const SCText("@",
+                        //           textStyle: SCTextStyle.$font_12px_w600_h100),
+                        //       SizedBox(
+                        //         width: screenSize.width / 4 - 10,
+                        //         child: SizedBox(
+                        //             width: 246,
+                        //             child: DropdownButton(
+                        //                 value:
+                        //                     state.value!.registerInfo.emailAddr,
+                        //                 items: valueList
+                        //                     .map((e) => DropdownMenuItem(
+                        //                           value: e,
+                        //                           child: Text(e),
+                        //                         ))
+                        //                     .toList(),
+                        //                 onChanged: ((value) {
+                        //                   notifier.setter(emailAddr: value!);
+                        //                 }))),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         SizedBox(
                           width: screenSize.width / 2,
                           child: SizedBox(
@@ -484,12 +536,19 @@ class RegisterPage extends ConsumerWidget {
                                         notifier.validationCheck();
                                     if (validationResult == null) {
                                       //통과
-                                      final isSuccess = await notifier.signUp();
-                                      if (isSuccess) {
-                                        toastPopup(context, '가입이 완료되었습니다.');
-                                        route.go(RouterPath.login.path);
+                                      final isEmailExistCheckSuccess =
+                                          await notifier.emailExistCheck();
+                                      if (isEmailExistCheckSuccess) {
+                                        final isSuccess =
+                                            await notifier.signUp();
+                                        if (isSuccess) {
+                                          toastPopup(context, '가입이 완료되었습니다.');
+                                          route.go(RouterPath.login.path);
+                                        } else {
+                                          //로그인 실패
+                                        }
                                       } else {
-                                        //로그인 실패
+                                        toastPopup(context, '이미 사용 중인 이메일입니다.');
                                       }
                                     } else {
                                       //실패

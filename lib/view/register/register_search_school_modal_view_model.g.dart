@@ -7,7 +7,7 @@ part of 'register_search_school_modal_view_model.dart';
 // **************************************************************************
 
 String _$registerSearchSchoolModalHash() =>
-    r'bf6c4ce75288bb5569c39a21adde6e3eba313195';
+    r'1c0d72675f4feb0c419a7ddf261912766ab1c142';
 
 /// See also [RegisterSearchSchoolModal].
 @ProviderFor(RegisterSearchSchoolModal)

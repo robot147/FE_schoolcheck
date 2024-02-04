@@ -29,4 +29,20 @@ class RegisterRepository {
     }
     return false;
   }
+
+  Future<bool> emailCheck(
+      {required Map<String, dynamic> body,
+      required Map<String, String> params}) async {
+    try {
+      final res =
+          await HTTPConnector.get(url: API_ENDPOINT.emailCheck, params: params);
+
+      return res?["data"]["available"] as bool;
+    } on HttpException catch (e) {
+      logger.e(e);
+    } on Exception catch (e) {
+      logger.e(e);
+    }
+    return false;
+  }
 }

@@ -10,7 +10,7 @@ class RegisterSearchSchoolModal extends _$RegisterSearchSchoolModal {
   @override
   SchoolInfoData build() {
     //STATE 반환
-    return SchoolInfoData(schoolInfo: [], searchName: null);
+    return const SchoolInfoData(schoolInfo: [], searchName: null);
   }
 
   //
@@ -42,7 +42,7 @@ class RegisterSearchSchoolModal extends _$RegisterSearchSchoolModal {
   void setter({String? searchName}) {
     print('setter has called. searchName is $searchName');
 
-    state = state.copyWith(searchName: searchName ?? searchName);
+    state = state.copyWith(searchName: searchName ?? state.searchName);
   }
 
   // 학교 리스트에서 학교 선택

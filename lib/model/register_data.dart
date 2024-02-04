@@ -20,6 +20,7 @@ class RegisterInfo with _$RegisterInfo {
   const factory RegisterInfo({
     String? name,
     String? email,
+    String? emailAddr,
     String? password,
     String? passwordValidate, // 비밀번호 확인용 변수
     SchoolInfo? school,
